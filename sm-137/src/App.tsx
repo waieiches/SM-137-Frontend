@@ -12,6 +12,9 @@ function App() {
     <Wrap>
       <h1>hi</h1>
 
+
+
+
     </Wrap>
   )
 }

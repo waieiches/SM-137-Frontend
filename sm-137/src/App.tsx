@@ -10,11 +10,8 @@ function App() {
 
   return (
     <Wrap>
-      <h1>hi</h1>
-
-
-
-
+    <h1>hi</h1>
+    <></>
     </Wrap>
   )
 }

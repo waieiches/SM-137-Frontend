@@ -1,0 +1,5 @@
+// ./husky/pre-commit 
+#!/usr/bin/env sh
+. "${0%/*}/h"
+npm run format
+git add

@@ -1,0 +1,72 @@
+@font-face {
+  font-family: "pretendardM";
+  src: url("./assets/fonts/Pretendard-Medium.woff");
+}
+@font-face {
+  font-family: "pretendardR";
+  src: url("./assets/fonts/Pretendard-Regular.woff");
+}
+@font-face {
+  font-family: "pretendardB";
+  src: url("./assets/fonts/Pretendard-SemiBold.woff");
+}
+html {
+  font-size: 16px;
+}
+:root {
+  /*color system*/
+  --primary: #0d2d84;
+  --light-primary: #385bbc;
+  --disabled-primary: #c5cdeb;
+  /*gray scale*/
+  --white: #ffffff;
+  --gray1-background: #f8f9fa;
+  --gray2-subbtn: #f1f3f5;
+  --gray3-border: #dee2e6;
+  --gray4-placeholder-low: #adb5bd;
+  --gray5-lowText: #6c757d;
+  --gray6-header: #212529;
+  /*error & info*/
+  --error-dark: #bc221c;
+  --error: #f84835;
+  --error-light: #e97674;
+  --succeess: #7ed957;
+  --info-dark: #f1e04d;
+}
+h1 {
+  font-family: "pretendardB";
+  font-size: 2.5rem;
+  line-height: 3rem;
+  letter-spacing: -0.04em;
+}
+h2 {
+  font-family: "pretendardB";
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: -0.04em;
+}
+h3 {
+  font-family: "pretendardR";
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: -0.04em;
+}
+/*sub heading*/
+span {
+  font-family: "pretendardB";
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+body {
+  font-family: "pretendardM";
+  font-size: 1rem;
+  line-height: 1rem;
+  letter-spacing: -0.02em;
+}
+caption {
+  font-family: "pretendardM";
+  font-size: 0.75rem;
+  line-height: 0.895rem;
+}

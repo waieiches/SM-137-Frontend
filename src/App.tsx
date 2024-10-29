@@ -7,7 +7,7 @@ const Wrap = styled.div`
 `;
 
 const Title = styled.span`
-  color: var(--gray5-contents);
+  color: #918298;
 `;
 
 function App() {

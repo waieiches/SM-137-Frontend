@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Button from "./components/button/Button";
 
 const Wrap = styled.div`
   width: 100px;
@@ -7,7 +8,7 @@ const Wrap = styled.div`
 `;
 
 const Title = styled.span`
-  color: #918298;
+  color: var(--primary);
 `;
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <Wrap>
       <h1>hi</h1>
       <Title>This is font</Title>
+      <Button width="100px" />
     </Wrap>
   );
 }

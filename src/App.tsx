@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import Button from "./components/button/Button";
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import Logo from "./assets/logo.svg?react";
 
 const Wrap = styled.div`
   width: 100px;
@@ -26,6 +27,7 @@ function App() {
       <Title>This is font</Title>
       <Button width="100px" />
       <StyledIcon component={CheckCircleRoundedIcon} />
+      <Logo />
     </Wrap>
   );
 }

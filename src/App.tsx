@@ -3,6 +3,7 @@ import Header from "./components/header/Header";
 import "./reset.css";
 
 const Wrap = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
 `;

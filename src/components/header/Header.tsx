@@ -1,0 +1,85 @@
+import styled from "@emotion/styled";
+import Logo from "../../assets/icons/logo/logo.svg?react";
+import LogoLight from "../../assets/icons/logo/logo-light.svg?react";
+import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
+import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
+import { useState } from "react";
+
+const Background = styled.div<HeaderBgcProps>`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  //라우팅 구현 후 삭제 예정
+  flex-direction: column;
+  align-items: center;
+  background-color: ${(props) =>
+    props.$isDark ? "var(--primary)" : "var(--white)"};
+`;
+const HeaderContainer = styled.div`
+  width: 90%;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+const NavigatorSet = styled.div`
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  cursor: pointer;
+`;
+const HeaderIcons = styled(SvgIcon)<HeaderIconsProps>`
+  width: 35px;
+  height: 35px;
+  color: ${(props) =>
+    props.$isDark ? "var(--white)" : "var(--gray5-lowText)"};
+`;
+
+interface HeaderIconsProps extends SvgIconProps {
+  $isDark: boolean;
+}
+interface HeaderBgcProps {
+  $isDark: boolean;
+}
+
+//헤더의 색상변경 기능을 위한 임시 버튼
+const TempButton = styled.button`
+  width: 150px;
+  height: 100px;
+  background-color: var(--error-light);
+  color: var(--white);
+  border: none;
+`;
+
+const Header = () => {
+  const [isDark, setIsDark] = useState(false);
+  //라우터 연결 뒤, useLocation으로 위치를 파악하여 헤더 색상 변경 예정
+  const handleTempDark = () => {
+    setIsDark((prev) => !prev);
+  };
+  return (
+    <Background $isDark={isDark}>
+      <HeaderContainer>
+        {/*메뉴바 / 로고 */}
+        <NavigatorSet>
+          <HeaderIcons $isDark={isDark} component={MenuRoundedIcon} />
+          {isDark ? <LogoLight /> : <Logo />}
+        </NavigatorSet>
+        {/*알람 / 마이페이지 */}
+        <NavigatorSet>
+          <HeaderIcons
+            $isDark={isDark}
+            component={NotificationsNoneRoundedIcon}
+          />
+          <HeaderIcons $isDark={isDark} component={PermIdentityRoundedIcon} />
+        </NavigatorSet>
+      </HeaderContainer>
+      {/*라우터 구현 후 삭제 예정*/}
+      <TempButton onClick={handleTempDark}>헤더 색상 변경</TempButton>
+    </Background>
+  );
+};
+
+export default Header;

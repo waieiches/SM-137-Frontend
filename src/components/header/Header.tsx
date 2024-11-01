@@ -35,6 +35,14 @@ const HeaderIcons = styled(SvgIcon)<HeaderIconsProps>`
   height: 35px;
   color: ${(props) =>
     props.$isDark ? "var(--white)" : "var(--gray5-lowText)"};
+  @media screen and (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 interface HeaderIconsProps extends SvgIconProps {

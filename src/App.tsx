@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import "./reset.css";
-import ContentBubble from "./components/contentBubble/ContentBubble";
-import HeaderNavigator from "./components/contentBubble/contents/HeaderNavigator";
-import Notification from "./components/contentBubble/contents/Notification";
+import ContentBubble from "./components/content-bubble/ContentBubble";
+import HeaderNavigator from "./components/content-bubble/contents/HeaderNavigator";
+import Notification from "./components/content-bubble/contents/Notification";
 
 const Wrap = styled.div`
   width: 100%;

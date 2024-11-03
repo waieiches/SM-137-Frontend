@@ -43,14 +43,15 @@ const ViewMoreIcon = styled(SvgIcon)<SvgIconProps>`
   width: 12px;
   height: 12px;
 `;
-const ViewMoreText = styled.caption``;
+const ViewMoreText = styled.p``;
 
 const Notification = () => {
   return (
     <NotificationContainer>
       <InfoMessageContainer>
-        {mockData.map((content) => (
+        {mockData.map((content, index) => (
           <InfoMessage
+            key={index}
             sizeType="small"
             messageType={content.type}
             content={content.message}

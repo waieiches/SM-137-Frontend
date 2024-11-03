@@ -11,6 +11,7 @@ function App() {
   return (
     <Wrap>
       <ContentBubble type="notification" />
+      <ContentBubble type="navigator" />
     </Wrap>
   );
 }

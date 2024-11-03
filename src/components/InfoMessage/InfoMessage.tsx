@@ -16,7 +16,7 @@ const MessageIcon = styled(SvgIcon)<MessageIconProps>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
 `;
-const MessageContent = styled.body``;
+const MessageContent = styled.div``;
 
 interface MessageContainerProps {
   color: string;

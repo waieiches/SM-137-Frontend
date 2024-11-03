@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 import Notification from "./contents/Notification";
+import HeaderNavigator from "./contents/HeaderNavigator";
 
-const Layout = styled.div`
+const BubbleLayout = styled.div<TypeProps>`
   //컴포넌트 확인용, 삭제 예정
   margin: 100px;
 
   padding: 1rem;
   max-width: 400px;
-  min-width: 200px;
   min-height: 100px;
   border-radius: 8px;
   background-color: var(--white);
@@ -19,13 +19,29 @@ const Layout = styled.div`
   position: relative;
   &::after {
     content: "";
-    border-top: 0px solid transparent;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid var(--gray3-border);
     position: absolute;
+    border-style: solid;
+    border-width: 0 10px 9px;
+    border-color: #ffffff transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -9px;
+    right: ${(props) =>
+      props.type === "notification" ? "10%" : "calc(50% - 10px)"};
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-width: 0 10px 9px;
+    border-color: #dee2e6 transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
     top: -10px;
-    right: 10%;
+    right: ${(props) =>
+      props.type === "notification" ? "10%" : "calc(50% - 10px)"};
   }
 `;
 
@@ -34,10 +50,21 @@ interface TypeProps {
 }
 
 const ContentBubble = ({ type }: TypeProps) => {
+  const getType = (type: string) => {
+    if (type === "notification") {
+      return Notification;
+    }
+    if (type === "navigator") {
+      return HeaderNavigator;
+    }
+    return Notification;
+  };
+
+  const RenderComponent = getType(type);
   return (
-    <Layout>
-      <Notification />
-    </Layout>
+    <BubbleLayout type={type}>
+      <RenderComponent />
+    </BubbleLayout>
   );
 };
 

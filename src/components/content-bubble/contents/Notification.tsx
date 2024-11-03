@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import InfoMessage from "../../InfoMessage/InfoMessage";
+import InfoMessage from "../../info-message/InfoMessage";
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 

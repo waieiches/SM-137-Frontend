@@ -9,6 +9,7 @@ import { useState } from "react";
 
 const Background = styled.div<HeaderBgcProps>`
   width: 100%;
+  max-width: 1440px;
   display: flex;
   justify-content: center;
   //라우팅 구현 후 삭제 예정

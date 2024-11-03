@@ -15,9 +15,9 @@ const QuickLinkIcon = styled(SvgIcon)<SvgIconProps>`
 
 // 텍스트
 const QuickLinkText = styled.span`
+  color: var(--gray5-lowText);
   display: inline-block;
   text-align: center;
-  color: var(--gray5-lowText);
 `;
 
 // 아이콘+텍스트
@@ -37,9 +37,9 @@ const QuickLinkIconTextItem = styled.div`
 const QuickLinkWrapper = styled.div`
   display: flex;
   border-radius: 8px;
-  overflow: hidden;
+  width: 90%;
+  max-width: 1116px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border: 1px solid #e0e0e0;
 `;
 
 interface QuickLinkItemProps {

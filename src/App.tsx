@@ -1,22 +1,8 @@
-import styled from "@emotion/styled";
-
-const Wrap = styled.div`
-  width: 100px;
-  height: 100px;
-  background-color: var(--gray5-contents);
-`;
-
-const Title = styled.span`
-  color: #918298;
-`;
+import QuickLink from "./components/Link/QuickLink";
+import "./reset.css";
 
 function App() {
-  return (
-    <Wrap>
-      <h1>hi</h1>
-      <Title>This is font</Title>
-    </Wrap>
-  );
+  return <QuickLink />;
 }
 
 export default App;

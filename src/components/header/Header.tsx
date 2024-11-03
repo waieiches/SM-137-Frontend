@@ -7,7 +7,7 @@ import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneR
 import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
 import { useState } from "react";
 
-const Background = styled.div<HeaderBgcProps>`
+const Background = styled.div<BackgroundProps>`
   width: 100%;
   max-width: 1440px;
   display: flex;
@@ -49,7 +49,7 @@ const HeaderIcons = styled(SvgIcon)<HeaderIconsProps>`
 interface HeaderIconsProps extends SvgIconProps {
   $isDark: boolean;
 }
-interface HeaderBgcProps {
+interface BackgroundProps {
   $isDark: boolean;
 }
 

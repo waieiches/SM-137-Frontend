@@ -17,6 +17,7 @@ const BubbleLayout = styled.div<TypeProps>`
   align-items: center;
   box-shadow: -0.5px 0.5px 1px rgba(0, 0, 0, 0.25);
   position: relative;
+  /*말풍선 꼬리*/
   &::after {
     content: "";
     position: absolute;
@@ -28,7 +29,7 @@ const BubbleLayout = styled.div<TypeProps>`
     z-index: 1;
     top: -9px;
     right: ${(props) =>
-      props.type === "notification" ? "10%" : "calc(50% - 10px)"};
+      props.tailType === "edge" ? "10%" : "calc(50% - 10px)"};
   }
   &::before {
     content: "";
@@ -41,31 +42,19 @@ const BubbleLayout = styled.div<TypeProps>`
     z-index: 0;
     top: -10px;
     right: ${(props) =>
-      props.type === "notification" ? "10%" : "calc(50% - 10px)"};
+      props.tailType === "edge" ? "10%" : "calc(50% - 10px)"};
   }
 `;
 
 interface TypeProps {
-  type: string;
+  tailType: string;
+}
+interface ContentProps extends TypeProps {
+  content: React.ReactNode;
 }
 
-const ContentBubble = ({ type }: TypeProps) => {
-  const getType = (type: string) => {
-    if (type === "notification") {
-      return Notification;
-    }
-    if (type === "navigator") {
-      return HeaderNavigator;
-    }
-    return Notification;
-  };
-
-  const RenderComponent = getType(type);
-  return (
-    <BubbleLayout type={type}>
-      <RenderComponent />
-    </BubbleLayout>
-  );
+const ContentBubble = ({ content, tailType }: ContentProps) => {
+  return <BubbleLayout tailType={tailType}>{content}</BubbleLayout>;
 };
 
 export default ContentBubble;

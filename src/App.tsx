@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import "./reset.css";
 import ContentBubble from "./components/contentBubble/ContentBubble";
+import HeaderNavigator from "./components/contentBubble/contents/HeaderNavigator";
+import Notification from "./components/contentBubble/contents/Notification";
 
 const Wrap = styled.div`
   width: 100%;
@@ -10,8 +12,8 @@ const Wrap = styled.div`
 function App() {
   return (
     <Wrap>
-      <ContentBubble type="notification" />
-      <ContentBubble type="navigator" />
+      <ContentBubble tailType="middle" content={<HeaderNavigator />} />
+      <ContentBubble tailType="edge" content={<Notification />} />
     </Wrap>
   );
 }

@@ -4,6 +4,7 @@ import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 //mock data (백엔드)
+//백엔드 데이터 slice 5개
 const mockData = [
   {
     type: "info",
@@ -13,10 +14,13 @@ const mockData = [
     type: "message",
     message: "[저녁 수업 냉난방 가동 요청] 민원에 댓글이 달렸습니다.",
   },
+  {
+    type: "message",
+    message: "[저녁 수업 냉난방 가동 요청] 민원에 댓글이 달렸습니다.",
+  },
 ];
 
-const CommentContainer = styled.div`
-  width: 100%;
+const NotificationContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -41,9 +45,9 @@ const ViewMoreIcon = styled(SvgIcon)<SvgIconProps>`
 `;
 const ViewMoreText = styled.caption``;
 
-const Comment = () => {
+const Notification = () => {
   return (
-    <CommentContainer>
+    <NotificationContainer>
       <InfoMessageContainer>
         {mockData.map((content) => (
           <InfoMessage
@@ -58,8 +62,8 @@ const Comment = () => {
         <ViewMoreIcon component={AddRoundedIcon} />
         <ViewMoreText>더보기</ViewMoreText>
       </ViewMoreButton>
-    </CommentContainer>
+    </NotificationContainer>
   );
 };
 
-export default Comment;
+export default Notification;

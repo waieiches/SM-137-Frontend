@@ -8,12 +8,16 @@ import {
 
 const MessageContainer = styled.div<MessageContainerProps>`
   display: flex;
+  gap: 0.5rem;
   color: ${(props) => props.color};
+  align-items: center;
 `;
 const MessageIcon = styled(SvgIcon)<MessageIconProps>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
 `;
+const MessageContent = styled.body``;
+
 interface MessageContainerProps {
   color: string;
 }
@@ -24,15 +28,18 @@ interface MessageIconProps extends SvgIconProps {
 interface MessageTypeProps {
   sizeType: string;
   messageType: string;
+  content: string;
 }
 
 const InfoMessage = ({
   sizeType = "small",
   messageType = "info",
+  content = "내용을 입력해 주세요",
 }: MessageTypeProps) => {
   const iconComponent = getIconType(messageType);
   const size = getSizeType(sizeType);
   const color = getColor(messageType);
+
   return (
     <MessageContainer color={color}>
       <MessageIcon
@@ -40,6 +47,7 @@ const InfoMessage = ({
         width={size.width}
         height={size.height}
       />
+      <MessageContent>{content}</MessageContent>
     </MessageContainer>
   );
 };

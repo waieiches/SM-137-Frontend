@@ -1,6 +1,4 @@
 import styled from "@emotion/styled";
-import Notification from "./contents/Notification";
-import HeaderNavigator from "./contents/HeaderNavigator";
 
 const BubbleLayout = styled.div<TypeProps>`
   //컴포넌트 확인용, 삭제 예정

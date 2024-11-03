@@ -1,20 +1,20 @@
 import styled from "@emotion/styled";
+import SchoolLogo from "../../assets/symbol_Color.png";
 
-const TempLogo = styled.div`
+const Logo = styled.img`
   width: 70px;
-  height: 70px;
   border-radius: 500px;
-  background-color: #797979;
 `;
 const Info = styled.div`
   width: 100%;
   height: 20%;
+  min-height: 140px;
   max-height: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
   background-color: var(--gray1-background);
 `;
 const Name = styled.span``;
@@ -22,7 +22,7 @@ const Name = styled.span``;
 const UserInfo = () => {
   return (
     <Info>
-      <TempLogo />
+      <Logo src={SchoolLogo} />
       <Name>user1234</Name>
     </Info>
   );

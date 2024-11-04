@@ -1,4 +1,3 @@
-// IconWithText.tsx
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
 import styled from "@emotion/styled";

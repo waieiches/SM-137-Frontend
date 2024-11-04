@@ -1,4 +1,3 @@
-// ProgressBar.tsx
 import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
 import CategoryRoundedIcon from "@mui/icons-material/CategoryRounded";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";

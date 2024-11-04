@@ -1,4 +1,4 @@
-import QuickLink from "./components/Link/QuickLink";
+import QuickLink from "./components/quick-link/QuickLink.tsx";
 import "./reset.css";
 
 function App() {

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import ProgressBar from "./components/progress-line/ProgressBar";
 
 const Wrap = styled.div`
   width: 100px;
@@ -11,12 +12,7 @@ const Title = styled.span`
 `;
 
 function App() {
-  return (
-    <Wrap>
-      <h1>hi</h1>
-      <Title>This is font</Title>
-    </Wrap>
-  );
+  return <ProgressBar />;
 }
 
 export default App;

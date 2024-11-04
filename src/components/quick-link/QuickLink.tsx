@@ -6,21 +6,18 @@ import AccountBoxRoundedIcon from "@mui/icons-material/AccountBoxRounded";
 import SmsRoundedIcon from "@mui/icons-material/SmsRounded";
 import CreateRoundedIcon from "@mui/icons-material/CreateRounded";
 
-// 아이콘
 const QuickLinkIcon = styled(SvgIcon)<SvgIconProps>`
   color: var(--gray5-lowText);
   width: 25px;
   height: 25px;
 `;
 
-// 텍스트
 const QuickLinkText = styled.span`
   color: var(--gray5-lowText);
   display: inline-block;
   text-align: center;
 `;
 
-// 아이콘+텍스트
 const QuickLinkIconTextItem = styled.div`
   display: flex;
   align-items: center;
@@ -33,7 +30,6 @@ const QuickLinkIconTextItem = styled.div`
   flex: 1;
 `;
 
-// 전체 래퍼
 const QuickLinkWrapper = styled.div`
   display: flex;
   border-radius: 8px;
@@ -54,7 +50,6 @@ const QuickLinkItem = ({ icon: IconComponent, text }: QuickLinkItemProps) => (
   </QuickLinkIconTextItem>
 );
 
-// 최종 컴포넌트
 const QuickLink = () => (
   <QuickLinkWrapper>
     <QuickLinkItem icon={LibraryBooksRoundedIcon} text="전체 민원 조회" />

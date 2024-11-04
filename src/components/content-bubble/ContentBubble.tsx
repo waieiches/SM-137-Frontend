@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import HeaderNavigator from "./contents/HeaderNavigator";
 
 const BubbleLayout = styled.div<TypeProps>`
   //컴포넌트 확인용, 삭제 예정
@@ -51,7 +52,10 @@ interface ContentProps extends TypeProps {
   content: React.ReactNode;
 }
 
-const ContentBubble = ({ content, tailType }: ContentProps) => {
+const ContentBubble = ({
+  content = <HeaderNavigator />,
+  tailType = "edge",
+}: ContentProps) => {
   return <BubbleLayout tailType={tailType}>{content}</BubbleLayout>;
 };
 

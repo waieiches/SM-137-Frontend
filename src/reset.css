@@ -169,6 +169,7 @@ input,
 button {
   appearance: auto;
   border-radius: 0;
+  border: none;
 }
 select {
   -webkit-appearance: none;
@@ -187,6 +188,7 @@ button {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
+  background: none;
 }
 
 button,

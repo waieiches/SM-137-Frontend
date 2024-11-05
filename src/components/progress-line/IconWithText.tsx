@@ -1,6 +1,7 @@
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
 import styled from "@emotion/styled";
+import { useEffect, useState } from "react";
 
 interface IconWithTextProps {
   icon: typeof SvgIcon;
@@ -28,11 +29,11 @@ const ProgressCircleIcon = styled.div`
   }
 `;
 
-const ProgressLineIcon = styled(SvgIcon)<SvgIconProps>`
+const ProgressBarIcon = styled(SvgIcon)<SvgIconProps>`
   color: white;
 `;
 
-const ProgressLineText = styled.div`
+const ProgressBarText = styled.div`
   display: inline-block;
   text-align: center;
 
@@ -45,7 +46,7 @@ const ProgressLineText = styled.div`
   }
 `;
 
-const ProgressLineIconText = styled.div`
+const ProgressBarIconText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,18 +71,36 @@ const IconWithText = ({
     ? "var(--light-primary)"
     : "var(--gray4-placeholder-low)";
   const textColor = isActive ? "var(--light-primary)" : "var(--gray5-lowText)";
-  const iconSize = IconComponent === SendRoundedIcon ? 16 : 20;
+
+  // Dynamically set icon size based on screen width
+  const [iconSize, setIconSize] = useState(20);
+
+  useEffect(() => {
+    const updateIconSize = () => {
+      if (window.innerWidth <= 480) {
+        setIconSize(14);
+      } else if (window.innerWidth <= 768) {
+        setIconSize(16);
+      } else {
+        setIconSize(20);
+      }
+    };
+
+    updateIconSize();
+    window.addEventListener("resize", updateIconSize);
+    return () => window.removeEventListener("resize", updateIconSize);
+  }, []);
 
   return (
-    <ProgressLineIconText>
+    <ProgressBarIconText>
       <ProgressCircleIcon style={{ backgroundColor: circleBackgroundColor }}>
-        <ProgressLineIcon
+        <ProgressBarIcon
           component={IconComponent}
           style={{ width: iconSize, height: iconSize }}
         />
       </ProgressCircleIcon>
-      <ProgressLineText style={{ color: textColor }}>{text}</ProgressLineText>
-    </ProgressLineIconText>
+      <ProgressBarText style={{ color: textColor }}>{text}</ProgressBarText>
+    </ProgressBarIconText>
   );
 };
 

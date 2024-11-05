@@ -19,15 +19,17 @@ const ProgressLine = styled.div`
   @media (max-width: 768px) {
     width: 300px;
     height: 3px;
+    top: 13px;
   }
 
   @media (max-width: 480px) {
     width: 250px;
     height: 2px;
+    top: 10px;
   }
 `;
 
-const TotalProgressLine = styled.div`
+const TotalProgressBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,12 +41,12 @@ const TotalProgressLine = styled.div`
   }
 
   @media (max-width: 480px) {
-    width: 280px;
+    width: 300px;
   }
 `;
 
 const ProgressBar = () => (
-  <TotalProgressLine>
+  <TotalProgressBar>
     <ProgressLine />
     <IconWithText
       icon={PermIdentityRoundedIcon}
@@ -58,7 +60,7 @@ const ProgressBar = () => (
     />
     <IconWithText icon={EditRoundedIcon} text="민원 작성" isActive={false} />
     <IconWithText icon={SendRoundedIcon} text="제출 완료" isActive={false} />
-  </TotalProgressLine>
+  </TotalProgressBar>
 );
 
 export default ProgressBar;

@@ -36,38 +36,38 @@ html {
 h1 {
   font-family: "pretendardB";
   font-size: 2.5rem;
-  line-height: 3rem;
+  line-height: 4.5rem;
   letter-spacing: -0.04em;
 }
 h2 {
   font-family: "pretendardB";
   font-size: 1.5rem;
-  line-height: 2rem;
+  line-height: 3rem;
   letter-spacing: -0.04em;
 }
 h3 {
   font-family: "pretendardR";
   font-size: 1.5rem;
-  line-height: 2rem;
+  line-height: 3rem;
   letter-spacing: -0.04em;
 }
 /*sub heading*/
 span {
   font-family: "pretendardB";
   font-size: 1.125rem;
-  line-height: 1.5rem;
+  line-height: 2.25rem;
   letter-spacing: -0.02em;
 }
 div {
   font-family: "pretendardM";
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 2.25rem;
   letter-spacing: -0.02em;
 }
 p {
   font-family: "pretendardM";
   font-size: 0.75rem;
-  line-height: 0.895rem;
+  line-height: 1.35rem;
 }
 /*svg파일 반응형*/
 @media (max-width: 768px) {

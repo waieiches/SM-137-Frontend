@@ -1,6 +1,7 @@
+import "./reset.css"
+
 function App() {
-  return (
-  );
+  return
 }
 
 export default App;

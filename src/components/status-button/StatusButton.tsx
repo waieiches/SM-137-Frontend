@@ -13,25 +13,50 @@ interface StatusButtonProps {
 }
 
 // 상태별 스타일
-const buttonStyles = {
+const PlayIcon = styled(play_circle_filled)`
+  color: var(--light-primary);
+  width: 20px;
+  height: 20px;
+`;
+
+const PauseIcon = styled(pause_circle_filled)`
+  color: var(--info-dark);
+  width: 20px;
+  height: 20px;
+`;
+
+const CheckIcon = styled(check_circle)`
+  color: var(--succeess);
+  width: 20px;
+  height: 20px;
+`;
+
+const CancelIcon = styled(cancel)`
+  color: var(--error-light);
+  width: 20px;
+  height: 20px;
+`;
+
+// 상태별 스타일
+export const buttonStyles = {
   inProgress: {
+    Icon: PlayIcon,
     color: "var(--light-primary)",
-    Icon: play_circle_filled,
     text: "진행",
   },
   pending: {
+    Icon: PauseIcon,
     color: "var(--info-dark)",
-    Icon: pause_circle_filled,
     text: "대기",
   },
   rejected: {
+    Icon: CancelIcon,
     color: "var(--error-light)",
-    Icon: cancel,
     text: "반려",
   },
   completed: {
+    Icon: CheckIcon,
     color: "var(--succeess)",
-    Icon: check_circle,
     text: "완료",
   },
 };
@@ -41,14 +66,13 @@ interface ButtonContainerProps {
   borderColor: string;
 }
 
-const ButtonContainer = styled.div<ButtonContainerProps>`
-  display: flex;
+const ButtonContainer = styled.button<ButtonContainerProps>`
+  display: inline-flex;
   align-items: center;
   gap: 0.25rem;
   padding: 0.2rem 0.4rem;
   border-radius: 20px;
   background-color: var(--white);
-  cursor: pointer;
   border: ${(props) =>
     props.isSelected ? `2px solid ${props.borderColor}` : "none"};
 `;
@@ -59,7 +83,7 @@ const ButtonText = styled.span<{ color: string }>`
 `;
 
 // 단일 버튼 컴포넌트
-const StatusButton = ({ type, isSelected, onClick }: StatusButtonProps) => {
+const StatusButton = ({ type="inProgress", isSelected=false, onClick }: StatusButtonProps) => {
   const { color, Icon, text } = buttonStyles[type];
 
   return (

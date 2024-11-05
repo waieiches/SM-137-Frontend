@@ -1,5 +1,4 @@
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
-import SendRoundedIcon from "@mui/icons-material/SendRounded";
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 
@@ -72,7 +71,6 @@ const IconWithText = ({
     : "var(--gray4-placeholder-low)";
   const textColor = isActive ? "var(--light-primary)" : "var(--gray5-lowText)";
 
-  // Dynamically set icon size based on screen width
   const [iconSize, setIconSize] = useState(20);
 
   useEffect(() => {

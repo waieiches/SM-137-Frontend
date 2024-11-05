@@ -69,3 +69,25 @@ caption {
   font-size: 0.75rem;
   line-height: 0.895rem;
 }
+/*svg파일 반응형*/
+@media (max-width: 768px) {
+  #logo {
+    width: 55px;
+    height: 25px;
+  }
+  #logo-light {
+    width: 55px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  #logo {
+    width: 45px;
+    height: 20px;
+  }
+  #logo-light {
+    width: 45px;
+    height: 20px;
+  }
+}

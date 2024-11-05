@@ -5,7 +5,7 @@
     "types": ["vite/client", "vite-plugin-svgr/client"],
     "module": "ESNext",
     "skipLibCheck": true, // 라이브러리 타입 검사 건너뜀
-    "useDefineForClassFields": true, 
+    "useDefineForClassFields": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,

@@ -1,3 +1,5 @@
+// components/modal/UserInfoModal.tsx
+
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 import InfoMessage from "../info-message/InfoMessage";
@@ -48,8 +50,8 @@ const FormWrapper = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Enter = styled.div`
-  height: 1.5rem;
+const ButtonWrapper = styled.div`
+  margin-top: 1rem;
 `;
 
 const UserInfoModal = () => {
@@ -67,8 +69,9 @@ const UserInfoModal = () => {
         <FormWrapper>
           <UserInfoForm />
         </FormWrapper>
-        <Enter />
-        <Button content="시작하기" />
+        <ButtonWrapper>
+          <Button content="시작하기" />
+        </ButtonWrapper>
       </ModalContent>
     </ModalWrapper>
   );

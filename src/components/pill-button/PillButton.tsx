@@ -8,6 +8,7 @@ interface ContainerProps {
   isClick: boolean;
 }
 const Container = styled.button<ContainerProps>`
+  display: inline-flex;
   padding: 0 1rem;
   background-color: var(--white);
   border-radius: 3rem;
@@ -28,7 +29,7 @@ const Container = styled.button<ContainerProps>`
 `;
 const Contents = styled.div``;
 
-const PillButton = ({ contents }: PillButtonProps) => {
+const PillButton = ({ contents = "예시" }: PillButtonProps) => {
   const [isClick, setIsClick] = useState(false);
   const handleClick = () => {
     setIsClick((prev) => !prev);

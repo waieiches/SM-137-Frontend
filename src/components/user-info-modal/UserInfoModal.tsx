@@ -1,5 +1,3 @@
-// components/modal/UserInfoModal.tsx
-
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 import InfoMessage from "../info-message/InfoMessage";

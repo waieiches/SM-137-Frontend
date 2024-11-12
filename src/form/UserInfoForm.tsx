@@ -3,12 +3,13 @@ import styled from "@emotion/styled";
 const InfoForm = styled.form`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
-  margin-top: 0.5rem;
 `;
 
 const InfoFormRow = styled.div`
-  display: flex;
+  display: inline-flex;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
   width: 100%;
@@ -16,8 +17,9 @@ const InfoFormRow = styled.div`
 
 const InfoLabel = styled.div`
   color: var(--gray5-lowText);
-  width: 80px;
+  min-width: 60px;
   text-align: right;
+  display: inline;
 `;
 
 const InfoInput = styled.input`

@@ -1,8 +1,9 @@
-import UserInfoModal from "./components/user-info-modal/UserInfoModal";
+import InitialInfo from "./components/modal/contents/InitialInfo";
+import Modal from "./components/modal/Modal";
 import "./reset.css";
 
 function App() {
-  return <UserInfoModal />;
+  return <Modal contents={<InitialInfo />} />;
 }
 
 export default App;

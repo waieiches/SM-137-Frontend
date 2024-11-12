@@ -18,7 +18,7 @@ const ButtonContainer = styled.div<ButtonContainerProps & ButtonProps>`
   align-items: center;
   justify-content: center;
   gap: ${(props) => (props.type === "library" ? "0.5rem" : "1rem")};
-  width: ${(props) => props.width || "120px"};
+  width: ${(props) => props.width};
   height: ${(props) => (props.type === "login" ? "123px" : "40px")};
   border-radius: 4px;
   background-color: ${({ type }) =>

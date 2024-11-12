@@ -9,14 +9,16 @@ const Container = styled.div`
   gap: 2rem;
 `;
 
+const InfoMessage_text = `회원가입 후 최초 1회, 원활한 서비스 이용을 위해
+학번, 학과, 이름 등의 개인정보 설정이 필요합니다`;
+
 const InitialInfo = () => {
   return (
     <Container>
       <InfoMessage
         sizeType="small"
         messageType="info"
-        content={`회원가입 후 최초 1회, 원활한 서비스 이용을 위해
-학번, 학과, 이름 등의 개인정보 설정이 필요합니다`}
+        content={InfoMessage_text}
       />
       <UserInfoForm />
       <Button content="시작하기" />

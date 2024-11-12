@@ -32,7 +32,6 @@ const CloseButton = styled.button`
   cursor: pointer;
   z-index: 1001;
   color: black;
-
   @media (min-width: 480px) {
     display: none;
   }
@@ -41,7 +40,7 @@ const CloseButton = styled.button`
 const SideNavConnect = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
   const isMobileScreen = window.innerWidth <= 480;
-  
+
   // notificationIconRef를 useRef로 생성
   const notificationIconRef = useRef<HTMLDivElement | null>(null);
 

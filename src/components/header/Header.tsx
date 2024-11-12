@@ -7,6 +7,12 @@ import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneR
 import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
 import { useState } from "react";
 
+interface HeaderProps {
+  onMenuClick: () => void; 
+  onNotificationClick: () => void;
+  notificationIconRef: React.RefObject<HTMLDivElement>;
+}
+
 const Background = styled.div<BackgroundProps>`
   width: 100%;
   max-width: 1440px;
@@ -62,7 +68,7 @@ const TempButton = styled.button`
   border: none;
 `;
 
-const Header = () => {
+const Header = ({ onMenuClick }: HeaderProps) => {
   const [isDark, setIsDark] = useState(false);
   //라우터 연결 뒤, useLocation으로 위치를 파악하여 헤더 색상 변경 예정
   const handleTempDark = () => {
@@ -73,7 +79,7 @@ const Header = () => {
       <HeaderContainer>
         {/*메뉴바 / 로고 */}
         <NavigatorSet>
-          <HeaderIcons $isDark={isDark} component={MenuRoundedIcon} />
+          <HeaderIcons $isDark={isDark} component={MenuRoundedIcon} onClick={onMenuClick} />
           {isDark ? <LogoLight /> : <Logo />}
         </NavigatorSet>
         {/*알람 / 마이페이지 */}

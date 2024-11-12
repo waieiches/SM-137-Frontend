@@ -29,14 +29,6 @@ const InfoInput = styled.input<InfoInputProps>`
   border: 1px solid var(--gray3-border);
   border-radius: 4px;
   font-size: 14px;
-  &:valid,
-  &:invalid {
-    border-color: var(--gray3-border);
-    box-shadow: none;
-  }
-  &:focus {
-    border-color: #000;
-  }
 `;
 
 const Input = (inputProps: InputProps) => {

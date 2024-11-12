@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import Button from "../../button/Button";
-import UserInfoForm from "../../../form/UserInfoForm";
+import UserInfoForm from "../../form/UserInfoForm";
 import InfoMessage from "../../info-message/InfoMessage";
 
 const Container = styled.div`

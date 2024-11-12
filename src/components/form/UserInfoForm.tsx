@@ -12,7 +12,7 @@ const UserInfoForm = () => {
   return (
     <InfoForm>
       <Input type="text" label="학번" placeholder="2012345" />
-      <Input type="text" label="학과/학부" placeholder="2012345" />
+      <Input type="text" label="학과/학부" placeholder="컴퓨터과학전공" />
     </InfoForm>
   );
 };

@@ -31,7 +31,6 @@ const ModalContent = styled.div`
   text-align: center;
   animation: ${UpAnimation} 0.8s ease-out;
   display: inline-flex;
-
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);

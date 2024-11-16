@@ -8,9 +8,11 @@ import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
 import { useState } from "react";
 
 interface HeaderProps {
-  onMenuClick: () => void; 
-  onNotificationClick: () => void;
-  notificationIconRef: React.RefObject<HTMLDivElement>;
+  onSideNavOpen: () => void;
+  onNotificationOpen: () => void;
+  onMenuOpen: () => void;
+  notificationIconRef: React.RefObject<SVGSVGElement>;
+  menuIconRef: React.RefObject<SVGSVGElement>;
 }
 
 const Background = styled.div<BackgroundProps>`
@@ -68,18 +70,29 @@ const TempButton = styled.button`
   border: none;
 `;
 
-const Header = ({ onMenuClick }: HeaderProps) => {
+const Header = ({
+  onSideNavOpen,
+  onNotificationOpen,
+  onMenuOpen,
+  notificationIconRef,
+  menuIconRef,
+}: HeaderProps) => {
   const [isDark, setIsDark] = useState(false);
   //라우터 연결 뒤, useLocation으로 위치를 파악하여 헤더 색상 변경 예정
   const handleTempDark = () => {
     setIsDark((prev) => !prev);
   };
+
   return (
     <Background $isDark={isDark}>
       <HeaderContainer>
         {/*메뉴바 / 로고 */}
         <NavigatorSet>
-          <HeaderIcons $isDark={isDark} component={MenuRoundedIcon} onClick={onMenuClick} />
+          <HeaderIcons
+            $isDark={isDark}
+            component={MenuRoundedIcon}
+            onClick={onSideNavOpen}
+          />
           {isDark ? <LogoLight /> : <Logo />}
         </NavigatorSet>
         {/*알람 / 마이페이지 */}
@@ -87,8 +100,15 @@ const Header = ({ onMenuClick }: HeaderProps) => {
           <HeaderIcons
             $isDark={isDark}
             component={NotificationsNoneRoundedIcon}
+            onClick={onNotificationOpen}
+            ref={notificationIconRef}
           />
-          <HeaderIcons $isDark={isDark} component={PermIdentityRoundedIcon} />
+          <HeaderIcons
+            $isDark={isDark}
+            component={PermIdentityRoundedIcon}
+            onClick={onMenuOpen}
+            ref={menuIconRef}
+          />
         </NavigatorSet>
       </HeaderContainer>
       {/*라우터 구현 후 삭제 예정*/}

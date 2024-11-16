@@ -1,5 +1,5 @@
+import React, { CSSProperties, forwardRef } from "react";
 import styled from "@emotion/styled";
-import HeaderNavigator from "./contents/HeaderNavigator";
 
 const BubbleLayout = styled.div<TypeProps>`
   //컴포넌트 확인용, 삭제 예정
@@ -49,14 +49,18 @@ interface TypeProps {
   tailType: string;
 }
 interface ContentProps extends TypeProps {
-  content: React.ReactNode;
+  children: React.ReactNode;
+  style?: CSSProperties;
 }
 
-const ContentBubble = ({
-  content = <HeaderNavigator />,
-  tailType = "edge",
-}: ContentProps) => {
-  return <BubbleLayout tailType={tailType}>{content}</BubbleLayout>;
-};
+const ContentBubble = forwardRef<HTMLDivElement, ContentProps>(
+  ({ children, tailType = "edge" }, ref) => {
+    return (
+      <BubbleLayout ref={ref} tailType={tailType}>
+        {children}
+      </BubbleLayout>
+    );
+  }
+);
 
 export default ContentBubble;

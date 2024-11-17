@@ -1,22 +1,28 @@
-import React, { CSSProperties, forwardRef } from "react";
 import styled from "@emotion/styled";
 
-const BubbleLayout = styled.div<TypeProps>`
-  //컴포넌트 확인용, 삭제 예정
-  margin: 100px;
+const getType = (tailType: string) => {
+  if (tailType === "edge") {
+    return "10%";
+  }
+  if (tailType === "center") {
+    return "calc(50% - 10px)";
+  }
+};
 
+const BubbleLayout = styled.div<TypeProps>`
+  display: inline-flex;
+  width: max-content;
+  flex: 0 1 auto;
   padding: 1rem;
-  max-width: 400px;
-  min-height: 100px;
   border-radius: 8px;
   background-color: var(--white);
   border: 1px solid var(--gray3-border);
-  display: inline-flex;
   justify-content: center;
   align-items: center;
   box-shadow: -0.5px 0.5px 1px rgba(0, 0, 0, 0.25);
   position: relative;
-  /*말풍선 꼬리*/
+
+  /* 말풍선 꼬리 */
   &::after {
     content: "";
     position: absolute;
@@ -24,11 +30,9 @@ const BubbleLayout = styled.div<TypeProps>`
     border-width: 0 10px 9px;
     border-color: #ffffff transparent;
     display: block;
-    width: 0;
     z-index: 1;
     top: -9px;
-    right: ${(props) =>
-      props.tailType === "edge" ? "10%" : "calc(50% - 10px)"};
+    right: ${(props) => getType(props.tailType)};
   }
   &::before {
     content: "";
@@ -37,11 +41,20 @@ const BubbleLayout = styled.div<TypeProps>`
     border-width: 0 10px 9px;
     border-color: #dee2e6 transparent;
     display: block;
-    width: 0;
     z-index: 0;
     top: -10px;
-    right: ${(props) =>
-      props.tailType === "edge" ? "10%" : "calc(50% - 10px)"};
+    right: ${(props) => getType(props.tailType)};
+  }
+
+  /* 미디어 쿼리 */
+  @media screen and (max-width: 768px) {
+    padding: 0.75rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 `;
 
@@ -49,18 +62,15 @@ interface TypeProps {
   tailType: string;
 }
 interface ContentProps extends TypeProps {
-  children: React.ReactNode;
-  style?: CSSProperties;
+  content: React.ReactNode;
 }
 
-const ContentBubble = forwardRef<HTMLDivElement, ContentProps>(
-  ({ children, tailType = "edge" }, ref) => {
-    return (
-      <BubbleLayout ref={ref} tailType={tailType}>
-        {children}
-      </BubbleLayout>
-    );
-  }
-);
+const ContentBubble = ({ content, tailType }: ContentProps) => {
+  return <BubbleLayout tailType={tailType}>{content}</BubbleLayout>;
+};
+ContentBubble.defaultProps = {
+  content: "내용 입력",
+  tailType: "edge",
+};
 
 export default ContentBubble;

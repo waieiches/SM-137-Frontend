@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import UserInfo from "./UserInfo";
-import { forwardRef } from "react";
 
 const SideNavContainer = styled.div`
   width: 250px;
@@ -13,6 +12,7 @@ const SideNavContainer = styled.div`
   align-items: center;
   border-right: 1px solid var(--gray3-border);
   background-color: var(--white);
+  z-index: 100;
 
   @media (max-width: 768px) {
     width: 200px;
@@ -39,9 +39,9 @@ const MenuContent = styled.div`
   }
 `;
 
-const SideNavigator = forwardRef<HTMLDivElement>((_, ref) => {
+const SideNavigator = () => {
   return (
-    <SideNavContainer ref={ref}>
+    <SideNavContainer>
       <UserInfo />
       <Menu>
         <MenuSubTitle>조회 / 신청</MenuSubTitle>
@@ -58,6 +58,6 @@ const SideNavigator = forwardRef<HTMLDivElement>((_, ref) => {
       </Menu>
     </SideNavContainer>
   );
-});
+};
 
 export default SideNavigator;

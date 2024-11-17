@@ -2,6 +2,14 @@ import styled from "@emotion/styled";
 import UserInfo from "./UserInfo";
 
 const SideNavContainer = styled.div`
+  @keyframes moveRight {
+    0% {
+      transform: translateX(-250px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
   width: 250px;
   height: 100vh;
   position: fixed;
@@ -13,6 +21,7 @@ const SideNavContainer = styled.div`
   border-right: 1px solid var(--gray3-border);
   background-color: var(--white);
   z-index: 100;
+  animation: moveRight 0.3s ease;
 
   @media (max-width: 768px) {
     width: 200px;

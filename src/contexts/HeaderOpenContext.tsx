@@ -80,22 +80,20 @@ const HeaderOpenProvider = ({ children }: HeaderOpenProviderProps) => {
       });
     }
   };
-
+  const value = {
+    isOpen,
+    isDark,
+    handleOpen,
+    handleDark,
+    refs: {
+      myPageRef,
+      notifyRef,
+      sideNavRef,
+    },
+    handleClose,
+  };
   return (
-    <HeaderOpenContext.Provider
-      value={{
-        isOpen,
-        isDark,
-        handleOpen,
-        handleDark,
-        refs: {
-          myPageRef,
-          notifyRef,
-          sideNavRef,
-        },
-        handleClose,
-      }}
-    >
+    <HeaderOpenContext.Provider value={value}>
       {children}
     </HeaderOpenContext.Provider>
   );

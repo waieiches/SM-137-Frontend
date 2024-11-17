@@ -10,6 +10,14 @@ const getType = (tailType: string) => {
 };
 
 const BubbleLayout = styled.div<TypeProps>`
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
   display: inline-flex;
   width: max-content;
   max-width: 300px;
@@ -22,6 +30,7 @@ const BubbleLayout = styled.div<TypeProps>`
   align-items: center;
   box-shadow: -0.5px 0.5px 1px rgba(0, 0, 0, 0.25);
   position: relative;
+  animation: fadeIn 0.2s ease-out;
 
   /* 말풍선 꼬리 */
   &::after {
@@ -54,7 +63,6 @@ const BubbleLayout = styled.div<TypeProps>`
   @media screen and (max-width: 768px) {
     padding: 0.75rem;
   }
-
   @media screen and (max-width: 480px) {
     display: none;
   }

@@ -22,6 +22,7 @@ const NotifyContainer = styled.div`
     right: -85%;
   }
 `;
+
 const HeaderSideNav = () => {
   const { isDark, isOpen, handleOpen, refs, handleClose } = useHeaderContext();
   useEffect(() => {

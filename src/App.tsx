@@ -1,9 +1,7 @@
-import InitialInfo from "./components/modal/contents/InitialInfo";
-import Modal from "./components/modal/Modal";
-import "./reset.css";
+import SearchBar from "./components/search-bar/SearchBar";
 
-function App() {
-  return <Modal contents={<InitialInfo />} />;
-}
+const App = () => {
+  return <SearchBar />;
+};
 
 export default App;

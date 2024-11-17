@@ -12,6 +12,7 @@ const getType = (tailType: string) => {
 const BubbleLayout = styled.div<TypeProps>`
   display: inline-flex;
   width: max-content;
+  max-width: 300px;
   flex: 0 1 auto;
   padding: 1rem;
   border-radius: 8px;
@@ -33,6 +34,9 @@ const BubbleLayout = styled.div<TypeProps>`
     z-index: 1;
     top: -9px;
     right: ${(props) => getType(props.tailType)};
+    @media screen and (max-width: 480px) {
+      display: none;
+    }
   }
   &::before {
     content: "";
@@ -52,9 +56,7 @@ const BubbleLayout = styled.div<TypeProps>`
   }
 
   @media screen and (max-width: 480px) {
-    position: absolute;
-    top: 0;
-    right: 0;
+    display: none;
   }
 `;
 
@@ -65,12 +67,11 @@ interface ContentProps extends TypeProps {
   content: React.ReactNode;
 }
 
-const ContentBubble = ({ content, tailType }: ContentProps) => {
+const ContentBubble = ({
+  content = "내용 입력",
+  tailType = "edge",
+}: ContentProps) => {
   return <BubbleLayout tailType={tailType}>{content}</BubbleLayout>;
-};
-ContentBubble.defaultProps = {
-  content: "내용 입력",
-  tailType: "edge",
 };
 
 export default ContentBubble;

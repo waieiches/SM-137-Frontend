@@ -7,26 +7,24 @@ import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
 import { useEffect } from "react";
 
 const NotifyIconContainer = styled.div`
-  display: inline-flex;
+  display: flex;
   position: relative;
 `;
 const NotifyContainer = styled.div`
   position: absolute;
-  top: 55px;
-  right: -95%;
+  top: 3.4rem;
+  right: -2.6rem;
   @media screen and (max-width: 768px) {
-    top: 50px;
-    right: -90%;
+    top: 3.3rem;
+    right: -2.5rem;
   }
   @media screen and (max-width: 480px) {
-    top: 45px;
-    right: -85%;
   }
 `;
+
 const HeaderMyPage = () => {
   const { isDark, isOpen, handleOpen, refs, handleClose } = useHeaderContext();
   useEffect(() => {
-    console.log("호출2");
     const handleClickOutside = (e: MouseEvent) => {
       handleClose(e, refs.myPageRef, "isMyPageOpen");
     };

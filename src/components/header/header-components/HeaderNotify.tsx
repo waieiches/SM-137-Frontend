@@ -9,26 +9,20 @@ import { useEffect } from "react";
 const NotifyIconContainer = styled.div`
   display: inline-flex;
   position: relative;
-  background-color: #797979;
 `;
 const NotifyContainer = styled.div`
   position: absolute;
-  top: 55px;
-  right: -95%;
+  top: 3.4rem;
+  right: -1.4rem;
   @media screen and (max-width: 768px) {
-    top: 50px;
-    right: -90%;
-  }
-  @media screen and (max-width: 480px) {
-    top: 45px;
-    right: -85%;
+    top: 3.3rem;
+    right: -1.7rem;
   }
 `;
 
 const HeaderNotify = () => {
   const { isOpen, isDark, handleOpen, refs, handleClose } = useHeaderContext();
   useEffect(() => {
-    console.log("호출");
     const handleClickOutside = (e: MouseEvent) => {
       handleClose(e, refs.notifyRef, "isNotifyOpen");
     };
@@ -46,7 +40,9 @@ const HeaderNotify = () => {
         onClick={() => handleOpen("isNotifyOpen")}
       />
       <NotifyContainer>
-        {isOpen.isNotifyOpen && <ContentBubble content={<Notification />} />}
+        {isOpen.isNotifyOpen && (
+          <ContentBubble content={<Notification />} tailType="edge" />
+        )}
       </NotifyContainer>
     </NotifyIconContainer>
   );

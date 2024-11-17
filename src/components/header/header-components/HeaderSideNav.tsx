@@ -25,7 +25,6 @@ const NotifyContainer = styled.div`
 const HeaderSideNav = () => {
   const { isDark, isOpen, handleOpen, refs, handleClose } = useHeaderContext();
   useEffect(() => {
-    console.log("호출3");
     const handleClickOutside = (e: MouseEvent) => {
       handleClose(e, refs.sideNavRef, "isSideNavOpen");
     };

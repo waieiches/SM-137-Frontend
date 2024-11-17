@@ -4,12 +4,14 @@ import Notification from "../../content-bubble/contents/Notification";
 import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
 import { useHeaderContext } from "../../../contexts/HeaderOpenContext";
 import { HeaderIcons } from "../../../styles/HeaderIconStyle";
+import { useEffect } from "react";
 
-export const NotifyIconContainer = styled.div`
+const NotifyIconContainer = styled.div`
   display: inline-flex;
   position: relative;
+  background-color: #797979;
 `;
-export const NotifyContainer = styled.div`
+const NotifyContainer = styled.div`
   position: absolute;
   top: 55px;
   right: -95%;
@@ -24,10 +26,20 @@ export const NotifyContainer = styled.div`
 `;
 
 const HeaderNotify = () => {
-  const { isOpen, isDark, handleOpen } = useHeaderContext();
+  const { isOpen, isDark, handleOpen, refs, handleClose } = useHeaderContext();
+  useEffect(() => {
+    console.log("호출");
+    const handleClickOutside = (e: MouseEvent) => {
+      handleClose(e, refs.notifyRef, "isNotifyOpen");
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [refs.notifyRef]);
 
   return (
-    <NotifyIconContainer>
+    <NotifyIconContainer ref={refs.notifyRef}>
       <HeaderIcons
         $isDark={isDark}
         component={NotificationsNoneRoundedIcon}

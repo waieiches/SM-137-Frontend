@@ -3,12 +3,13 @@ import { HeaderIcons } from "../../../styles/HeaderIconStyle";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { useHeaderContext } from "../../../contexts/HeaderOpenContext";
 import SideNavigator from "../../side-navigator/SideNavigator";
+import { useEffect } from "react";
 
-export const NotifyIconContainer = styled.div`
+const NotifyIconContainer = styled.div`
   display: inline-flex;
   position: relative;
 `;
-export const NotifyContainer = styled.div`
+const NotifyContainer = styled.div`
   position: absolute;
   top: 55px;
   right: -95%;
@@ -22,9 +23,20 @@ export const NotifyContainer = styled.div`
   }
 `;
 const HeaderSideNav = () => {
-  const { isDark, isOpen, handleOpen } = useHeaderContext();
+  const { isDark, isOpen, handleOpen, refs, handleClose } = useHeaderContext();
+  useEffect(() => {
+    console.log("호출3");
+    const handleClickOutside = (e: MouseEvent) => {
+      handleClose(e, refs.sideNavRef, "isSideNavOpen");
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [refs.sideNavRef]);
+
   return (
-    <NotifyIconContainer>
+    <NotifyIconContainer ref={refs.sideNavRef}>
       <HeaderIcons
         $isDark={isDark}
         component={MenuRoundedIcon}

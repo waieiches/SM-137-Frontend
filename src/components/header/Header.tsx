@@ -41,9 +41,7 @@ const NavigatorSet = styled.div`
 `;
 
 const Header = () => {
-  //헤더 색상 변경
   const { isDark, handleDark } = useHeaderContext();
-
   return (
     <Background $isDark={isDark}>
       <HeaderContainer>

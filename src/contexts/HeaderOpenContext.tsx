@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useRef, useState } from "react";
 
 interface IsOpenProps {
   isSideNavOpen: boolean;
@@ -11,9 +11,20 @@ interface HeaderOpenProviderProps {
 interface HeaderOpenContextProps {
   isOpen: IsOpenProps;
   isDark: boolean;
+  refs: {
+    myPageRef: React.RefObject<HTMLDivElement>;
+    notifyRef: React.RefObject<HTMLDivElement>;
+    sideNavRef: React.RefObject<HTMLDivElement>;
+  };
   handleOpen: (menu: keyof IsOpenProps) => void;
   handleDark: () => void;
+  handleClose: (
+    e: MouseEvent,
+    ref: React.RefObject<HTMLDivElement | null>,
+    key: keyof IsOpenProps
+  ) => void;
 }
+
 const defaultProps = {
   isOpen: {
     isSideNavOpen: false,
@@ -21,8 +32,14 @@ const defaultProps = {
     isMyPageOpen: false,
   },
   isDark: false,
+  refs: {
+    myPageRef: { current: null },
+    notifyRef: { current: null },
+    sideNavRef: { current: null },
+  },
   handleOpen: () => {},
   handleDark: () => {},
+  handleClose: () => {},
 };
 
 const HeaderOpenContext = createContext<HeaderOpenContextProps>(defaultProps);
@@ -32,23 +49,52 @@ const HeaderOpenProvider = ({ children }: HeaderOpenProviderProps) => {
   const handleDark = () => {
     setIsDark((prev) => !prev);
   };
+
   const [isOpen, setIsOpen] = useState<IsOpenProps>({
     isSideNavOpen: false,
     isNotifyOpen: false,
     isMyPageOpen: false,
   });
-  const handleOpen = (menu: keyof typeof isOpen) => {
+  const handleOpen = (menu: keyof IsOpenProps) => {
     setIsOpen((prev) => {
-      for (let key in prev) {
-        prev[key as keyof IsOpenProps] = false;
-      }
-      return prev;
+      const newPrev = { ...prev };
+      newPrev[menu] = !newPrev[menu];
+      return newPrev;
     });
-    setIsOpen((prev) => ({ ...prev, [menu]: !prev[menu] }));
   };
+
+  const myPageRef = useRef<HTMLDivElement | null>(null);
+  const notifyRef = useRef<HTMLDivElement | null>(null);
+  const sideNavRef = useRef<HTMLDivElement | null>(null);
+
+  const handleClose = (
+    e: MouseEvent,
+    ref: React.RefObject<HTMLDivElement | null>,
+    key: keyof IsOpenProps
+  ) => {
+    if (ref.current && !ref.current.contains(e.target as Node)) {
+      setIsOpen((prev) => {
+        const newPrev = { ...prev };
+        newPrev[key] = false;
+        return newPrev;
+      });
+    }
+  };
+
   return (
     <HeaderOpenContext.Provider
-      value={{ isOpen, isDark, handleOpen, handleDark }}
+      value={{
+        isOpen,
+        isDark,
+        handleOpen,
+        handleDark,
+        refs: {
+          myPageRef,
+          notifyRef,
+          sideNavRef,
+        },
+        handleClose,
+      }}
     >
       {children}
     </HeaderOpenContext.Provider>

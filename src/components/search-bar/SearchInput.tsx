@@ -14,16 +14,28 @@ const FixedText = styled.div`
 `;
 
 const Input = styled.input`
+  flex: 1;
   border: none;
+  background: none;
   outline: none;
   font-size: 1rem;
+
+  &::placeholder {
+    color: var(--gray4-placeholder-low);
+  }
 `;
 
-const SearchInput = () => {
+interface SearchInputProps {
+  placeholder?: string;
+}
+
+const SearchInput = ({
+  placeholder = "디즈니 인턴십 학점 인정",
+}: SearchInputProps) => {
   return (
     <InputWrapper>
       <FixedText>민원 검색</FixedText>
-      <Input type="text" />
+      <Input type="text" placeholder={placeholder} />
     </InputWrapper>
   );
 };

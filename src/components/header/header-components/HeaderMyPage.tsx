@@ -18,8 +18,6 @@ const NotifyContainer = styled.div`
     top: 3.3rem;
     right: -2.5rem;
   }
-  @media screen and (max-width: 480px) {
-  }
 `;
 
 const HeaderMyPage = () => {
@@ -37,7 +35,7 @@ const HeaderMyPage = () => {
   return (
     <NotifyIconContainer ref={refs.myPageRef}>
       <HeaderIcons
-        $isDark={isDark}
+        data-isdark={isDark}
         component={PermIdentityRoundedIcon}
         onClick={() => handleOpen("isMyPageOpen")}
       />

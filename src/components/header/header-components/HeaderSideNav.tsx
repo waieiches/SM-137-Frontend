@@ -38,7 +38,7 @@ const HeaderSideNav = () => {
   return (
     <NotifyIconContainer ref={refs.sideNavRef}>
       <HeaderIcons
-        $isDark={isDark}
+        data-isdark={isDark}
         component={MenuRoundedIcon}
         onClick={() => handleOpen("isSideNavOpen")}
       />

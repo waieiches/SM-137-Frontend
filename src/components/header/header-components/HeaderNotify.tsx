@@ -35,7 +35,7 @@ const HeaderNotify = () => {
   return (
     <NotifyIconContainer ref={refs.notifyRef}>
       <HeaderIcons
-        $isDark={isDark}
+        data-isdark={isDark}
         component={NotificationsNoneRoundedIcon}
         onClick={() => handleOpen("isNotifyOpen")}
       />

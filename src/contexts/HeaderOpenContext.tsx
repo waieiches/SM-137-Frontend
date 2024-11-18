@@ -45,11 +45,13 @@ const defaultProps = {
 const HeaderOpenContext = createContext<HeaderOpenContextProps>(defaultProps);
 
 const HeaderOpenProvider = ({ children }: HeaderOpenProviderProps) => {
+  //색상 변경
   const [isDark, setIsDark] = useState(false);
   const handleDark = () => {
     setIsDark((prev) => !prev);
   };
 
+  //네비게이터 / 말풍선 열기
   const [isOpen, setIsOpen] = useState<IsOpenProps>({
     isSideNavOpen: false,
     isNotifyOpen: false,
@@ -63,6 +65,7 @@ const HeaderOpenProvider = ({ children }: HeaderOpenProviderProps) => {
     });
   };
 
+  //네비게이터 / 말풍선 닫기 (배경)
   const myPageRef = useRef<HTMLDivElement | null>(null);
   const notifyRef = useRef<HTMLDivElement | null>(null);
   const sideNavRef = useRef<HTMLDivElement | null>(null);

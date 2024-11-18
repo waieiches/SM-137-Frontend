@@ -18,6 +18,10 @@ const NotifyContainer = styled.div`
     top: 3.3rem;
     right: -2.5rem;
   }
+  @media screen and (max-width: 480px) {
+    position: fixed;
+    right: 0;
+  }
 `;
 
 const HeaderMyPage = () => {

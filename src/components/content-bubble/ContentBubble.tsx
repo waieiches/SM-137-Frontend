@@ -31,6 +31,12 @@ const BubbleLayout = styled.div<TypeProps>`
   box-shadow: -0.5px 0.5px 1px rgba(0, 0, 0, 0.25);
   position: relative;
   animation: fadeIn 0.2s ease-out;
+  @media screen and (max-width: 480px) {
+    max-width: none;
+    width: 100vw;
+    box-shadow: none;
+    border-radius: 0;
+  }
 
   /* 말풍선 꼬리 */
   &::after {
@@ -57,14 +63,14 @@ const BubbleLayout = styled.div<TypeProps>`
     z-index: 0;
     top: -10px;
     right: ${(props) => getType(props.tailType)};
+    @media screen and (max-width: 480px) {
+      display: none;
+    }
   }
 
   /* 미디어 쿼리 */
   @media screen and (max-width: 768px) {
     padding: 0.75rem;
-  }
-  @media screen and (max-width: 480px) {
-    display: none;
   }
 `;
 

@@ -22,7 +22,7 @@ export const buttonType = {
     height: "2.5rem",
     padding: "0.5rem 3rem",
     backGround: "var(--gray2-subbtn)",
-    hoverBackGround: "var(--gray2-subbtn)",
+    hoverBackGround: "var(--gray3-border)",
     color: "var(--gray5-lowText)",
     borderRadius: "4px",
   },
@@ -31,7 +31,7 @@ export const buttonType = {
     height: "2.1875rem",
     padding: "0rem 0rem",
     backGround: "var(--gray2-subbtn)",
-    hoverBackGround: "var(--gray2-subbtn)",
+    hoverBackGround: "var(--gray3-border)",
     color: "var(--gray5-lowText)",
     borderRadius: "4px",
   },
@@ -44,7 +44,7 @@ export const buttonType = {
     color: "var(--white)",
     borderRadius: "4px",
   },
-  library: {
+  category: {
     width: "9.5rem",
     height: "3rem",
     padding: "0.8125rem 1.1875rem",

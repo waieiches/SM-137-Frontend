@@ -1,33 +1,53 @@
-import styled from "@emotion/styled";
-//typeScript 정의
+import styled from "@emotion/styled"; 
+import { buttonType } from "./ButtonType";
+
 interface ButtonProps {
-  width?: string; // Button 컴포넌트의 props 타입 정의
+  content?: string;
+  type: keyof typeof buttonType;
 }
-interface ButtonContainerProps {
-  width?: string; // width가 선택적 속성임을 정의
+
+interface StyleProps {
+  width: string;
+  height: string;
+  padding: string;
+  backGround: string;
+  hoverBackGround: string;
+  color: string;
+  borderRadius: string;
 }
-const ButtonContainer = styled.div<ButtonContainerProps>`
-  /*flex 줄 */
-  display: flex;
-  align-items: center;
-  text-align: center;
-  gap: 1rem; //ButtonContainer 밑에 하위 컴포넌트가 2개일 경우
+
+const ButtonContainer = styled.button<StyleProps>`
+  width: ${(props: StyleProps) => props.width};
+  height: ${(props: StyleProps) => props.height};
+  background-color: ${(props: StyleProps) => props.backGround};
+  padding: ${(props: StyleProps) => props.padding};
+  border-radius: ${(props: StyleProps) => props.borderRadius};
+  display: inline-flex;
   justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  color: ${(props: StyleProps) => props.color};
 
-  width: ${(props) => props.width};
-  height: 100px; //컴포넌트의 특정 크기 - px
-  border-radius: 4px; //컴포넌트 라운딩 처리
-  background-color: var(--primary); // var() - index.css에 정의해둔 변수명
-`;
-const ButtonContents = styled.h2`
-  //h2 - 피그마 기준으로 Desktop - header2
-  color: white; // 폰트 색상
+  &:hover {
+    background-color: ${(props: StyleProps) => props.hoverBackGround};
+  }
 `;
 
-const Button = ({ width }: ButtonProps) => {
+const Button = ({ content = "버튼 내용", type = "default" }: ButtonProps) => {
+  const buttonStyle = buttonType[type];
+
   return (
-    <ButtonContainer width={width}>
-      <ButtonContents>hi</ButtonContents>
+    <ButtonContainer
+      width={buttonStyle.width}
+      height={buttonStyle.height}
+      padding={buttonStyle.padding}
+      backGround={buttonStyle.backGround}
+      hoverBackGround={buttonStyle.hoverBackGround}
+      borderRadius={buttonStyle.borderRadius}
+      color={buttonStyle.color}
+    >
+      {content}
     </ButtonContainer>
   );
 };

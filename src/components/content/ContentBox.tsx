@@ -1,36 +1,74 @@
 import styled from "@emotion/styled";
 import StatusDisplay from "../status-button/StatusDisplay";
+import CategoryTagGroup from "../category-tag/CategoryTagGroup";
 
 interface ContenteBoxProps {
   type: keyof typeof boxType;
+}
+interface ContainerProps {
+  width: string;
+  height: string;
 }
 
 const boxType = {
   small: {
     width: "287px",
     height: "255px",
+    flex: "column",
+    line: 3,
   },
   large: {
     width: "537px",
     height: "207px",
+    flex: "row",
+    line: 2,
   },
 };
 
-const Container = styled.div`
-  display: inline-flex;
+const Container = styled.div<ContainerProps>`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  display: flex;
   flex-direction: column;
   align-items: start;
+  justify-content: center;
+  gap: 0.65rem;
   background-color: var(--white);
-  border: 1px solid #000;
+  border: 1px solid var(--gray3-border);
+  border-radius: 8px;
+  padding: 24px;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid var(--gray4-placeholder-low);
+  }
+  @media screen and (max-width: 480px) {
+    display: inline-flex;
+    padding: 1rem;
+    width: auto;
+    height: auto;
+  }
 `;
 //진행상태 + 좋아요/스크랩
-const StatusContainer = styled.div`
-  display: flex;
+const StatusContainer = styled.div<{ flex: string }>`
+  display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #000;
+  flex-direction: ${(props) => props.flex};
 `;
 const Title = styled.span``;
+const Article = styled.div<{ line: number }>`
+  color: var(--gray5-lowText);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: ${(props) => props.line};
+  text-overflow: ellipsis;
+  max-height: calc(1.5rem * 3);
+  @media screen and (max-width: 480px) {
+    -webkit-line-clamp: 1;
+    max-height: calc(1.5rem * 1);
+  }
+`;
 
 //삭제 예정, 백엔드 데이터
 const mockData = {
@@ -41,12 +79,16 @@ const mockData = {
 };
 
 const ContentBox = ({ type = "small" }: ContenteBoxProps) => {
+  const boxStyle = boxType[type];
+
   return (
-    <Container>
-      <StatusContainer>
+    <Container width={boxStyle.width} height={boxStyle.height}>
+      <StatusContainer flex={boxStyle.flex}>
         <StatusDisplay type="inProgress" />
       </StatusContainer>
+      <CategoryTagGroup tagArray={mockData.category} />
       <Title>{mockData.title}</Title>
+      <Article line={boxStyle.line}>{mockData.content}</Article>
     </Container>
   );
 };

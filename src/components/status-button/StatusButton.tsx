@@ -77,17 +77,25 @@ const ButtonContainer = styled.button<ButtonContainerProps>`
     props.isSelected ? `2px solid ${props.borderColor}` : "none"};
 `;
 
-const ButtonText = styled.span<{ color: string }>`
+const ButtonText = styled.pre<{ color: string }>`
   color: ${(props) => props.color};
   font-size: 16px;
 `;
 
 // 단일 버튼 컴포넌트
-const StatusButton = ({ type="inProgress", isSelected=false, onClick }: StatusButtonProps) => {
+const StatusButton = ({
+  type = "inProgress",
+  isSelected = false,
+  onClick,
+}: StatusButtonProps) => {
   const { color, Icon, text } = buttonStyles[type];
 
   return (
-    <ButtonContainer isSelected={isSelected} borderColor={color} onClick={onClick}>
+    <ButtonContainer
+      isSelected={isSelected}
+      borderColor={color}
+      onClick={onClick}
+    >
       <Icon style={{ width: "20px", height: "20px", color }} />
       <ButtonText color={color}>{text}</ButtonText>
     </ButtonContainer>

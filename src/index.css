@@ -58,14 +58,22 @@ span {
   line-height: 2.25rem;
   letter-spacing: -0.02em;
 }
-div {
+/*body1*/
+pre {
   font-family: "pretendardM";
   font-size: 1rem;
   line-height: 1.5rem;
   letter-spacing: -0.02em;
 }
+/*body2*/
+div {
+  font-family: "pretendardR";
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.02em;
+}
 p {
-  font-family: "pretendardM";
+  font-family: "pretendardR";
   font-size: 0.75rem;
   line-height: 1.35rem;
 }

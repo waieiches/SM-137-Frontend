@@ -13,7 +13,7 @@ const NotifyIconContainer = styled.div`
   padding: 0.1rem;
   transition: 0.1s ease;
   &:hover {
-    background-color: var(--light-primary);
+    background-color: var(--disabled-primary);
   }
 `;
 const NotifyContainer = styled.div`

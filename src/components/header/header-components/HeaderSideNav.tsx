@@ -10,9 +10,9 @@ const NotifyIconContainer = styled.div`
   position: relative;
   border-radius: 100px;
   padding: 0.1rem;
-  transition: 0.1s ease;
+  transition: 0.2s ease;
   &:hover {
-    background-color: var(--light-primary);
+    background-color: var(--disabled-primary);
   }
 `;
 const NotifyContainer = styled.div`

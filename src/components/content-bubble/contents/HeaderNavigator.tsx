@@ -6,7 +6,6 @@ const NavigatorContainer = styled.ul`
   color: var(--gray5-lowText);
   text-align: center;
   align-items: center;
-  gap: 0.75rem;
 `;
 const NavigatorContent = styled.div`
   width: 100%;

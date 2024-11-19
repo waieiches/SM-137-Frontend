@@ -1,5 +1,6 @@
 export const buttonType = {
-  default: {
+  /*default type */
+  _120x40_Primary: {
     width: "7.5rem",
     height: "2.5rem",
     padding: "0.5rem 3rem",
@@ -8,7 +9,7 @@ export const buttonType = {
     color: "var(--white)",
     borderRadius: "4px",
   },
-  login: {
+  _100x123_Primary: {
     width: "6.25rem",
     height: "7.6875rem",
     padding: "0.5rem 3rem",
@@ -17,7 +18,7 @@ export const buttonType = {
     color: "var(--white)",
     borderRadius: "4px",
   },
-  previous: {
+  _120x40_Gray2: {
     width: "7.5rem",
     height: "2.5rem",
     padding: "0.5rem 3rem",
@@ -26,7 +27,7 @@ export const buttonType = {
     color: "var(--gray5-lowText)",
     borderRadius: "4px",
   },
-  attachedFile: {
+  _100x35_Gray2: {
     width: "6.25rem",
     height: "2.1875rem",
     padding: "0rem 0rem",
@@ -35,7 +36,7 @@ export const buttonType = {
     color: "var(--gray5-lowText)",
     borderRadius: "4px",
   },
-  register: {
+  _100x35_Primary: {
     width: "6.25rem",
     height: "2.1875rem",
     padding: "0rem 0rem",
@@ -44,7 +45,7 @@ export const buttonType = {
     color: "var(--white)",
     borderRadius: "4px",
   },
-  category: {
+  _150x45_White: {
     width: "9.5rem",
     height: "3rem",
     padding: "0.8125rem 1.1875rem",

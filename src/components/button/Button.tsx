@@ -2,11 +2,11 @@ import styled from "@emotion/styled";
 import { buttonType } from "./ButtonType";
 
 const DEFAULT_CONTENT = "버튼 내용";
-const DEFAULT_TYPE = "default";
+const DEFAULT_TYPE = "_120x40_Primary";
 
 interface ContentProps {
   content?: string;
-  type: keyof typeof buttonType; 
+  type: keyof typeof buttonType;
 }
 
 interface StyleProps {
@@ -16,14 +16,14 @@ interface StyleProps {
   backGround?: string;
   hoverBackGround?: string;
   color?: string;
-  borderRadius?: string; 
+  borderRadius?: string;
 }
 
 const ButtonContainer = styled.button<StyleProps>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   background-color: ${(props) => props.backGround};
-  border-radius: ${(props) => props.borderRadius || "4px"}; 
+  border-radius: ${(props) => props.borderRadius || "4px"};
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -46,8 +46,15 @@ const Button = ({
   const buttonStyle = buttonType[type];
   console.log(buttonStyle);
 
-  const { width, height, padding, backGround, color, hoverBackGround, borderRadius } =
-    buttonStyle;
+  const {
+    width,
+    height,
+    padding,
+    backGround,
+    color,
+    hoverBackGround,
+    borderRadius,
+  } = buttonStyle;
 
   return (
     <ButtonContainer
@@ -56,7 +63,7 @@ const Button = ({
       padding={padding}
       backGround={backGround}
       hoverBackGround={hoverBackGround}
-      borderRadius={borderRadius} 
+      borderRadius={borderRadius}
     >
       <ButtonContents color={color}>{content}</ButtonContents>
     </ButtonContainer>

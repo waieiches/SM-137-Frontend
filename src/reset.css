@@ -170,6 +170,7 @@ button {
   appearance: auto;
   border-radius: 0;
   border: none;
+  outline: none;
 }
 select {
   -webkit-appearance: none;
@@ -200,10 +201,13 @@ input[type="submit"] {
 input:valid,
 textarea:valid,
 select:valid {
-  border-color: green;
+  border-color: var(--gray3-border);
 }
 input:invalid,
 textarea:invalid,
 select:invalid {
-  border-color: red;
+  border-color: var(--gray3-border);
+}
+input:focus {
+  border: 2px solid var(--light-primary);
 }

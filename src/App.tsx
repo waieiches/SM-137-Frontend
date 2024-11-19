@@ -3,6 +3,8 @@ import ContentList from "./components/content/ContentList";
 import Header from "./components/header/Header";
 import "./reset.css";
 import { StatusType } from "./components/status-button/StatusButton";
+import ContentBox from "./components/content/ContentBox";
+import Interaction from "./components/interaction/Interaction";
 const Wrap = styled.div`
   width: 100%;
   display: flex;
@@ -93,6 +95,8 @@ function App() {
   return (
     <Wrap>
       <Header />
+      <ContentBox type="small" />
+      <ContentBox type="large" />
       {mockData.map((i) => (
         <ContentList data={i} />
       ))}

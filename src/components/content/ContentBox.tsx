@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import StatusDisplay from "../status-button/StatusDisplay";
 import CategoryTagGroup from "../category-tag/CategoryTagGroup";
 import { Article, Title } from "../../styles/ContentStyle";
+import InteractionGroup from "../interaction/InteractionGroup";
 
 interface ContenteBoxProps {
   type: keyof typeof boxType;
@@ -16,13 +17,11 @@ const boxType = {
     width: "287px",
     height: "255px",
     flex: "column",
-    line: 3,
   },
   large: {
     width: "537px",
     height: "207px",
     flex: "row",
-    line: 2,
   },
 };
 
@@ -33,7 +32,7 @@ const Container = styled.div<ContainerProps>`
   flex-direction: column;
   align-items: start;
   justify-content: center;
-  gap: 0.65rem;
+  gap: 0.67rem;
   background-color: var(--white);
   border: 1px solid var(--gray3-border);
   border-radius: 8px;
@@ -51,9 +50,10 @@ const Container = styled.div<ContainerProps>`
 `;
 //진행상태 + 좋아요/스크랩
 const StatusContainer = styled.div<{ flex: string }>`
+  width: 100%;
   display: inline-flex;
   justify-content: space-between;
-  align-items: center;
+  gap: 0.65rem;
   flex-direction: ${(props) => props.flex};
 `;
 
@@ -67,15 +67,17 @@ const mockData = {
 
 const ContentBox = ({ type = "small" }: ContenteBoxProps) => {
   const boxStyle = boxType[type];
+  const ARTICLE_LINE = 2;
 
   return (
     <Container width={boxStyle.width} height={boxStyle.height}>
       <StatusContainer flex={boxStyle.flex}>
         <StatusDisplay type="inProgress" />
+        <InteractionGroup />
       </StatusContainer>
       <CategoryTagGroup tagArray={mockData.category} />
       <Title>{mockData.title}</Title>
-      <Article line={boxStyle.line}>{mockData.content}</Article>
+      <Article line={ARTICLE_LINE}>{mockData.content}</Article>
     </Container>
   );
 };

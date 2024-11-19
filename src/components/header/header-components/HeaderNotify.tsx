@@ -9,6 +9,12 @@ import { useEffect } from "react";
 const NotifyIconContainer = styled.div`
   display: inline-flex;
   position: relative;
+  border-radius: 100px;
+  padding: 0.1rem;
+  transition: 0.1s ease;
+  &:hover {
+    background-color: var(--light-primary);
+  }
 `;
 const NotifyContainer = styled.div`
   position: absolute;

@@ -12,7 +12,6 @@ const FixedText = styled.div`
 `;
 
 const Input = styled.input`
-  flex: 1;
   border: none;
   outline: none;
 

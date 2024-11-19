@@ -11,7 +11,7 @@ const DisplayContainer = styled.div`
   gap: 0.25rem;
 `;
 
-const DisplayText = styled.div<{ color: string }>`
+const DisplayText = styled.pre<{ color: string }>`
   color: ${(props) => props.color};
 `;
 

@@ -77,7 +77,7 @@ const ButtonContainer = styled.button<ButtonContainerProps>`
     props.isSelected ? `2px solid ${props.borderColor}` : "none"};
 `;
 
-const ButtonText = styled.div<{ color: string }>`
+const ButtonText = styled.pre<{ color: string }>`
   color: ${(props) => props.color};
   font-size: 16px;
 `;

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import StatusDisplay from "../status-button/StatusDisplay";
 import CategoryTagGroup from "../category-tag/CategoryTagGroup";
+import { Article, Title } from "../../styles/ContentStyle";
 
 interface ContenteBoxProps {
   type: keyof typeof boxType;
@@ -54,20 +55,6 @@ const StatusContainer = styled.div<{ flex: string }>`
   justify-content: space-between;
   align-items: center;
   flex-direction: ${(props) => props.flex};
-`;
-const Title = styled.span``;
-const Article = styled.div<{ line: number }>`
-  color: var(--gray5-lowText);
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: ${(props) => props.line};
-  text-overflow: ellipsis;
-  max-height: calc(1.5rem * 3);
-  @media screen and (max-width: 480px) {
-    -webkit-line-clamp: 1;
-    max-height: calc(1.5rem * 1);
-  }
 `;
 
 //삭제 예정, 백엔드 데이터

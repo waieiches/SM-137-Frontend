@@ -10,7 +10,6 @@ const BarContainer = styled.div`
   padding: 0.5rem 1rem;
   width: 400px;
   height: 35px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const SearchBar = () => {

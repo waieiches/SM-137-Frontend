@@ -8,17 +8,13 @@ const InputWrapper = styled.div`
 `;
 
 const FixedText = styled.div`
-  font-size: 1rem;
   color: var(--gray6-header);
-  font-weight: 500;
 `;
 
 const Input = styled.input`
   flex: 1;
   border: none;
-  background: none;
   outline: none;
-  font-size: 1rem;
 
   &::placeholder {
     color: var(--gray4-placeholder-low);

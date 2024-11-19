@@ -4,7 +4,7 @@ import Header from "./components/header/Header";
 import "./reset.css";
 import { StatusType } from "./components/status-button/StatusButton";
 import ContentBox from "./components/content/ContentBox";
-import Interaction from "./components/interaction/Interaction";
+
 const Wrap = styled.div`
   width: 100%;
   display: flex;

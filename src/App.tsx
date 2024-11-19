@@ -1,7 +1,8 @@
-import "./reset.css"
+import ContentBox from "./components/content/ContentBox";
+import "./reset.css";
 
 function App() {
-  return
+  return <ContentBox type="small" />;
 }
 
 export default App;

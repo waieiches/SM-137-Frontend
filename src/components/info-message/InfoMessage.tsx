@@ -7,16 +7,18 @@ import {
 } from "../../utils/InfoMessageUtils";
 
 const MessageContainer = styled.div<MessageContainerProps>`
-  display: flex;
+  display: inline-flex;
   gap: 0.5rem;
   color: ${(props) => props.color};
-  align-items: center;
+  align-items: flex-start;
 `;
 const MessageIcon = styled(SvgIcon)<MessageIconProps>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
 `;
-const MessageContent = styled.div``;
+const MessageContent = styled.div`
+  text-align: left;
+`;
 
 interface MessageContainerProps {
   color: string;

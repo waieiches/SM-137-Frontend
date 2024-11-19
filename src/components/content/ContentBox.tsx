@@ -55,6 +55,9 @@ const StatusContainer = styled.div<{ flex: string }>`
   justify-content: space-between;
   gap: 0.65rem;
   flex-direction: ${(props) => props.flex};
+  @media screen and (max-width: 480px) {
+    flex-direction: row;
+  }
 `;
 
 //삭제 예정, 백엔드 데이터

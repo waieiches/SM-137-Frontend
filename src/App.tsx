@@ -1,7 +1,5 @@
-import SearchBar from "./components/search-bar/SearchBar";
-
-const App = () => {
-  return <SearchBar />;
-};
+function App() {
+  return;
+}
 
 export default App;

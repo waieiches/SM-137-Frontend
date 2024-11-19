@@ -13,7 +13,7 @@ interface DataType {
   };
 }
 const Container = styled.div`
-  width: 1000px;
+  width: 1114px;
   height: 173px;
   padding: 1.5rem 3rem;
   border-bottom: 1px solid var(--gray3-border);

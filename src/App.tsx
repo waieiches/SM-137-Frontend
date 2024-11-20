@@ -4,5 +4,3 @@ import "./reset.css";
 function App() {
   return <CategorySelect />;
 }
-
-export default App;

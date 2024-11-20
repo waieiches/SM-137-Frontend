@@ -4,13 +4,13 @@ import styled from "@emotion/styled";
 
 const ButtonGroupContainer = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 12px;
   width: 296px;
   height: 29px;
 `;
 
 const StatusButtonGroup = () => {
-  const [selectedType, setSelectedType] = useState<StatusType | null>(null);
+  const [selectedType, setSelectedType] = useState<StatusType>("inProgress"); // 초기 상태 설정
 
   const handleClick = (type: StatusType) => {
     setSelectedType(type);

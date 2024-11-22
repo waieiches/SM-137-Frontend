@@ -37,6 +37,9 @@ const Category = styled.button<CategoryProps>`
 `;
 
 const CategorySelect = () => {
+  const CATEGORY = ["facility", "degree", "career", "school"] as const;
+  const CATEGORY_CONTENT = ["시설/설비", "대학원", "진로/취업", "학교생활"];
+
   const [category, setCategory] =
     useState<keyof typeof categoryName>("facility");
   const [isClick, setIsClick] = useState({
@@ -62,34 +65,15 @@ const CategorySelect = () => {
   return (
     <Wrap>
       <CategoryContainer>
-        <Category
-          data-category="facility"
-          onClick={handleCategory}
-          isClick={isClick.facility}
-        >
-          시설 / 설비
-        </Category>
-        <Category
-          data-category="degree"
-          onClick={handleCategory}
-          isClick={isClick.degree}
-        >
-          대학원
-        </Category>
-        <Category
-          data-category="career"
-          onClick={handleCategory}
-          isClick={isClick.career}
-        >
-          진로 / 취업
-        </Category>
-        <Category
-          data-category="school"
-          onClick={handleCategory}
-          isClick={isClick.school}
-        >
-          학교 생활
-        </Category>
+        {CATEGORY.map((i, index) => (
+          <Category
+            data-category={i}
+            onClick={handleCategory}
+            isClick={isClick[i]}
+          >
+            {CATEGORY_CONTENT[index]}
+          </Category>
+        ))}
       </CategoryContainer>
       <SubCategory category={category} />
     </Wrap>

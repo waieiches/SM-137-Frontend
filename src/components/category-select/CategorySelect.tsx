@@ -77,6 +77,7 @@ const CategorySelect = () => {
         <Highlight
           layoutId="highlight"
           style={{ left: `${CATEGORY.indexOf(category) * 25}%` }}
+          transition={{ stiffness: 500 }}
         />
         {CATEGORY.map((i, index) => (
           <Category

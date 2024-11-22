@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import SubCategory from "./SubCategory";
 import { useState } from "react";
 import { categoryName } from "../../utils/SubCategoryContent";
+import { motion } from "framer-motion";
 
 interface CategoryProps {
   isClick: boolean;
@@ -19,6 +20,7 @@ const CategoryContainer = styled.div`
   width: 100%;
   max-width: 480px;
   display: flex;
+  position: relative;
 `;
 const Category = styled.button<CategoryProps>`
   width: 25%;
@@ -32,8 +34,15 @@ const Category = styled.button<CategoryProps>`
   &:hover {
     color: ${(props) => !props.isClick && "var(--primary)"};
   }
-  background-color: ${(props) => props.isClick && "var(--light-primary)"};
   color: ${(props) => props.isClick && "var(--white)"};
+  z-index: 100;
+`;
+
+const Highlight = styled(motion.div)`
+  position: absolute;
+  width: 25%;
+  height: 40px;
+  background-color: var(--light-primary);
 `;
 
 const CategorySelect = () => {
@@ -65,6 +74,10 @@ const CategorySelect = () => {
   return (
     <Wrap>
       <CategoryContainer>
+        <Highlight
+          layoutId="highlight"
+          style={{ left: `${CATEGORY.indexOf(category) * 25}%` }}
+        />
         {CATEGORY.map((i, index) => (
           <Category
             data-category={i}

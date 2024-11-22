@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import SubCategory from "./SubCategory";
 import { useState } from "react";
-import { categoryName } from "../../utils/CategoryName";
+import { categoryName } from "../../utils/SubCategoryContent";
 
 interface CategoryProps {
   isClick: boolean;
@@ -14,7 +14,7 @@ const Wrap = styled.div`
   gap: 1rem;
 `;
 const CategoryContainer = styled.div`
-  border: 1px solid var(--light-primary);
+  border: 2px solid var(--light-primary);
   border-radius: 4px;
   width: 100%;
   max-width: 480px;
@@ -34,7 +34,6 @@ const Category = styled.button<CategoryProps>`
   }
   background-color: ${(props) => props.isClick && "var(--light-primary)"};
   color: ${(props) => props.isClick && "var(--white)"};
-  border-radius: ${(props) => props.isClick && "4px"};
 `;
 
 const CategorySelect = () => {

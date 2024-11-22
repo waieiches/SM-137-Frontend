@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { categoryName } from "../../utils/CategoryName";
+import { categoryName } from "../../utils/SubCategoryContent";
 
 interface SubCategoryProps {
   category: keyof typeof categoryName;
@@ -17,13 +17,13 @@ const Container = styled.div`
   flex-wrap: wrap;
   gap: 0.5rem;
 `;
-//button 컴포넌트로 대체 예정
-const ButtonTemp = styled.button`
+
+const SubCategoryButton = styled.button`
   width: 150px;
   height: 45px;
   background-color: var(--white);
   color: var(--gray5-lowText);
-  border-radius: 4px;
+  border-radius: 8px;
   &:focus {
     border: 2px solid var(--light-primary);
     color: var(--light-primary);
@@ -36,7 +36,7 @@ const SubCategory = ({ category }: SubCategoryProps) => {
     <Background>
       <Container>
         {subCategory.map((item, index) => (
-          <ButtonTemp key={index}>{item}</ButtonTemp>
+          <SubCategoryButton key={index}>{item}</SubCategoryButton>
         ))}
       </Container>
     </Background>

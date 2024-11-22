@@ -34,7 +34,6 @@ const ButtonContainer = styled.button<StyleProps>`
 `;
 
 const ButtonContents = styled.div<StyleProps>`
-  display: flex;
   color: ${(props) => props.color};
   text-align: center;
 `;
@@ -44,7 +43,6 @@ const Button = ({
   type = DEFAULT_TYPE,
 }: ContentProps) => {
   const buttonStyle = buttonType[type];
-  console.log(buttonStyle);
 
   const {
     width,

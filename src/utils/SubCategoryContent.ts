@@ -1,3 +1,6 @@
+import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
+import EngineeringRoundedIcon from "@mui/icons-material/EngineeringRounded";
+
 export const categoryName = {
   facility: [
     "도서관",
@@ -19,4 +22,8 @@ export const categoryName = {
     "등록",
     "국제",
   ],
+};
+
+export const categoryIcon = {
+  facility: [MenuBookRoundedIcon, EngineeringRoundedIcon],
 };

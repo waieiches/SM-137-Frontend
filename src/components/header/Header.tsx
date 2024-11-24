@@ -46,7 +46,7 @@ const Header = () => {
   const path = useLocation().pathname;
 
   useEffect(() => {
-    if (path === "/home") {
+    if (path === "/") {
       handleDark();
     }
   }, []);

@@ -32,7 +32,7 @@ const Container = styled.div<ContainerProps>`
   flex-direction: column;
   align-items: start;
   justify-content: center;
-  gap: 0.67rem;
+  gap: 0.6rem;
   background-color: var(--white);
   border: 1px solid var(--gray3-border);
   border-radius: 8px;

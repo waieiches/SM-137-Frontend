@@ -11,8 +11,6 @@ const Wrap = styled.div`
 `;
 const OutletLayout = styled.div`
   width: 80%;
-  /*삭제 예정, 가이드라인 */
-  border: 1px solid #000;
 `;
 const ColoredLayout = styled.div<{ bgc: string }>`
   width: 100%;

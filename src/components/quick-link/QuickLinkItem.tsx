@@ -12,7 +12,7 @@ const QuickLinkIconTextItem = styled.div`
   justify-content: center;
   padding: 1.5rem 4.5rem;
   gap: 1rem;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   flex: 1;
   width: 25%;
   @media screen and (max-width: 768px) {

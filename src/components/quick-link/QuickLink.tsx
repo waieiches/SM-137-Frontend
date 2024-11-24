@@ -12,9 +12,6 @@ const QuickLinkWrapper = styled.div`
   background-color: var(--gray1-background);
   width: 100%;
   cursor: pointer;
-  @media screen and (max-width: 768px) {
-    width: 100%;
-  }
 `;
 
 const QuickLinkDisplay = styled.div`

@@ -41,7 +41,7 @@ const Container = styled.div<ContainerProps>`
   &:hover {
     border: 1px solid var(--gray4-placeholder-low);
   }
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 768px) {
     display: inline-flex;
     padding: 1rem;
     width: auto;

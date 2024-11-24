@@ -5,6 +5,7 @@ import ThumbUpAltRoundedIcon from "@mui/icons-material/ThumbUpAltRounded";
 import BookmarkBorderRoundedIcon from "@mui/icons-material/BookmarkBorderRounded";
 import BookmarkRoundedIcon from "@mui/icons-material/BookmarkRounded";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface InteractionProps {
   type: string;
@@ -12,6 +13,7 @@ interface InteractionProps {
 const Container = styled.div`
   display: flex;
   gap: 0.5rem;
+  align-items: center;
 `;
 const UnClickIcon = styled(SvgIcon)<SvgIconProps>`
   width: 24px;
@@ -26,10 +28,23 @@ const ClickIcon = styled(SvgIcon)<SvgIconProps>`
   width: 24px;
   height: 24px;
   fill: ${(props) => props.fill};
+  cursor: pointer;
 `;
 const Value = styled.pre`
   color: var(--gray5-lowText);
 `;
+
+const clickVariants = {
+  start: { scale: 1 },
+  clicking: {
+    scale: 1.1,
+    transition: {
+      duration: 0.005,
+      type: "spring",
+      stiffness: 120,
+    },
+  },
+};
 
 const getIcon = (type: string) => {
   if (type === "thumbUp") {
@@ -64,11 +79,13 @@ const Interaction = ({ type }: InteractionProps) => {
   return (
     <Container>
       {isClick ? (
-        <ClickIcon
-          component={getClickIcon(type)}
-          onClick={handleClick}
-          sx={{ fill: getFill(type) }}
-        />
+        <motion.div variants={clickVariants} initial="start" animate="clicking">
+          <ClickIcon
+            component={getClickIcon(type)}
+            onClick={handleClick}
+            sx={{ fill: getFill(type) }}
+          />
+        </motion.div>
       ) : (
         <UnClickIcon component={getIcon(type)} onClick={handleClick} />
       )}

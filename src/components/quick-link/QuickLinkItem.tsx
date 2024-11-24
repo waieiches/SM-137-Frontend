@@ -7,16 +7,19 @@ interface QuickLinkItemProps {
 }
 
 const QuickLinkIconTextItem = styled.div`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 1.5rem 4.5rem;
   gap: 1rem;
-  width: 279px;
-  height: 80px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   flex: 1;
-  &:hover {
-    background-color: var(--gray2-subbtn);
+  width: 25%;
+  @media screen and (max-width: 768px) {
+    padding: 1rem 3rem;
+    width: 100%;
+  }
+  @media screen and (max-width: 400px) {
   }
 `;
 
@@ -24,12 +27,18 @@ const QuickLinkIcon = styled(SvgIcon)<SvgIconProps>`
   color: var(--gray5-lowText);
   width: 25px;
   height: 25px;
+  @media screen and (max-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 const QuickLinkText = styled.span`
   color: var(--gray5-lowText);
   display: inline-block;
   text-align: center;
+  line-height: 0;
+  white-space: nowrap;
 `;
 
 const QuickLinkItem = ({ icon: IconComponent, text }: QuickLinkItemProps) => (

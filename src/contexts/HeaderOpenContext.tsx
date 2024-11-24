@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useContext, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
 
 interface IsOpenProps {
   isSideNavOpen: boolean;

@@ -6,21 +6,34 @@ import CreateRoundedIcon from "@mui/icons-material/CreateRounded";
 import QuickLinkItem from "./QuickLinkItem";
 
 const QuickLinkWrapper = styled.div`
-  display: flex;
+  display: inline-flex;
   border-radius: 8px;
-  width: 90%;
-  max-width: 1116px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: var(--gray1-background);
+  width: 100%;
   cursor: pointer;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const QuickLinkDisplay = styled.div`
+  display: flex;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const QuickLink = () => (
   <QuickLinkWrapper>
-    <QuickLinkItem icon={LibraryBooksRoundedIcon} text="전체 민원 조회" />
-    <QuickLinkItem icon={AccountBoxRoundedIcon} text="내 민원" />
-    <QuickLinkItem icon={SmsRoundedIcon} text="결과 조회" />
-    <QuickLinkItem icon={CreateRoundedIcon} text="민원 신청" />
+    <QuickLinkDisplay>
+      <QuickLinkItem icon={LibraryBooksRoundedIcon} text="전체 민원 조회" />
+      <QuickLinkItem icon={AccountBoxRoundedIcon} text="내 민원" />
+    </QuickLinkDisplay>
+    <QuickLinkDisplay>
+      <QuickLinkItem icon={SmsRoundedIcon} text="결과 조회" />
+      <QuickLinkItem icon={CreateRoundedIcon} text="민원 신청" />
+    </QuickLinkDisplay>
   </QuickLinkWrapper>
 );
 

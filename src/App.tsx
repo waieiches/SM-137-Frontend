@@ -1,8 +1,7 @@
-import ContentBox from "./components/content/ContentBox";
-import "./reset.css";
+import RecHashTag from "./components/rec-hashtag/RecHashTag";
 
-function App() {
-  return <ContentBox type="large" />;
-}
+const App = () => {
+  return <RecHashTag />;
+};
 
 export default App;

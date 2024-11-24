@@ -15,9 +15,14 @@ const Container = styled.div`
   gap: 0.5rem;
   align-items: center;
 `;
+const IconWrapper = styled(motion.div)`
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+`;
 const UnClickIcon = styled(SvgIcon)<SvgIconProps>`
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   fill: var(--gray5-lowText);
   cursor: pointer;
   &:hover {
@@ -25,8 +30,8 @@ const UnClickIcon = styled(SvgIcon)<SvgIconProps>`
   }
 `;
 const ClickIcon = styled(SvgIcon)<SvgIconProps>`
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   fill: ${(props) => props.fill};
   cursor: pointer;
 `;
@@ -35,13 +40,14 @@ const Value = styled.pre`
 `;
 
 const clickVariants = {
-  start: { scale: 1 },
+  start: { scale: 0.8 },
   clicking: {
-    scale: 1.1,
+    scale: 1,
     transition: {
-      duration: 0.005,
+      duration: 0.1,
       type: "spring",
-      stiffness: 120,
+      stiffness: 400,
+      damping: 20,
     },
   },
 };
@@ -79,13 +85,17 @@ const Interaction = ({ type }: InteractionProps) => {
   return (
     <Container>
       {isClick ? (
-        <motion.div variants={clickVariants} initial="start" animate="clicking">
+        <IconWrapper
+          variants={clickVariants}
+          initial="start"
+          animate="clicking"
+        >
           <ClickIcon
             component={getClickIcon(type)}
             onClick={handleClick}
             sx={{ fill: getFill(type) }}
           />
-        </motion.div>
+        </IconWrapper>
       ) : (
         <UnClickIcon component={getIcon(type)} onClick={handleClick} />
       )}

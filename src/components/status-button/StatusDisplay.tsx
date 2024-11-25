@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { buttonStyles } from "./StatusButton";
-import { StatusType } from "../../\btypes/StatusType";
+import { StatusType } from "../../\btypes/Type";
 
 interface StatusDisplayProps {
   type: StatusType;

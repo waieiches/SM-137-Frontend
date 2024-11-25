@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import StatusDisplay from "../status-button/StatusDisplay";
 import CategoryTagGroup from "../category-tag/CategoryTagGroup";
 import { Article, Title } from "../../styles/ContentStyle";
-import { StatusType } from "../../\btypes/StatusType";
+import { StatusType } from "../../\btypes/Type";
 
 interface DataType {
   data: {

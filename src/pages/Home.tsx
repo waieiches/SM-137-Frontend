@@ -3,7 +3,7 @@ import SearchBar from "../components/search-bar/SearchBar";
 import QuickLink from "../components/quick-link/QuickLink";
 import ContentBox from "../components/content/ContentBox";
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
-import { StatusType } from "../\btypes/StatusType";
+import { DataType } from "../\btypes/Type";
 
 const HomeContainer = styled.div`
   height: 100%;
@@ -48,13 +48,6 @@ const KeyWordTemp = styled.div`
 const ArrowIcon = styled(SvgIcon)<SvgIconProps>`
   fill: var(--gray5-lowText);
 `;
-
-interface DataType {
-  title: string;
-  status: StatusType;
-  category: string[];
-  content: string;
-}
 
 //삭제 예정, 백엔드 데이터
 const mockData: DataType = {

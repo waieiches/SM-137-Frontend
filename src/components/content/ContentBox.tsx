@@ -3,7 +3,7 @@ import StatusDisplay from "../status-button/StatusDisplay";
 import CategoryTagGroup from "../category-tag/CategoryTagGroup";
 import { Article, Title } from "../../styles/ContentStyle";
 import InteractionGroup from "../interaction/InteractionGroup";
-import { StatusType } from "../../\btypes/StatusType";
+import { StatusType } from "../../\btypes/Type";
 
 interface ContenteBoxProps {
   type: keyof typeof boxType;

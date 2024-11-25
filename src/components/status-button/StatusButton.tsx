@@ -3,8 +3,7 @@ import play_circle_filled from "@mui/icons-material/PlayCircleFilled";
 import pause_circle_filled from "@mui/icons-material/PauseCircleFilled";
 import check_circle from "@mui/icons-material/CheckCircle";
 import cancel from "@mui/icons-material/Cancel";
-
-export type StatusType = "inProgress" | "pending" | "rejected" | "completed";
+import { StatusType } from "../../\btypes/StatusType";
 
 interface StatusButtonProps {
   type: StatusType;

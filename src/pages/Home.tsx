@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import SearchBar from "../components/search-bar/SearchBar";
 import QuickLink from "../components/quick-link/QuickLink";
 import ContentBox from "../components/content/ContentBox";
+import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
+import { StatusType } from "../\btypes/StatusType";
 
 const HomeContainer = styled.div`
   height: 100%;
@@ -43,6 +45,26 @@ const KeyWordTemp = styled.div`
   background-color: var(--white);
 `;
 
+const ArrowIcon = styled(SvgIcon)<SvgIconProps>`
+  fill: var(--gray5-lowText);
+`;
+
+interface DataType {
+  title: string;
+  status: StatusType;
+  category: string[];
+  content: string;
+}
+
+//삭제 예정, 백엔드 데이터
+const mockData: DataType = {
+  title: "저녁 수업 냉난방 가동 요청",
+  category: ["시설", "설비", "냉난방"],
+  status: "inProgress",
+  content:
+    "안녕하세요, 저는 저녁 시간대에 수업을 듣고 있는 학생입니다. 최근 들어 강의실 내부가 너무 덥거나 추운 경우가 많아 학습 환경이 다소 불편한데, 저녁 수업시간에도 냉난방을 틀어주실 수 있을까요?",
+};
+
 const Home = () => {
   return (
     <HomeContainer>
@@ -58,8 +80,8 @@ const Home = () => {
       <ContentContainer>
         <Title>최근 주목받은 민원</Title>
         <ContentBoxContainer>
-          <ContentBox type="large" />
-          <ContentBox type="large" />
+          <ContentBox type="large" data={mockData} />
+          <ContentBox type="large" data={mockData} />
         </ContentBoxContainer>
       </ContentContainer>
     </HomeContainer>

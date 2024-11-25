@@ -62,7 +62,7 @@ const ArrowIconLeft = styled(SvgIcon)<SvgIconProps>`
   fill: var(--gray5-lowText);
   position: absolute;
   left: -2.5rem;
-  top: 50%;
+  top: calc(50% - 12px);
   cursor: pointer;
   &:hover {
     background-color: var(--gray2-subbtn);
@@ -74,9 +74,8 @@ const ArrowIconLeft = styled(SvgIcon)<SvgIconProps>`
   }
 `;
 const ArrowIconRight = styled(ArrowIconLeft)`
-  position: absolute;
-  right: -100%;
-  left: 0;
+  left: auto;
+  right: -2.5rem;
 `;
 
 //삭제 예정, 백엔드 데이터

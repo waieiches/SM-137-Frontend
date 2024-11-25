@@ -4,18 +4,26 @@ import QuickLink from "../components/quick-link/QuickLink";
 import ContentBox from "../components/content/ContentBox";
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 import { DataType } from "../\btypes/Type";
+import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
+import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 
 const HomeContainer = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 1rem;
 `;
 const QuickLinkContainer = styled.div`
-  margin: 2rem;
+  margin: 4rem 0;
+  width: 100%;
 `;
 const Title = styled.h2`
   width: 100%;
+  text-align: left;
+  @media screen and (max-width: 768px) {
+    text-align: center;
+  }
 `;
 const SearchContainer = styled.div`
   height: 50%;
@@ -29,11 +37,14 @@ const ContentContainer = styled.div`
   height: 50%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
 `;
 const ContentBoxContainer = styled.div`
   display: flex;
   gap: 2.5rem;
+  position: relative;
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
@@ -45,8 +56,27 @@ const KeyWordTemp = styled.div`
   background-color: var(--white);
 `;
 
-const ArrowIcon = styled(SvgIcon)<SvgIconProps>`
+const ArrowIconLeft = styled(SvgIcon)<SvgIconProps>`
+  width: 24px;
+  height: 24px;
   fill: var(--gray5-lowText);
+  position: absolute;
+  left: -2.5rem;
+  top: 50%;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--gray2-subbtn);
+    border-radius: 100px;
+    transition: 0.3s ease;
+  }
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+const ArrowIconRight = styled(ArrowIconLeft)`
+  position: absolute;
+  right: -100%;
+  left: 0;
 `;
 
 //삭제 예정, 백엔드 데이터
@@ -73,6 +103,8 @@ const Home = () => {
       <ContentContainer>
         <Title>최근 주목받은 민원</Title>
         <ContentBoxContainer>
+          <ArrowIconLeft component={ArrowBackIosNewRoundedIcon} />
+          <ArrowIconRight component={ArrowForwardIosRoundedIcon} />
           <ContentBox type="large" data={mockData} />
           <ContentBox type="large" data={mockData} />
         </ContentBoxContainer>

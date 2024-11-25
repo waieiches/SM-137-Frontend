@@ -33,7 +33,7 @@ const boxType = {
 };
 
 const Container = styled.div<ContainerProps>`
-  width: ${(props) => props.width};
+  max-width: ${(props) => props.width};
   height: ${(props) => props.height};
   display: flex;
   flex-direction: column;
@@ -51,8 +51,7 @@ const Container = styled.div<ContainerProps>`
   @media screen and (max-width: 768px) {
     display: inline-flex;
     padding: 1rem;
-    width: auto;
-    height: auto;
+    width: 100vw;
   }
 `;
 //진행상태 + 좋아요/스크랩

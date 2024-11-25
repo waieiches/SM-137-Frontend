@@ -11,10 +11,11 @@ const Wrap = styled.div`
 `;
 const OutletLayout = styled.div`
   width: 80%;
+  max-width: 1116px;
 `;
 const ColoredLayout = styled.div<{ bgc: string }>`
   width: 100%;
-  height: 50%;
+  height: 466px;
   display: flex;
   flex-direction: column;
   align-items: center;

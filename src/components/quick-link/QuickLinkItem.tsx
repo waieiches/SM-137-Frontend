@@ -7,19 +7,17 @@ interface QuickLinkItemProps {
 }
 
 const QuickLinkIconTextItem = styled.div`
+  width: 25%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 4.5rem;
+  padding: 1.5rem 0;
   gap: 1rem;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   flex: 1;
-  width: 25%;
   @media screen and (max-width: 768px) {
-    padding: 1rem 3rem;
     width: 100%;
-  }
-  @media screen and (max-width: 400px) {
+    padding: 1rem 0;
   }
 `;
 
@@ -38,7 +36,7 @@ const QuickLinkText = styled.span`
   display: inline-block;
   text-align: center;
   line-height: 0;
-  white-space: nowrap;
+  white-space: normal;
 `;
 
 const QuickLinkItem = ({ icon: IconComponent, text }: QuickLinkItemProps) => (

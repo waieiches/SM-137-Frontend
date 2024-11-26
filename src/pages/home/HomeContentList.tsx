@@ -5,6 +5,7 @@ import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRound
 import ContentBox from "../../components/content/ContentBox";
 import { useState } from "react";
 import { mockData } from "../../mockData";
+import { motion } from "framer-motion";
 
 const Title = styled.h2`
   width: 100%;
@@ -13,7 +14,7 @@ const Title = styled.h2`
     text-align: center;
   }
 `;
-const ContentContainer = styled.div`
+const ContentContainer = styled(motion.div)`
   width: 100%;
   height: 50%;
   display: flex;
@@ -23,10 +24,19 @@ const ContentContainer = styled.div`
   gap: 1rem;
 `;
 const ContentBoxContainer = styled.div`
+  position: relative;
   width: 100%;
   display: flex;
   gap: 2.5rem;
-  position: relative;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+const AnimationContainer = styled(motion.div)`
+  width: 100%;
+  display: flex;
+  gap: 2.5rem;
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: center;
@@ -57,10 +67,13 @@ const ArrowIconRight = styled(ArrowIconLeft)`
 const HomeContentList = () => {
   const FIRST_PAGE_INDEX = 0;
   const LAST_PAGE_INDEX = 4;
+  //애니메이션 트리거
+  const [animateKey, setAnimateKey] = useState(0);
   //최근 주목받은 민원
   const [currentIndex, setCurrentIndex] = useState(FIRST_PAGE_INDEX);
   const data = mockData.slice(currentIndex, currentIndex + 2);
   const nextPage = () => {
+    setAnimateKey((prev) => prev + 1);
     if (currentIndex + 2 < mockData.length) {
       setCurrentIndex(currentIndex + 2);
       return;
@@ -68,6 +81,7 @@ const HomeContentList = () => {
     setCurrentIndex(FIRST_PAGE_INDEX);
   };
   const prevPage = () => {
+    setAnimateKey((prev) => prev - 1);
     if (currentIndex - 2 >= 0) {
       setCurrentIndex(currentIndex - 2);
       return;
@@ -86,9 +100,16 @@ const HomeContentList = () => {
           component={ArrowForwardIosRoundedIcon}
           onClick={nextPage}
         />
-        {data.map((i, index) => (
-          <ContentBox key={index} type="large" data={i} />
-        ))}
+        <AnimationContainer
+          key={animateKey}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 20 }}
+        >
+          {data.map((i, index) => (
+            <ContentBox key={index} type="large" data={i} />
+          ))}
+        </AnimationContainer>
       </ContentBoxContainer>
     </ContentContainer>
   );

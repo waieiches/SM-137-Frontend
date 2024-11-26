@@ -44,7 +44,6 @@ const Button = ({
   type = DEFAULT_TYPE,
 }: ContentProps) => {
   const buttonStyle = buttonType[type];
-  console.log(buttonStyle);
 
   const {
     width,

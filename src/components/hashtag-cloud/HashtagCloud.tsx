@@ -8,7 +8,7 @@ interface Word {
   text: string;
   value: number;
   fill: string;
-  rotate: number;
+  delay: number;
 }
 const Container = styled.div`
   width: 100%;
@@ -16,7 +16,8 @@ const Container = styled.div`
 `;
 
 const HashtagCloud = ({ data }: WordCloudProps) => {
-  const OFFSET = 40;
+  const SIZE_OFFSET = 40;
+  const DELAY_OFFSET = 2;
   const colors = [
     "var(--gray5-lowText)",
     "var(--gray5-lowText)",
@@ -30,17 +31,17 @@ const HashtagCloud = ({ data }: WordCloudProps) => {
   const words: Word[] = data.map((i: string, index: number) => {
     return {
       text: i,
-      value: (index + 1) * OFFSET,
+      value: (index + 1) * SIZE_OFFSET,
       fill: colors[index],
-      rotate: Math.round(Math.random()) * 90,
+      delay: (index + 1) * DELAY_OFFSET,
     };
   });
 
   return (
     <Container>
       <WordCloud
-        width={300}
-        height={200}
+        width={350}
+        height={250}
         data={words}
         fontSize={(words) => Math.log2(words.value) * 5}
         padding={5}

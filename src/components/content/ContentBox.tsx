@@ -33,8 +33,7 @@ const boxType = {
 };
 
 const Container = styled.div<ContainerProps>`
-  min-width: ${(props) => props.width};
-  max-width: 100%;
+  width: ${(props) => props.width};
   height: ${(props) => props.height};
   display: flex;
   flex-direction: column;

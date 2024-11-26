@@ -3,11 +3,12 @@ import SearchBar from "../components/search-bar/SearchBar";
 import QuickLink from "../components/quick-link/QuickLink";
 import ContentBox from "../components/content/ContentBox";
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
-import { DataType } from "../\btypes/Type";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import HashtagCloud from "../components/word-cloud/HashtagCloud";
 import Emblem from "../assets/emblem-1_DarkGray.png";
+import { mockData } from "../mockData";
+import { useState } from "react";
 
 const HomeContainer = styled.div`
   height: 100%;
@@ -65,11 +66,13 @@ const ContentContainer = styled.div`
   gap: 1rem;
 `;
 const ContentBoxContainer = styled.div`
+  width: 100%;
   display: flex;
   gap: 2.5rem;
   position: relative;
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -100,15 +103,6 @@ const ArrowIconRight = styled(ArrowIconLeft)`
   right: -2.5rem;
 `;
 
-//삭제 예정, 백엔드 데이터
-const mockData: DataType = {
-  title: "저녁 수업 냉난방 가동 요청",
-  category: ["시설", "설비", "냉난방"],
-  status: "inProgress",
-  content:
-    "안녕하세요, 저는 저녁 시간대에 수업을 듣고 있는 학생입니다. 최근 들어 강의실 내부가 너무 덥거나 추운 경우가 많아 학습 환경이 다소 불편한데, 저녁 수업시간에도 냉난방을 틀어주실 수 있을까요?",
-};
-
 //7개 보냄
 const mockHashtag = [
   "냉난방",
@@ -121,6 +115,25 @@ const mockHashtag = [
 ];
 
 const Home = () => {
+  const FIRST_PAGE_INDEX = 0;
+  const LAST_PAGE_INDEX = 4;
+  //최근 주목받은 민원
+  const [currentIndex, setCurrentIndex] = useState(FIRST_PAGE_INDEX);
+  const data = mockData.slice(currentIndex, currentIndex + 2);
+  const nextPage = () => {
+    if (currentIndex + 2 < mockData.length) {
+      setCurrentIndex(currentIndex + 2);
+      return;
+    }
+    setCurrentIndex(FIRST_PAGE_INDEX);
+  };
+  const prevPage = () => {
+    if (currentIndex - 2 >= 0) {
+      setCurrentIndex(currentIndex - 2);
+      return;
+    }
+    setCurrentIndex(LAST_PAGE_INDEX);
+  };
   return (
     <HomeContainer>
       <EmblemContainer src={Emblem} />
@@ -139,10 +152,17 @@ const Home = () => {
       <ContentContainer>
         <Title>최근 주목받은 민원</Title>
         <ContentBoxContainer>
-          <ArrowIconLeft component={ArrowBackIosNewRoundedIcon} />
-          <ArrowIconRight component={ArrowForwardIosRoundedIcon} />
-          <ContentBox type="large" data={mockData} />
-          <ContentBox type="large" data={mockData} />
+          <ArrowIconLeft
+            component={ArrowBackIosNewRoundedIcon}
+            onClick={prevPage}
+          />
+          <ArrowIconRight
+            component={ArrowForwardIosRoundedIcon}
+            onClick={nextPage}
+          />
+          {data.map((i) => (
+            <ContentBox type="large" data={i} />
+          ))}
         </ContentBoxContainer>
       </ContentContainer>
     </HomeContainer>

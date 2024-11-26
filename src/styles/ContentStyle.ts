@@ -8,7 +8,7 @@ export const Article = styled.div<{ line: number }>`
   -webkit-box-orient: vertical;
   -webkit-line-clamp: ${(props) => props.line};
   text-overflow: ellipsis;
-  max-height: calc(1.5rem * 3);
+  height: calc(1.5rem * 2);
   @media screen and (max-width: 480px) {
     -webkit-line-clamp: 1;
     max-height: calc(1.5rem * 1);

@@ -12,7 +12,7 @@ const Wrap = styled.div`
 const OutletLayout = styled.div`
   width: 80%;
   max-width: 1116px;
-  margin-bottom: 2rem;
+  padding-bottom: 3rem;
 `;
 const ColoredLayout = styled.div<{ bgc: string }>`
   width: 100%;

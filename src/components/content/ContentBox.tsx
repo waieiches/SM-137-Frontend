@@ -33,7 +33,8 @@ const boxType = {
 };
 
 const Container = styled.div<ContainerProps>`
-  max-width: ${(props) => props.width};
+  min-width: ${(props) => props.width};
+  max-width: 100%;
   height: ${(props) => props.height};
   display: flex;
   flex-direction: column;
@@ -73,7 +74,7 @@ const ContentBox = ({ type = "small", data }: ContenteBoxProps) => {
   return (
     <Container width={boxStyle.width} height={boxStyle.height}>
       <StatusContainer flex={boxStyle.flex}>
-        <StatusDisplay type="inProgress" />
+        <StatusDisplay type={data.status} />
         <InteractionGroup />
       </StatusContainer>
       <CategoryTagGroup tagArray={data.category} />

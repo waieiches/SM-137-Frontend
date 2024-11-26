@@ -6,6 +6,8 @@ import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 import { DataType } from "../\btypes/Type";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
+import HashtagCloud from "../components/word-cloud/HashtagCloud";
+import Emblem from "../assets/emblem-1_DarkGray.png";
 
 const HomeContainer = styled.div`
   height: 100%;
@@ -13,10 +15,30 @@ const HomeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0 1rem;
+  position: relative;
 `;
 const QuickLinkContainer = styled.div`
   margin: 4rem 0;
   width: 100%;
+`;
+const EmblemContainer = styled.img`
+  width: 750px;
+  height: 750px;
+  //HomeContainer 기준 상대정렬
+  position: absolute;
+  top: -55%;
+  left: -40%;
+  opacity: 0.2;
+  z-index: 0;
+  @media screen and (max-width: 768px) {
+    width: 500px;
+    height: 500px;
+    top: -30%;
+    left: -40%;
+  }
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
 `;
 const Title = styled.h2`
   width: 100%;
@@ -31,6 +53,7 @@ const SearchContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 3rem;
+  z-index: 500;
 `;
 const ContentContainer = styled.div`
   width: 100%;
@@ -49,11 +72,10 @@ const ContentBoxContainer = styled.div`
     flex-direction: column;
   }
 `;
-/*키워드 컴포넌트 (임시) */
-const KeyWordTemp = styled.div`
+
+const KeyWordContainer = styled.div`
   width: 350px;
   height: 200px;
-  background-color: var(--white);
 `;
 
 const ArrowIconLeft = styled(SvgIcon)<SvgIconProps>`
@@ -87,11 +109,26 @@ const mockData: DataType = {
     "안녕하세요, 저는 저녁 시간대에 수업을 듣고 있는 학생입니다. 최근 들어 강의실 내부가 너무 덥거나 추운 경우가 많아 학습 환경이 다소 불편한데, 저녁 수업시간에도 냉난방을 틀어주실 수 있을까요?",
 };
 
+//7개 보냄
+const mockHashtag = [
+  "냉난방",
+  "학사일정",
+  "교환학생",
+  "연계전공",
+  "졸업",
+  "시설",
+  "설비",
+];
+
 const Home = () => {
   return (
     <HomeContainer>
+      <EmblemContainer src={Emblem} />
+
       <SearchContainer>
-        <KeyWordTemp />
+        <KeyWordContainer>
+          <HashtagCloud data={mockHashtag} />
+        </KeyWordContainer>
         <SearchBar />
       </SearchContainer>
 

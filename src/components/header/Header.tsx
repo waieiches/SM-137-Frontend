@@ -22,10 +22,7 @@ const Background = styled.div<BackgroundProps>`
   max-width: 1440px;
   display: flex;
   justify-content: center;
-  //라우팅 구현 후 삭제 예정
-  flex-direction: column;
-  align-items: center;
-  background-color: ${(props) => (props.$isDark ? "none" : "var(--white)")};
+  z-index: 200;
 `;
 const HeaderContainer = styled.div`
   width: 90%;

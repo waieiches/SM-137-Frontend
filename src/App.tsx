@@ -1,16 +1,10 @@
-import ContentBox from "./components/content/ContentBox";
-import Interaction from "./components/interaction/Interaction";
+import { RouterProvider } from "react-router-dom";
 import "./reset.css";
+import { router } from "./Router";
+
 
 function App() {
-  return (
-    <>
-      <Interaction type="thumbUp" />
-      <Interaction type="scrap" />
-      <ContentBox type="small" />
-      <ContentBox type="large" />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

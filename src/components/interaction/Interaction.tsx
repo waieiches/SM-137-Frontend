@@ -11,7 +11,8 @@ interface InteractionProps {
   type: string;
 }
 const Container = styled.div`
-  display: flex;
+  display: inline-flex;
+  align-items: center;
   gap: 0.5rem;
   align-items: center;
 `;

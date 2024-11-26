@@ -1,8 +1,11 @@
-import CategorySelect from "./components/category-select/CategorySelect";
+
+import { RouterProvider } from "react-router-dom";
 import "./reset.css";
+import { router } from "./Router";
+
 
 function App() {
-  return <CategorySelect />;
+  return <RouterProvider router={router} />;
 }
 
 export default App;

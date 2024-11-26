@@ -48,7 +48,7 @@ const HeaderOpenProvider = ({ children }: HeaderOpenProviderProps) => {
   //색상 변경
   const [isDark, setIsDark] = useState(false);
   const handleDark = () => {
-    setIsDark((prev) => !prev);
+    setIsDark(true);
   };
 
   //네비게이터 / 말풍선 열기

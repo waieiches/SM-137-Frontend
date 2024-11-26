@@ -2,15 +2,21 @@ import styled from "@emotion/styled";
 import PillButton from "../pill-button/PillButton";
 
 const HashTagContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: inline-flex;
+  flex-direction: column;
   gap: 0.6rem;
   padding: 1.5rem;
   background-color: var(--gray2-subbtn);
   border-radius: 500px;
   justify-content: center;
+  align-items: center;
   max-width: 627.34px;
-  max-height: 165px;
+`;
+const HashTagButton = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 `;
 
 const ListTitle = styled.span`
@@ -39,9 +45,11 @@ const RecHashTag = () => {
   return (
     <HashTagContainer>
       <ListTitle>추천 해시태그</ListTitle>
-      {hashTagMockData.hashtags.map((tag, index) => (
-        <PillButton key={index} contents={tag} />
-      ))}
+      <HashTagButton>
+        {hashTagMockData.hashtags.map((tag, index) => (
+          <PillButton key={index} contents={tag} />
+        ))}
+      </HashTagButton>
     </HashTagContainer>
   );
 };

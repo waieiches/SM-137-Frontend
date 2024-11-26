@@ -1,4 +1,4 @@
-import { DataType } from "./\btypes/Type";
+import { DataType } from "./types/Type";
 
 export const mockData: DataType[] = [
   {

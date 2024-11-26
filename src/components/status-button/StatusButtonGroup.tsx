@@ -1,7 +1,7 @@
 import { useState } from "react";
 import StatusButton from "./StatusButton";
 import styled from "@emotion/styled";
-import { StatusType } from "../../\btypes/Type";
+import { StatusType } from "../../types/Type";
 
 const ButtonGroupContainer = styled.div`
   display: flex;

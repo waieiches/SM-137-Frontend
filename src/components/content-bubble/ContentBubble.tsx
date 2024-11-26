@@ -31,7 +31,6 @@ const BubbleLayout = styled.div<TypeProps>`
   box-shadow: -0.5px 0.5px 1px rgba(0, 0, 0, 0.25);
   position: relative;
   animation: fadeIn 0.2s ease-out;
-  z-index: 100;
   @media screen and (max-width: 480px) {
     max-width: none;
     width: 100vw;

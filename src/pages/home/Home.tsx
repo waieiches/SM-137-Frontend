@@ -43,7 +43,7 @@ const SearchContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 3rem;
-  z-index: 500;
+  z-index: 300;
 `;
 
 const KeyWordContainer = styled.div`

@@ -22,7 +22,7 @@ const Background = styled.div<BackgroundProps>`
   max-width: 1440px;
   display: flex;
   justify-content: center;
-  z-index: 200;
+  z-index: 500;
 `;
 const HeaderContainer = styled.div`
   width: 90%;

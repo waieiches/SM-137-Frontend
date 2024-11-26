@@ -11,11 +11,6 @@ const HashTagContainer = styled.div`
   justify-content: center;
   max-width: 627.34px;
   max-height: 165px;
-
-  button {
-    border: none;
-    box-shadow: none;
-  }
 `;
 
 const ListTitle = styled.span`

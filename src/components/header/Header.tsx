@@ -5,6 +5,8 @@ import HeaderNotify from "./header-components/HeaderNotify";
 import { useHeaderContext } from "../../contexts/HeaderOpenContext";
 import HeaderMyPage from "./header-components/HeaderMyPage";
 import HeaderSideNav from "./header-components/HeaderSideNav";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 interface BackgroundProps {
   $isDark: boolean;
@@ -20,11 +22,7 @@ const Background = styled.div<BackgroundProps>`
   max-width: 1440px;
   display: flex;
   justify-content: center;
-  //라우팅 구현 후 삭제 예정
-  flex-direction: column;
-  align-items: center;
-  background-color: ${(props) =>
-    props.$isDark ? "var(--primary)" : "var(--white)"};
+  z-index: 500;
 `;
 const HeaderContainer = styled.div`
   width: 90%;
@@ -42,6 +40,13 @@ const NavigatorSet = styled.div`
 
 const Header = () => {
   const { isDark, handleDark } = useHeaderContext();
+  const path = useLocation().pathname;
+
+  useEffect(() => {
+    if (path === "/") {
+      handleDark();
+    }
+  }, []);
   return (
     <Background $isDark={isDark}>
       <HeaderContainer>
@@ -57,9 +62,6 @@ const Header = () => {
           <HeaderMyPage />
         </NavigatorSet>
       </HeaderContainer>
-
-      {/*라우터 구성 후 삭제 예정*/}
-      <button onClick={handleDark}>색상 변경</button>
     </Background>
   );
 };

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { StatusType } from "./StatusButton"; // StatusType 타입 import
-import { buttonStyles } from "./StatusButton"; // buttonStyles 객체 import
+import { buttonStyles } from "./StatusButton";
+import { StatusType } from "../../types/Type";
 
 interface StatusDisplayProps {
   type: StatusType;

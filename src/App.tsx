@@ -1,14 +1,10 @@
-import PillButton from "./components/pill-button/PillButton";
-import RecHashTag from "./components/rec-hashtag/RecHashTag";
+import { RouterProvider } from "react-router-dom";
 import "./reset.css";
+import { router } from "./Router";
 
-const App = () => {
-  return (
-    <>
-      <PillButton contents="교육대학원" />
-      <RecHashTag />
-    </>
-  );
-};
+
+function App() {
+  return <RouterProvider router={router} />;
+}
 
 export default App;

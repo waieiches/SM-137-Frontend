@@ -18,6 +18,9 @@ const Input = styled.input`
   &::placeholder {
     color: var(--gray4-placeholder-low);
   }
+  &:focus {
+    border: none;
+  }
   &:focus::placeholder {
     opacity: 0;
   }

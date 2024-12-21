@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
-import { useRef, useState } from "react";
+import { useState } from "react";
+import InitialInfo from "./contents/InitialInfo";
 
 const ModalWrapper = styled.div`
   position: fixed;
@@ -41,7 +42,6 @@ const ModalContent = styled.div`
   position: relative;
 `;
 
-//배경으로 만든 건데
 const ModalBackdrop = styled.div`
   position: fixed;
   width: 100%;
@@ -52,24 +52,33 @@ const ModalBackdrop = styled.div`
 `;
 
 interface ModalProps {
-  contents: React.ReactNode;
+  isOpen: boolean;
   onClose: () => void;
 }
 
-const ModalOpen = () => {
+const Modal = ({ isOpen, onClose }: ModalProps) => {
+  if (!isOpen) return null;
+
+  return (
+    <ModalWrapper>
+      <ModalBackdrop onClick={onClose} />
+      <ModalContent>
+        <InitialInfo onClose={onClose} />
+      </ModalContent>
+    </ModalWrapper>
+  );
+};
+
+export const useModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-};
 
-const Modal = ({ contents, onClose }: ModalProps) => {
-  return (
-    <ModalWrapper>
-      //배경 누르면 닫히도록
-      <ModalBackdrop onClick={onClose} />
-      <ModalContent>{contents}</ModalContent>
-    </ModalWrapper>
-  );
+  return {
+    isModalOpen,
+    openModal,
+    closeModal,
+  };
 };
 
 export default Modal;

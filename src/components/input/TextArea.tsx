@@ -1,23 +1,22 @@
 import styled from "@emotion/styled";
 
-interface InfoInputProps {
+interface InfoTextAreaProps {
   width: string;
   height: string;
 }
 
-interface InputProps extends InfoInputProps {
+interface TextAreaProps extends InfoTextAreaProps {
   label: string;
   placeholder: string;
-  type: string;
-  isRequired?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; // onChange 추가
+  required?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-const Container = styled.div`
+const TextAreaContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   width: 100%; /* 부모 컨테이너 너비 고정 */
 `;
 
@@ -27,7 +26,7 @@ const LabelContainer = styled.div`
   gap: 0.4rem;
 `;
 
-const InfoLabel = styled.label`
+const FieldLabel = styled.label`
   color: var(--gray5-lowText);
   font-size: 14px;
   text-align: right;
@@ -39,7 +38,7 @@ const RequiredMark = styled.span`
   margin-right: 4px;
 `;
 
-const InfoInput = styled.input<InfoInputProps>`
+const StyledTextArea = styled.textarea<InfoTextAreaProps>`
   width: 100%; /* 부모 컨테이너에 맞춰 확장 */
   max-width: ${(props) => props.width}; /* 최대 너비 설정 */
   height: ${(props) => props.height};
@@ -47,34 +46,33 @@ const InfoInput = styled.input<InfoInputProps>`
   border: 1px solid var(--gray3-border);
   border-radius: 4px;
   font-size: 14px;
+  resize: none;
 `;
 
-const Input = (inputProps: InputProps) => {
-  const { label, placeholder, type, width, height, isRequired, onChange } = inputProps;
+const TextArea = (props: TextAreaProps) => {
+  const { label, placeholder, width, height, required, onChange } = props;
   return (
-    <Container>
+    <TextAreaContainer>
       <LabelContainer>
-        {isRequired && <RequiredMark>*</RequiredMark>}
-        <InfoLabel>{label}</InfoLabel>
+        {required && <RequiredMark>*</RequiredMark>}
+        <FieldLabel>{label}</FieldLabel>
       </LabelContainer>
-      <InfoInput
-        type={type}
+      <StyledTextArea
         placeholder={placeholder}
         width={width}
         height={height}
-        onChange={onChange} // 추가된 부분
+        onChange={onChange}
       />
-    </Container>
+    </TextAreaContainer>
   );
 };
 
-Input.defaultProps = {
+TextArea.defaultProps = {
+  required: false,
   label: "labelText",
   placeholder: "placeholder",
-  type: "text",
-  width: "180px",
-  height: "35px",
-  isRequired: false,
+  width: "508px",
+  height: "119px",
 };
 
-export default Input;
+export default TextArea;

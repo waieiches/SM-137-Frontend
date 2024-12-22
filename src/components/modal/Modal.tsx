@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 import { useState } from "react";
-import InitialInfo from "./contents/InitialInfo";
 
 const ModalWrapper = styled.div`
   position: fixed;
@@ -54,17 +53,16 @@ const ModalBackdrop = styled.div`
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  contents: React.ReactNode;
 }
 
-const Modal = ({ isOpen, onClose }: ModalProps) => {
+const Modal = ({ isOpen, onClose, contents }: ModalProps) => {
   if (!isOpen) return null;
 
   return (
     <ModalWrapper>
       <ModalBackdrop onClick={onClose} />
-      <ModalContent>
-        <InitialInfo onClose={onClose} />
-      </ModalContent>
+      <ModalContent>{contents}</ModalContent>
     </ModalWrapper>
   );
 };

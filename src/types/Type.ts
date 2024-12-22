@@ -5,4 +5,7 @@ export interface DataType {
   status: StatusType;
   category: string[];
   content: string;
+  likes: number;
+  bookmarks: number;
+  date: string; 
 }

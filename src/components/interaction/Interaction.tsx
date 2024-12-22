@@ -7,7 +7,8 @@ import BookmarkRoundedIcon from "@mui/icons-material/BookmarkRounded";
 import { useState } from "react";
 
 interface InteractionProps {
-  type: string;
+  type: "thumbUp" | "scrap"
+  count: number; // count props 추가
 }
 const Container = styled.div`
   display: inline-flex;
@@ -57,10 +58,14 @@ const getFill = (type: string) => {
   }
 };
 
-const Interaction = ({ type }: InteractionProps) => {
+const Interaction = ({ type, count }: InteractionProps) => {
   const [isClick, setIsClick] = useState(false);
+  const [value, setValue] = useState(count); // 초기값을 count로 설정
+
   const handleClick = () => {
     setIsClick((prev) => !prev);
+    setValue((prev: number) => (isClick ? prev - 1 : prev + 1)); // 클릭 시 숫자 증감
+
   };
   return (
     <Container>
@@ -73,8 +78,8 @@ const Interaction = ({ type }: InteractionProps) => {
       ) : (
         <UnClickIcon component={getIcon(type)} onClick={handleClick} />
       )}
-      <Value>24</Value>
-    </Container>
+      <Value>{value}</Value> {/* count 대신 상태 값 표시 */}
+      </Container>
   );
 };
 

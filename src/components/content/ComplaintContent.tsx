@@ -6,7 +6,7 @@ import { Article, Title } from '../../styles/ContentStyle';
 import styled from '@emotion/styled';
 import CheckCircle from "@mui/icons-material/CheckCircle";
 import ShareIcon from "@mui/icons-material/Share";
-import { SvgIcon, SvgIconProps } from '@mui/material';
+import{ SvgIcon, SvgIconProps } from '@mui/material';
 
 interface ComplaintContentProps {
   data: {

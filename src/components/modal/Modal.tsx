@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
-import { useState } from "react";
 
 const ModalWrapper = styled.div`
   position: fixed;
@@ -65,15 +64,6 @@ const Modal = ({ isOpen, onClose, contents }: ModalProps) => {
       <ModalContent>{contents}</ModalContent>
     </ModalWrapper>
   );
-};
-export const useModal = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleModal = (state: boolean) => setIsModalOpen(state);
-
-  return {
-    isModalOpen,
-    handleModal,
-  };
 };
 
 export default Modal;

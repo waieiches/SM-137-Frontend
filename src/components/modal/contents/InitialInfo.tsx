@@ -16,10 +16,10 @@ const InfoMessageText = `회원가입 후 최초 1회, 원활한 서비스 이�
 학번, 학과, 이름 등의 개인정보 설정이 필요합니다`;
 
 interface InitialInfoProps {
-  onClose: () => void;
+  handleClose: () => void;
 }
 
-const InitialInfo = ({ onClose }: InitialInfoProps) => {
+const InitialInfo = ({ handleClose }: InitialInfoProps) => {
   return (
     <Container>
       <InfoMessage
@@ -28,7 +28,7 @@ const InitialInfo = ({ onClose }: InitialInfoProps) => {
         content={InfoMessageText}
       />
       <UserInfoForm />
-      <Button type="_120x40_Primary" content="다음" onClick={onClose} />
+      <Button type="_120x40_Primary" content="다음" onClick={handleClose} />
     </Container>
   );
 };

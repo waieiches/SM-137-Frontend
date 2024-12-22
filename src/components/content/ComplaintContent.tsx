@@ -1,16 +1,28 @@
-import StatusDisplay from "../status-button/StatusDisplay";
-import CategoryTagGroup from "../category-tag/CategoryTagGroup";
-import InteractionGroup from "../interaction/InteractionGroup";
-import { DataType } from "../../types/Type";
-import { Article, Title } from "../../styles/ContentStyle";
-import styled from "@emotion/styled";
+import StatusDisplay from '../status-button/StatusDisplay';
+import CategoryTagGroup from '../category-tag/CategoryTagGroup';
+import InteractionGroup from '../interaction/InteractionGroup';
+import { StatusType } from '../../types/Type';
+import { Article, Title } from '../../styles/ContentStyle';
+import styled from '@emotion/styled';
+import CheckCircle from "@mui/icons-material/CheckCircle";
+import ShareIcon from "@mui/icons-material/Share";
+import { SvgIcon, SvgIconProps } from '@mui/material';
 
-interface ComplaintProps {
-  data: DataType;
+interface ComplaintContentProps {
+  data: {
+    title: string;
+    status: StatusType;
+    category: string[];
+    content: string;
+    likes: number;
+    bookmarks: number;
+    date: string;
+  };
 }
+
 const Container = styled.div`
   width: 784px;
-  background: #ffffff;
+  background: var(--white);
   padding: 20px;
   border-radius: 8px;
   display: flex;
@@ -22,6 +34,36 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const HeaderContent = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+`;
+
+const ComplaintNumber = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--light-primary);
+  font-weight: 600;
+  margin-top: 8px;
+`;
+
+const CheckIcon = styled(CheckCircle)`
+  color: var(--disabled-primary);
+`;
+
+const UnClickIcon = styled(SvgIcon)<SvgIconProps>`
+  width: 24px;
+  height: 24px;
+  fill: var(--gray5-lowText);
+  cursor: pointer;
+  &:hover {
+    fill: var(--gray6-header);
+  }
 `;
 
 const CategoryContainer = styled.div`
@@ -38,7 +80,7 @@ const Footer = styled.div`
 
 const DateSection = styled.div`
   font-size: 16px;
-  color: #adb5bd;
+  color: var(--gray4-placeholder-low);
   text-align: right;
 `;
 
@@ -48,44 +90,62 @@ const Actions = styled.div`
   font-size: 16px;
   color: var(--gray4-placeholder-low);
   cursor: pointer;
+
+  div {
+    position: relative;
+  }
+
+  div:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 1px;
+    background: var(--gray4-placeholder-low);
+  }
 `;
 
-const ComplaintContent = ({ data }: ComplaintProps) => {
-  console.log(data);
+const InteractionContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
+const ComplaintContent = ({ data }: ComplaintContentProps) => {
   return (
     <Container>
       {/* Header */}
       <Header>
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+        <HeaderContent>
           <StatusDisplay type={data.status} />
           <CategoryContainer>
             {data.category.map((category, index) => (
               <CategoryTagGroup key={index} tagArray={[category]} />
             ))}
           </CategoryContainer>
-        </div>
-        <InteractionGroup likes={data.likes} bookmarks={data.bookmarks} />
+        </HeaderContent>
+        <InteractionContainer>
+          <InteractionGroup likes={data.likes} bookmarks={data.bookmarks} />
+          <UnClickIcon component={ShareIcon} />
+        </InteractionContainer>
       </Header>
-      <div
-        style={{
-          fontSize: "16px",
-          color: "#385BBC",
-          fontWeight: "600",
-          marginTop: "8px",
-        }}
-      >
-        민원번호 : 00910
-      </div>
+
+      <ComplaintNumber>
+        <CheckIcon /> 민원번호 : 00910
+      </ComplaintNumber>
+
       {/* Content */}
       <div>
         <Title>{data.title}</Title>
         <Article line={0}>{data.content}</Article>
       </div>
+
       {/* Footer */}
       <Footer>
         <Actions>
-          <span>수정</span>
-          <span>삭제</span>
+          <div>수정</div>
+          <div>삭제</div>
         </Actions>
         <DateSection>{data.date}</DateSection>
       </Footer>

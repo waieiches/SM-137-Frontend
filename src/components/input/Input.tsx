@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
 interface InfoInputProps {
-  width: string;
   height: string;
 }
 
@@ -16,20 +15,21 @@ interface InputProps extends InfoInputProps {
 const Container = styled.div`
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: start;
   gap: 1.5rem;
-  width: 100%; /* 부모 컨테이너 너비 고정 */
+  width: 100%;
 `;
 
 const LabelContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: right;
   gap: 0.4rem;
+  width: 15%;
 `;
 
 const InfoLabel = styled.label`
-  color: var(--gray5-lowText);
-  font-size: 14px;
+  color: var(--gray4-placeholder-low);
   text-align: right;
 `;
 
@@ -40,8 +40,7 @@ const RequiredMark = styled.span`
 `;
 
 const InfoInput = styled.input<InfoInputProps>`
-  width: 100%; /* 부모 컨테이너에 맞춰 확장 */
-  max-width: ${(props) => props.width}; /* 최대 너비 설정 */
+  width: 85%;
   height: ${(props) => props.height};
   padding: 5px 16px;
   border: 1px solid var(--gray3-border);
@@ -50,7 +49,7 @@ const InfoInput = styled.input<InfoInputProps>`
 `;
 
 const Input = (inputProps: InputProps) => {
-  const { label, placeholder, type, width, height, isRequired, onChange } = inputProps;
+  const { label, placeholder, type, height, isRequired, onChange } = inputProps;
   return (
     <Container>
       <LabelContainer>
@@ -60,7 +59,6 @@ const Input = (inputProps: InputProps) => {
       <InfoInput
         type={type}
         placeholder={placeholder}
-        width={width}
         height={height}
         onChange={onChange} // 추가된 부분
       />

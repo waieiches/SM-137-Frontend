@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import Interaction from "./Interaction";
 
 interface InteractionGroupProps {
-  likes: number;      // props 추가
-  bookmarks: number;  // props 추가
+  likes: number;
+  bookmarks: number;
 }
 
 const Container = styled.div`

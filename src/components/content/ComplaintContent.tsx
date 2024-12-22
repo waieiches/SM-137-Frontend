@@ -1,21 +1,9 @@
-import StatusDisplay from '../status-button/StatusDisplay';
-import CategoryTagGroup from '../category-tag/CategoryTagGroup';
-import InteractionGroup from '../interaction/InteractionGroup';
-import { StatusType } from '../../types/Type';
-import { Article, Title } from '../../styles/ContentStyle';
-import styled from '@emotion/styled';
-
-interface ComplaintContentProps {
-  data: {
-    title: string;
-    status: StatusType;
-    category: string[];
-    content: string;
-    likes: number;
-    bookmarks: number;
-    date: string;
-  };
-}
+import StatusDisplay from "../status-button/StatusDisplay";
+import CategoryTagGroup from "../category-tag/CategoryTagGroup";
+import InteractionGroup from "../interaction/InteractionGroup";
+import { DataType } from "../../types/Type";
+import { Article, Title } from "../../styles/ContentStyle";
+import styled from "@emotion/styled";
 
 const Container = styled.div`
   width: 784px;
@@ -59,12 +47,12 @@ const Actions = styled.div`
   cursor: pointer;
 `;
 
-const ComplaintContent = ({ data }: ComplaintContentProps) => {
+const ComplaintContent = (data: DataType) => {
   return (
     <Container>
       {/* Header */}
       <Header>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <StatusDisplay type={data.status} />
           <CategoryContainer>
             {data.category.map((category, index) => (
@@ -75,7 +63,16 @@ const ComplaintContent = ({ data }: ComplaintContentProps) => {
         <InteractionGroup likes={data.likes} bookmarks={data.bookmarks} />
       </Header>
 
-      <div style={{ fontSize: '16px', color: '#385BBC', fontWeight: '600', marginTop: '8px' }}>민원번호 : 00910</div>
+      <div
+        style={{
+          fontSize: "16px",
+          color: "#385BBC",
+          fontWeight: "600",
+          marginTop: "8px",
+        }}
+      >
+        민원번호 : 00910
+      </div>
 
       {/* Content */}
       <div>

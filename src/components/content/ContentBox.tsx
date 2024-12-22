@@ -7,7 +7,7 @@ import { DataType } from "../../types/Type";
 
 interface ContenteBoxProps {
   type: keyof typeof boxType;
-  data : DataType
+  data: DataType;
 }
 interface ContainerProps {
   width: string;
@@ -69,7 +69,7 @@ const ContentBox = ({ type = "small", data }: ContenteBoxProps) => {
     <Container width={boxStyle.width} height={boxStyle.height}>
       <StatusContainer flex={boxStyle.flex}>
         <StatusDisplay type={data.status} />
-        <InteractionGroup likes={data.likes}  bookmarks={data.bookmarks}/>
+        <InteractionGroup likes={data.likes} bookmarks={data.bookmarks} />
       </StatusContainer>
       <CategoryTagGroup tagArray={data.category} />
       <Title>{data.title}</Title>

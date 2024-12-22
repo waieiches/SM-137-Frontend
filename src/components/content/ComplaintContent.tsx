@@ -5,6 +5,9 @@ import { DataType } from "../../types/Type";
 import { Article, Title } from "../../styles/ContentStyle";
 import styled from "@emotion/styled";
 
+interface ComplaintProps {
+  data: DataType;
+}
 const Container = styled.div`
   width: 784px;
   background: #ffffff;
@@ -47,7 +50,8 @@ const Actions = styled.div`
   cursor: pointer;
 `;
 
-const ComplaintContent = (data: DataType) => {
+const ComplaintContent = ({ data }: ComplaintProps) => {
+  console.log(data);
   return (
     <Container>
       {/* Header */}
@@ -62,7 +66,6 @@ const ComplaintContent = (data: DataType) => {
         </div>
         <InteractionGroup likes={data.likes} bookmarks={data.bookmarks} />
       </Header>
-
       <div
         style={{
           fontSize: "16px",
@@ -73,13 +76,11 @@ const ComplaintContent = (data: DataType) => {
       >
         민원번호 : 00910
       </div>
-
       {/* Content */}
       <div>
         <Title>{data.title}</Title>
         <Article line={0}>{data.content}</Article>
       </div>
-
       {/* Footer */}
       <Footer>
         <Actions>

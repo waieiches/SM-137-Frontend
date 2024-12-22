@@ -9,7 +9,7 @@ interface ContainerProps {
 }
 const Container = styled.button<ContainerProps>`
   display: inline-flex;
-  padding: 0 1rem;
+  padding: 0.3rem 1rem;
   background-color: var(--white);
   border-radius: 3rem;
   border: ${(props) => props.isClick && "2px solid var(--light-primary)"};
@@ -27,7 +27,11 @@ const Container = styled.button<ContainerProps>`
     font-size: 0.75rem;
   }
 `;
-const Contents = styled.div``;
+const Contents = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const PillButton = ({ contents = "예시" }: PillButtonProps) => {
   const [isClick, setIsClick] = useState(false);

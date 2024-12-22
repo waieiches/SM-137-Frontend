@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import StatusDisplay from "../status-button/StatusDisplay";
 import CategoryTagGroup from "../category-tag/CategoryTagGroup";
 import { Article, Title } from "../../styles/ContentStyle";
-import { DataType, StatusType } from "../../types/Type";
+import { DataType } from "../../types/Type";
 
 const Container = styled.div`
   width: 1114px;

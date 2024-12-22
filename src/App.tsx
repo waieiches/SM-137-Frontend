@@ -4,15 +4,20 @@ import Button from "./components/button/Button";
 import "./reset.css";
 
 function App() {
-  const { isModalOpen, openModal, closeModal } = useModal();
+  const { isModalOpen, handleModal } = useModal();
 
   return (
     <div>
-      <Button type="_120x40_Primary" content="모달 열기" onClick={openModal} />
+      <Button
+        type="_120x40_Primary"
+        content="모달 열기"
+        onClick={() => handleModal(true)}
+      />
+
       <Modal
         isOpen={isModalOpen}
-        onClose={closeModal}
-        contents={<InitialInfo onClose={closeModal} />}
+        onClose={() => handleModal(false)}
+        contents={<InitialInfo onClose={() => handleModal(false)} />}
       />
     </div>
   );

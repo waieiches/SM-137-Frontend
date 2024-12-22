@@ -66,16 +66,13 @@ const Modal = ({ isOpen, onClose, contents }: ModalProps) => {
     </ModalWrapper>
   );
 };
-
 export const useModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const handleModal = (state: boolean) => setIsModalOpen(state);
 
   return {
     isModalOpen,
-    openModal,
-    closeModal,
+    handleModal,
   };
 };
 

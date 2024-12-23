@@ -6,13 +6,20 @@ import InfoMessage from "../../info-message/InfoMessage";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
 `;
 
 const InfoMessageText = `회원가입 후 최초 1회, 원활한 서비스 이용을 위해
 학번, 학과, 이름 등의 개인정보 설정이 필요합니다`;
 
-const InitialInfo = () => {
+interface InitialInfoProps {
+  handleClose: () => void;
+}
+
+const InitialInfo = ({ handleClose }: InitialInfoProps) => {
   return (
     <Container>
       <InfoMessage
@@ -21,7 +28,7 @@ const InitialInfo = () => {
         content={InfoMessageText}
       />
       <UserInfoForm />
-      <Button content="시작하기" />
+      <Button type="_120x40_Primary" content="다음" onClick={handleClose} />
     </Container>
   );
 };

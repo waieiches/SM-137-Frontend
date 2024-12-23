@@ -3,12 +3,15 @@ import { keyframes } from "@emotion/react";
 
 const ModalWrapper = styled.div`
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
 `;
 
 const UpAnimation = keyframes`
@@ -17,7 +20,7 @@ const UpAnimation = keyframes`
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translateY(0); 
     opacity: 1;
   }
 `;
@@ -29,19 +32,35 @@ const ModalContent = styled.div`
   max-width: 562px;
   max-height: 348px;
   text-align: center;
-  animation: ${UpAnimation} 0.8s ease-out;
-  display: inline-flex;
+  animation: ${UpAnimation} 0.5s ease-out;
+  display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
 `;
+
+const ModalBackdrop = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+`;
+
 interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
   contents: React.ReactNode;
 }
 
-const Modal = ({ contents }: ModalProps) => {
+const Modal = ({ isOpen, onClose, contents }: ModalProps) => {
+  if (!isOpen) return null;
+
   return (
     <ModalWrapper>
+      <ModalBackdrop onClick={onClose} />
       <ModalContent>{contents}</ModalContent>
     </ModalWrapper>
   );

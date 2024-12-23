@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 const NavigatorContainer = styled.ul`
   display: flex;
+  gap: 0.75rem;
   flex-direction: column;
   color: var(--gray5-lowText);
   text-align: center;

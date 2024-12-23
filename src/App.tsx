@@ -1,26 +1,12 @@
-import Modal from "./components/modal/Modal";
-import InitialInfo from "./components/modal/contents/InitialInfo";
-import Button from "./components/button/Button";
+
+
+import { RouterProvider } from "react-router-dom";
 import "./reset.css";
-import { useModal } from "./hooks/useModal";
+import { router } from "./Router";
+
 
 function App() {
-  const { isModalOpen, handleModalClose, handleModalOpen } = useModal();
-
-  return (
-    <div>
-      <Button
-        type="_120x40_Primary"
-        content="모달 열기"
-        onClick={handleModalOpen}
-      />
-      <Modal
-        isOpen={isModalOpen}
-        onClose={handleModalClose}
-        contents={<InitialInfo handleClose={handleModalClose} />}
-      />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

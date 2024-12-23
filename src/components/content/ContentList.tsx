@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import StatusDisplay from "../status-button/StatusDisplay";
 import CategoryTagGroup from "../category-tag/CategoryTagGroup";
-import { StatusType } from "../status-button/StatusButton";
 import { Article, Title } from "../../styles/ContentStyle";
+import { StatusType } from "../../types/Type";
 
 interface DataType {
   data: {

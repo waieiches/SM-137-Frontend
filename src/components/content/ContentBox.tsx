@@ -3,9 +3,16 @@ import StatusDisplay from "../status-button/StatusDisplay";
 import CategoryTagGroup from "../category-tag/CategoryTagGroup";
 import { Article, Title } from "../../styles/ContentStyle";
 import InteractionGroup from "../interaction/InteractionGroup";
+import { StatusType } from "../../types/Type";
 
 interface ContenteBoxProps {
   type: keyof typeof boxType;
+  data: {
+    title: string;
+    status: StatusType;
+    category: string[];
+    content: string;
+  };
 }
 interface ContainerProps {
   width: string;
@@ -41,11 +48,10 @@ const Container = styled.div<ContainerProps>`
   &:hover {
     border: 1px solid var(--gray4-placeholder-low);
   }
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 768px) {
     display: inline-flex;
     padding: 1rem;
-    width: auto;
-    height: auto;
+    width: 100vw;
   }
 `;
 //진행상태 + 좋아요/스크랩
@@ -60,27 +66,19 @@ const StatusContainer = styled.div<{ flex: string }>`
   }
 `;
 
-//삭제 예정, 백엔드 데이터
-const mockData = {
-  title: "저녁 수업 냉난방 가동 요청",
-  category: ["시설", "설비", "냉난방"],
-  content:
-    "안녕하세요, 저는 저녁 시간대에 수업을 듣고 있는 학생입니다. 최근 들어 강의실 내부가 너무 덥거나 추운 경우가 많아 학습 환경이 다소 불편한데, 저녁 수업시간에도 냉난방을 틀어주실 수 있을까요?",
-};
-
-const ContentBox = ({ type = "small" }: ContenteBoxProps) => {
+const ContentBox = ({ type = "small", data }: ContenteBoxProps) => {
   const boxStyle = boxType[type];
   const ARTICLE_LINE = 2;
 
   return (
     <Container width={boxStyle.width} height={boxStyle.height}>
       <StatusContainer flex={boxStyle.flex}>
-        <StatusDisplay type="inProgress" />
+        <StatusDisplay type={data.status} />
         <InteractionGroup />
       </StatusContainer>
-      <CategoryTagGroup tagArray={mockData.category} />
-      <Title>{mockData.title}</Title>
-      <Article line={ARTICLE_LINE}>{mockData.content}</Article>
+      <CategoryTagGroup tagArray={data.category} />
+      <Title>{data.title}</Title>
+      <Article line={ARTICLE_LINE}>{data.content}</Article>
     </Container>
   );
 };

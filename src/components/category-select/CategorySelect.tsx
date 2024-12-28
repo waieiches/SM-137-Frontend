@@ -37,7 +37,14 @@ const Category = styled.button<CategoryProps>`
   color: ${(props) => props.isClick && "var(--white)"};
   z-index: 100;
 `;
-
+const BackGround = styled.div`
+  background-color: var(--white);
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const Highlight = styled(motion.div)`
   position: absolute;
   width: 25%;
@@ -74,20 +81,22 @@ const CategorySelect = () => {
   return (
     <Wrap>
       <CategoryContainer>
-        <Highlight
-          layoutId="highlight"
-          style={{ left: `${CATEGORY.indexOf(category) * 25}%` }}
-          transition={{ stiffness: 500 }}
-        />
-        {CATEGORY.map((i, index) => (
-          <Category
-            data-category={i}
-            onClick={handleCategory}
-            isClick={isClick[i]}
-          >
-            {CATEGORY_CONTENT[index]}
-          </Category>
-        ))}
+        <BackGround>
+          <Highlight
+            layoutId="highlight"
+            style={{ left: `${CATEGORY.indexOf(category) * 25}%` }}
+            transition={{ stiffness: 500 }}
+          />
+          {CATEGORY.map((i, index) => (
+            <Category
+              data-category={i}
+              onClick={handleCategory}
+              isClick={isClick[i]}
+            >
+              {CATEGORY_CONTENT[index]}
+            </Category>
+          ))}
+        </BackGround>
       </CategoryContainer>
       <SubCategory category={category} />
     </Wrap>

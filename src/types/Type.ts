@@ -7,5 +7,11 @@ export interface DataType {
   content: string;
   likes: number;
   bookmarks: number;
-  date: string; 
+  date: string;
+}
+export interface CommentType {
+  content: string;
+  //백엔드 전달 데이터 타입에 따라 필요
+  time: string;
+  likes: number;
 }

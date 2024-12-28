@@ -7,5 +7,10 @@ export interface DataType {
   content: string;
   likes: number;
   bookmarks: number;
-  date: string; 
+  date: string;
+}
+export interface CommentType {
+  content: string;
+  time: string;
+  likes: number;
 }

@@ -1,12 +1,12 @@
-import StatusDisplay from '../status-button/StatusDisplay';
-import CategoryTagGroup from '../category-tag/CategoryTagGroup';
-import InteractionGroup from '../interaction/InteractionGroup';
-import { StatusType } from '../../types/Type';
-import { Article, Title } from '../../styles/ContentStyle';
-import styled from '@emotion/styled';
+import StatusDisplay from "../status-button/StatusDisplay";
+import CategoryTagGroup from "../category-tag/CategoryTagGroup";
+import InteractionGroup from "../interaction/InteractionGroup";
+import { StatusType } from "../../types/Type";
+import { Article, Title } from "../../styles/ContentStyle";
+import styled from "@emotion/styled";
 import CheckCircle from "@mui/icons-material/CheckCircle";
 import ShareIcon from "@mui/icons-material/Share";
-import{ SvgIcon, SvgIconProps } from '@mui/material';
+import { SvgIcon, SvgIconProps } from "@mui/material";
 
 interface ComplaintContentProps {
   data: {
@@ -21,7 +21,7 @@ interface ComplaintContentProps {
 }
 
 const Container = styled.div`
-  width: 784px;
+  max-width: 782px;
   background: var(--white);
   padding: 20px;
   border-radius: 8px;
@@ -96,7 +96,7 @@ const Actions = styled.div`
   }
 
   div:hover::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0px;

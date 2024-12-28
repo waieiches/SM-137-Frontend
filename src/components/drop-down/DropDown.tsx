@@ -29,12 +29,24 @@ const DropBox = styled.ul<OptionProps>`
   cursor: pointer;
   position: relative;
 `;
-const OptionContainer = styled.div`
+const OptionContainer = styled.div<OptionProps>`
   display: flex;
   flex-direction: column;
+  padding: 0.3rem 0.4rem;
   width: 100%;
   gap: 0.3rem;
   position: absolute;
+  top: calc(100% + 1px);
+  left: 0;
+  border-left: ${(props) => props.isOpen && "1px solid var(--gray3-border)"};
+  border-right: ${(props) => props.isOpen && "1px solid var(--gray3-border)"};
+  border-bottom: ${(props) => props.isOpen && "1px solid var(--gray3-border)"};
+  border-end-start-radius: 4px;
+  border-end-end-radius: 4px;
+  background-color: var(--white);
+  max-height: ${({ isOpen }) => (isOpen ? "200px" : "0")};
+  overflow: hidden;
+  transition: 0.3s ease;
 `;
 const Options = styled.li`
   color: var(--gray5-lowText);
@@ -77,14 +89,14 @@ const DropDown = ({ options }: DropDownProps) => {
 
   return (
     <DropBox isOpen={isOpen} onClick={handleOpenClose} ref={dropDownRef}>
-      <OptionContainer>
-        {isOpen
-          ? options.map((i, index) => (
-              <Options key={index} onClick={(e) => handleClick(i, e)}>
-                {i}
-              </Options>
-            ))
-          : data}
+      {data}
+      <OptionContainer isOpen={isOpen}>
+        {isOpen &&
+          options.map((i, index) => (
+            <Options key={index} onClick={(e) => handleClick(i, e)}>
+              {i}
+            </Options>
+          ))}
       </OptionContainer>
       <DropDownIcon
         onClick={handleOpenClose}

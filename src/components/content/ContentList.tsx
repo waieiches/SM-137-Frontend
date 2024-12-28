@@ -3,6 +3,7 @@ import StatusDisplay from "../status-button/StatusDisplay";
 import CategoryTagGroup from "../category-tag/CategoryTagGroup";
 import { Article, Title } from "../../styles/ContentStyle";
 import { DataType } from "../../types/Type";
+import InteractionGroup from "../interaction/InteractionGroup";
 
 interface ContentListProps {
   data: DataType;
@@ -46,7 +47,7 @@ const ContentList = ({ data }: ContentListProps) => {
           <StatusDisplay type={data.status} />
           <CategoryTagGroup tagArray={data.category} />
         </InfoContainer>
-        {/*Interaction */}
+        <InteractionGroup likes={data.likes} bookmarks={data.bookmarks} />
       </StatusContainer>
       <Title>{data.title}</Title>
       <Article line={ARTICLE_LINE}>{data.content}</Article>

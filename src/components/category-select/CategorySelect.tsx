@@ -89,6 +89,7 @@ const CategorySelect = () => {
           />
           {CATEGORY.map((i, index) => (
             <Category
+              key={index}
               data-category={i}
               onClick={handleCategory}
               isClick={isClick[i]}

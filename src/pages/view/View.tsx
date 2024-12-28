@@ -64,10 +64,11 @@ const View = () => {
 
       <ContentsContainer>
         <SearchFilterBar />
+        {/*정렬 필터링 + 컨텐츠*/}
         <SortContainer>
           <SortBar />
-          {mockData.map((i) => (
-            <ContentList data={i} />
+          {mockData.map((i, index) => (
+            <ContentList key={index} data={i} />
           ))}
         </SortContainer>
       </ContentsContainer>

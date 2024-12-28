@@ -3,6 +3,9 @@ import { SvgIcon, SvgIconProps } from "@mui/material";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import CategorySelect from "../../components/category-select/CategorySelect";
 import SearchFilterBar from "../../components/search-filter/SearchFilter";
+import SortBar from "../../components/sort-bar/SortBar";
+import { mockData } from "../../mockData";
+import ContentList from "../../components/content/ContentList";
 
 const Container = styled.div`
   position: absolute;
@@ -12,7 +15,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
 `;
 const Background = styled.div`
   width: 100%;
@@ -39,9 +42,14 @@ const Icon = styled(SvgIcon)<SvgIconProps>`
   width: 30px;
   height: 30px;
 `;
-const SerarchFilterContainer = styled.div`
-  transform: translateY(-4vw);
+const ContentsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  transform: translateY(-3vw);
 `;
+const SortContainer = styled.div``;
 
 const View = () => {
   return (
@@ -53,9 +61,16 @@ const View = () => {
         </TitleContainer>
         <CategorySelect />
       </Background>
-      <SerarchFilterContainer>
+
+      <ContentsContainer>
         <SearchFilterBar />
-      </SerarchFilterContainer>
+        <SortContainer>
+          <SortBar />
+          {mockData.map((i) => (
+            <ContentList data={i} />
+          ))}
+        </SortContainer>
+      </ContentsContainer>
     </Container>
   );
 };

@@ -17,8 +17,8 @@ export const router = createBrowserRouter([
       {
         path: "complaint-detail",
         element: <Detail />,
-        },
-        {
+      },
+      {
         path: "complaint-search",
         element: <ComplaintSearch />,
       },

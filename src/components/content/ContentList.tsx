@@ -2,16 +2,13 @@ import styled from "@emotion/styled";
 import StatusDisplay from "../status-button/StatusDisplay";
 import CategoryTagGroup from "../category-tag/CategoryTagGroup";
 import { Article, Title } from "../../styles/ContentStyle";
-import { StatusType } from "../../types/Type";
+import { DataType } from "../../types/Type";
+import InteractionGroup from "../interaction/InteractionGroup";
 
-interface DataType {
-  data: {
-    title: string;
-    status: StatusType;
-    category: string[];
-    content: string;
-  };
+interface ContentListProps {
+  data: DataType;
 }
+
 const Container = styled.div`
   width: 1114px;
   height: 173px;
@@ -41,7 +38,7 @@ const StatusContainer = styled.div`
   justify-content: space-between;
 `;
 
-const ContentList = ({ data }: DataType) => {
+const ContentList = ({ data }: ContentListProps) => {
   const ARTICLE_LINE = 2;
   return (
     <Container>
@@ -50,7 +47,7 @@ const ContentList = ({ data }: DataType) => {
           <StatusDisplay type={data.status} />
           <CategoryTagGroup tagArray={data.category} />
         </InfoContainer>
-        {/*Interaction */}
+        <InteractionGroup likes={data.likes} bookmarks={data.bookmarks} />
       </StatusContainer>
       <Title>{data.title}</Title>
       <Article line={ARTICLE_LINE}>{data.content}</Article>

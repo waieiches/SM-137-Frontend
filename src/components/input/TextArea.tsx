@@ -7,7 +7,7 @@ interface InfoTextAreaProps {
 interface TextAreaProps extends InfoTextAreaProps {
   label: string;
   placeholder: string;
-  required?: boolean;
+  isRequired?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
@@ -48,17 +48,18 @@ const StyledTextArea = styled.textarea<InfoTextAreaProps>`
 `;
 
 const TextArea = (props: TextAreaProps) => {
-  const { label, placeholder, height, required, onChange } = props;
+  const { label, placeholder, height, isRequired, onChange } = props;
   return (
     <TextAreaContainer>
       <LabelContainer>
-        {required && <RequiredMark>*</RequiredMark>}
+        {isRequired && <RequiredMark>*</RequiredMark>}
         <FieldLabel>{label}</FieldLabel>
       </LabelContainer>
 
       <StyledTextArea
         placeholder={placeholder}
         height={height}
+        required={isRequired}
         onChange={onChange}
       />
     </TextAreaContainer>
@@ -66,11 +67,11 @@ const TextArea = (props: TextAreaProps) => {
 };
 
 TextArea.defaultProps = {
-  required: false,
   label: "labelText",
   placeholder: "placeholder",
   width: "508px",
   height: "119px",
+  isRequired: false
 };
 
 export default TextArea;

@@ -7,9 +7,8 @@ interface InfoInputProps {
 interface InputProps extends InfoInputProps {
   label: string;
   placeholder: string;
-  type: string;
   isRequired?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; // onChange 추가
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; 
 }
 
 const Container = styled.div`
@@ -49,7 +48,7 @@ const InfoInput = styled.input<InfoInputProps>`
 `;
 
 const Input = (inputProps: InputProps) => {
-  const { label, placeholder, type, height, isRequired, onChange } = inputProps;
+  const { label, placeholder, height, isRequired, onChange } = inputProps;
   return (
     <Container>
       <LabelContainer>
@@ -57,10 +56,9 @@ const Input = (inputProps: InputProps) => {
         <InfoLabel>{label}</InfoLabel>
       </LabelContainer>
       <InfoInput
-        type={type}
         placeholder={placeholder}
         height={height}
-        onChange={onChange} // 추가된 부분
+        onChange={onChange} 
       />
     </Container>
   );
@@ -69,10 +67,9 @@ const Input = (inputProps: InputProps) => {
 Input.defaultProps = {
   label: "labelText",
   placeholder: "placeholder",
-  type: "text",
   width: "180px",
   height: "35px",
-  isRequired: false,
+  isRequired: false
 };
 
 export default Input;

@@ -9,6 +9,8 @@ import {
   Icon,
 } from "../../styles/CommentTitleStyle";
 import CommentInput from "../../components/comment/CommentInput";
+import Answer from "../../components/answer/Answer";
+import { useState } from "react";
 
 const Container = styled.div`
   position: absolute;
@@ -40,19 +42,31 @@ const InputContainer = styled.div`
   bottom: 0;
   width: 782px;
 `;
+const AnswerContainer = styled.div`
+  width: 782px;
+`;
 
 const Detail = () => {
   //임시 데이터
   const MOCK_DATA = mockData[0];
+  const isAnswered = MOCK_DATA.answer.length != 0;
   //length로 data의 개수를 계산하여 삽입 예정
   const COUNT = 2;
 
   const TITLE_COLOR = "var(--gray6-black)";
   const ICON_WIDTH = "24px";
   const INDEX_OFFSET = 1;
+
   return (
     <Container>
       <ComplaintContent data={MOCK_DATA} />
+
+      {/*관리자 답변 */}
+      {isAnswered && (
+        <AnswerContainer>
+          <Answer data={MOCK_DATA.answer} />
+        </AnswerContainer>
+      )}
 
       <Background>
         <CommentContainer>

@@ -6,9 +6,10 @@ const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-top: 3rem;
 `;
 
-const ScrapPage = () => {
+const Scrap = () => {
   return (
     <PageContainer>
       <ScrapList />
@@ -16,4 +17,4 @@ const ScrapPage = () => {
   );
 };
 
-export default ScrapPage;
+export default Scrap;

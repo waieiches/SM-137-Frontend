@@ -21,8 +21,7 @@ const ScrapIcon = styled(SvgIcon)<SvgIconProps>`
 `;
 
 const Title = styled.h2`
-  text-align: center;
-  margin: 2rem 0;
+  margin: 1rem 0;
 `;
 
 const ScrapLine = styled.div`

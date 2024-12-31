@@ -1,29 +1,45 @@
 import styled from "@emotion/styled";
 
 interface InfoInputProps {
-  width: string;
   height: string;
 }
+
 interface InputProps extends InfoInputProps {
   label: string;
   placeholder: string;
-  type: string;
+  isRequired?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
 const Container = styled.div`
-  display: inline-flex;
-  justify-content: center;
+  display: flex;
+  justify-content: flex-start;
   align-items: start;
-  gap: 0.5rem;
+  gap: 1.5rem;
   width: 100%;
 `;
-const InfoLabel = styled.body`
-  color: var(--gray5-lowText);
-  min-width: 60px;
-  text-align: right;
-  display: inline;
+
+const LabelContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 0.4rem;
+  width: 15%;
 `;
+
+const InfoLabel = styled.label`
+  color: var(--gray4-placeholder-low);
+  text-align: right;
+`;
+
+const RequiredMark = styled.span`
+  color: var(--error);
+  font-size: 14px;
+  margin-right: 4px;
+`;
+
 const InfoInput = styled.input<InfoInputProps>`
-  width: ${(props) => props.width};
+  width: 85%;
   height: ${(props) => props.height};
   padding: 5px 16px;
   border: 1px solid var(--gray3-border);
@@ -32,24 +48,28 @@ const InfoInput = styled.input<InfoInputProps>`
 `;
 
 const Input = (inputProps: InputProps) => {
-  const { label, placeholder, type, width, height } = inputProps;
+  const { label, placeholder, height, isRequired, onChange } = inputProps;
   return (
     <Container>
-      <InfoLabel>{label}</InfoLabel>
+      <LabelContainer>
+        {isRequired && <RequiredMark>*</RequiredMark>}
+        <InfoLabel>{label}</InfoLabel>
+      </LabelContainer>
       <InfoInput
-        type={type}
         placeholder={placeholder}
-        width={width}
         height={height}
+        onChange={onChange}
       />
     </Container>
   );
 };
+
 Input.defaultProps = {
   label: "labelText",
   placeholder: "placeholder",
-  type: "text",
   width: "180px",
   height: "35px",
+  isRequired: false,
 };
+
 export default Input;

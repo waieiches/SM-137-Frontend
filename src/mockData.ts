@@ -1,4 +1,4 @@
-import { DataType } from "./types/Type";
+import { CommentType, DataType } from "./types/Type";
 
 export const mockData: DataType[] = [
   {
@@ -10,7 +10,7 @@ export const mockData: DataType[] = [
     likes: 12,
     bookmarks: 3,
     date: "2024-09-20",
-    },
+  },
   {
     title: "도서관 열람실 조용히 해주세요",
     category: ["시설", "도서관", "조용한 환경"],
@@ -20,7 +20,7 @@ export const mockData: DataType[] = [
     likes: 12,
     bookmarks: 3,
     date: "2024-09-20",
-    },
+  },
   {
     title: "수업자료 공유 요청",
     category: ["수업", "자료", "공유"],
@@ -30,7 +30,7 @@ export const mockData: DataType[] = [
     likes: 12,
     bookmarks: 3,
     date: "2024-09-20",
-    },
+  },
   {
     title: "엘리베이터 점검 요청",
     category: ["시설", "설비", "엘리베이터"],
@@ -40,7 +40,7 @@ export const mockData: DataType[] = [
     likes: 12,
     bookmarks: 3,
     date: "2024-09-20",
-    },
+  },
   {
     title: "Wi-Fi 연결 문제",
     category: ["기술", "네트워크", "Wi-Fi"],
@@ -49,7 +49,7 @@ export const mockData: DataType[] = [
     likes: 12,
     bookmarks: 3,
     date: "2024-09-20",
-    },
+  },
   {
     title: "주차 공간 추가 요청",
     category: ["시설", "주차", "공간 추가"],
@@ -59,7 +59,7 @@ export const mockData: DataType[] = [
     likes: 12,
     bookmarks: 3,
     date: "2024-09-20",
-    },
+  },
   {
     title: "수업 일정 변경 요청",
     category: ["수업", "일정", "변경"],
@@ -69,7 +69,7 @@ export const mockData: DataType[] = [
     likes: 12,
     bookmarks: 3,
     date: "2024-09-20",
-    },
+  },
   {
     title: "카페에서 음료 제공 시간 연장",
     category: ["시설", "식음료", "시간 연장"],
@@ -79,7 +79,7 @@ export const mockData: DataType[] = [
     likes: 12,
     bookmarks: 3,
     date: "2024-09-20",
-    },
+  },
   {
     title: "교내 행사 관련 공지 요청",
     category: ["행사", "공지", "알림"],
@@ -89,7 +89,7 @@ export const mockData: DataType[] = [
     likes: 12,
     bookmarks: 3,
     date: "2024-09-20",
-    },
+  },
   {
     title: "학생 회관 내부 청소 요청",
     category: ["시설", "청소", "학생 회관"],
@@ -98,5 +98,20 @@ export const mockData: DataType[] = [
     likes: 12,
     bookmarks: 3,
     date: "2024-09-20",
-    },
+  },
+];
+
+export const commentMockData: CommentType[] = [
+  {
+    content:
+      "냉난방 시스템을 개선해 주신다면 정말 도움이 될 것 같습니다. 학생들이 편안하게 수업을 받을 수 있는 환경이 필요해요.",
+    time: "1시간 전",
+    likes: 3,
+  },
+  {
+    content:
+      "냉난방 시스템을 개선해 주신다면 정말 도움이 될 것 같습니다. 학생들이 편안하게 수업을 받을 수 있는 환경이 필요해요.",
+    time: "1시간 전",
+    likes: 3,
+  },
 ];

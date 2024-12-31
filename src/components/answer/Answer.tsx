@@ -30,8 +30,21 @@ const Contents = styled(motion.div)`
   width: 100%;
   border-radius: 8px;
   padding: 2rem 1rem;
+  overflow: hidden;
 `;
 
+const animationVariants = {
+  start: { maxHeight: 0, opacity: 0 },
+  opening: {
+    maxHeight: "1000px",
+    opacity: 1,
+    transition: {
+      type: "tween",
+      maxHeight: { duration: 4, ease: "easeOut" },
+      opacity: { duration: 0.7, ease: "easeOut" },
+    },
+  },
+};
 const Answer = ({ data }: AnswerProps) => {
   return (
     <Container>
@@ -39,7 +52,9 @@ const Answer = ({ data }: AnswerProps) => {
         <Icon component={HowToRegRoundedIcon} />
         <Title>관리자 답변</Title>
       </TitleContainer>
-      <Contents>{data}</Contents>
+      <Contents variants={animationVariants} initial="start" animate="opening">
+        {data}
+      </Contents>
     </Container>
   );
 };

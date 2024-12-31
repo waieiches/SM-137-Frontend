@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { SvgIcon, SvgIconProps } from "@mui/material";
 import HowToRegRoundedIcon from "@mui/icons-material/HowToRegRounded";
+import { motion } from "framer-motion";
 
 interface AnswerProps {
   data: string;
@@ -24,7 +25,7 @@ const Icon = styled(SvgIcon)<SvgIconProps>`
   width: 50px;
   height: 50px;
 `;
-const Contents = styled.div`
+const Contents = styled(motion.div)`
   background-color: var(--white);
   width: 100%;
   border-radius: 8px;

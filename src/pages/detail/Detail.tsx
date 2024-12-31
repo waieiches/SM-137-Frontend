@@ -10,7 +10,6 @@ import {
 } from "../../styles/CommentTitleStyle";
 import CommentInput from "../../components/comment/CommentInput";
 import Answer from "../../components/answer/Answer";
-import { useState } from "react";
 
 const Container = styled.div`
   position: absolute;
@@ -30,6 +29,7 @@ const Background = styled.div`
   justify-content: center;
   padding: 2rem 0;
   flex: 1;
+  padding-bottom: 9rem;
 `;
 const CommentContainer = styled.div`
   width: 782px;
@@ -37,13 +37,22 @@ const CommentContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
 `;
-const InputContainer = styled.div`
+const InputBackground = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   bottom: 0;
+  background-color: var(--white);
+  padding: 0.75rem 0;
+`;
+const InputContainer = styled.div`
   width: 782px;
 `;
 const AnswerContainer = styled.div`
-  width: 782px;
+  max-width: 782px;
+  width: 100%;
 `;
 
 const Detail = () => {
@@ -51,7 +60,7 @@ const Detail = () => {
   const MOCK_DATA = mockData[0];
   const isAnswered = MOCK_DATA.answer.length != 0;
   //length로 data의 개수를 계산하여 삽입 예정
-  const COUNT = 2;
+  const COUNT = commentMockData.length;
 
   const TITLE_COLOR = "var(--gray6-black)";
   const ICON_WIDTH = "24px";
@@ -83,9 +92,11 @@ const Detail = () => {
         </CommentContainer>
       </Background>
 
-      <InputContainer>
-        <CommentInput />
-      </InputContainer>
+      <InputBackground>
+        <InputContainer>
+          <CommentInput />
+        </InputContainer>
+      </InputBackground>
     </Container>
   );
 };

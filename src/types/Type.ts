@@ -14,3 +14,11 @@ export interface CommentType {
   time: string;
   likes: number;
 }
+
+export interface MyPageProps {
+  state: string;
+  name: string;
+  sid: number;
+  major: string;
+  email: string;
+}

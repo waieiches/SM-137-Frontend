@@ -1,4 +1,4 @@
-import { CommentType, DataType } from "./types/Type";
+import { CommentType, DataType, MyPageProps } from "./types/Type";
 
 export const mockData: DataType[] = [
   {
@@ -115,3 +115,11 @@ export const commentMockData: CommentType[] = [
     likes: 3,
   },
 ];
+
+export const myPageInfo: MyPageProps = {
+  name: "홍길동",
+  state: "재학생",
+  sid: 2012345,
+  major: "컴퓨터과학전공",
+  email: "test1234@gmail.com",
+};

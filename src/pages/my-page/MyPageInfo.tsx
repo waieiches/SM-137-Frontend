@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import { MyPageProps } from "../../types/Type";
 import Gmail from "../../assets/icons/gmail.png";
 import CategoryTag from "../../components/category-tag/CategoryTag";
+import { SvgIcon, SvgIconProps } from "@mui/material";
+import CreateRoundedIcon from "@mui/icons-material/CreateRounded";
 
 interface MyPageInfoProps {
   data: MyPageProps;
@@ -17,7 +19,8 @@ const Container = styled.div`
   padding: 4rem 4rem;
   border-radius: 8px;
   white-space: nowrap;
-  gap: 0.5rem;
+  gap: 0.3rem;
+  position: relative;
 `;
 const Name = styled.h2``;
 const Sid = styled.div`
@@ -39,10 +42,24 @@ const Email = styled.p`
 const EmailIcon = styled.img`
   width: 20px;
 `;
+const EditIcon = styled(SvgIcon)<SvgIconProps>`
+  width: 24px;
+  fill: var(--gray5-lowText);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  border-radius: 500px;
+  &:hover {
+    fill: var(--gray6-header);
+    transition: fill 0.2s ease;
+  }
+`;
 
 const MyPageInfo = ({ data }: MyPageInfoProps) => {
   return (
     <Container>
+      <EditIcon component={CreateRoundedIcon} />
       <CategoryTag
         contents="재학생"
         background="var(--primary)"

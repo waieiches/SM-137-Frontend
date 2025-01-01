@@ -22,3 +22,9 @@ export interface MyPageProps {
   major: string;
   email: string;
 }
+
+export interface AlarmDataProps {
+  type: "info" | "message";
+  title: string;
+  content: string;
+}

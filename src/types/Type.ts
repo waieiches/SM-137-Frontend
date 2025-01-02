@@ -8,6 +8,7 @@ export interface DataType {
   likes: number;
   bookmarks: number;
   date: string;
+  answer: string;
 }
 export interface CommentType {
   content: string;

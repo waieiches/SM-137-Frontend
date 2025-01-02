@@ -28,8 +28,8 @@ const MyComplaints = () => {
         <ViewMore>더보기 +</ViewMore>
       </TitleContainer>
       <ContentBoxContainer>
-        {data.map((i) => (
-          <ContentBox type="large" data={i} />
+        {data.map((i, index) => (
+          <ContentBox key={index} type="large" data={i} />
         ))}
       </ContentBoxContainer>
     </Container>

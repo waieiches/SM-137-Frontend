@@ -68,8 +68,8 @@ const MyPageAlarm = () => {
       <BellIcon component={NotificationsNoneRoundedIcon} />
 
       <AlarmContentContainer>
-        {alarmData.map((i) => (
-          <Alarm>
+        {alarmData.map((i, index) => (
+          <Alarm key={index}>
             <Icon
               component={style[i.type].icon}
               sx={{ fill: style[i.type].fill }}

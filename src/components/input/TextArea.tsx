@@ -48,7 +48,6 @@ const StyledTextArea = styled.textarea<InfoTextAreaProps>`
 
   &::placeholder {
     color: var(--gray4-placeholder-low);
-    transition: opacity 0.2s ease-in-out;
   }
 
   &:focus::placeholder {

@@ -2,10 +2,10 @@ import styled from "@emotion/styled";
 import ContentBox from "../../components/content/ContentBox";
 import { mockData } from "../../mockData";
 import { motion } from "framer-motion";
-import StatusButtonGroup from "../../components/status-button/StatusButtonGroup";
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 import ContactPageRoundedIcon from "@mui/icons-material/ContactPageRounded";
 import React from "react";
+import FilterBar from "./ComplaintFilterBar";
 
 const Container = styled.div`
   display: flex;
@@ -33,39 +33,6 @@ const ComplaintLine = styled.div`
   margin: 5% 0 1.5rem;
 `;
 
-const FilterContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  height: 4.5rem;
-  background-color: var(--gray1-background);
-  border-radius: 50rem;
-  padding: 1rem 2rem;
-  margin: 1rem auto 1.5rem;
-  transform: translateY(-5rem);
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
-
-const PublicPrivateButton = styled.button<{ isSelected: boolean }>`
-  padding: 0.8rem 2rem;
-  border: 2px solid
-    ${(props) => (props.isSelected ? "var(--primary)" : "var(--gray3-border)")};
-  background-color: ${(props) =>
-    props.isSelected ? "var(--white)" : "var(--gray1-background)"};
-  color: ${(props) =>
-    props.isSelected ? "var(--primary)" : "var(--gray5-text)"};
-  border-radius: 20px;
-
-  &:hover {
-    border: 2px solid var(--primary);
-  }
-`;
-
 const ComplaintGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -82,24 +49,7 @@ const Complaint = () => {
       <ComplaintTitle>내 민원</ComplaintTitle>
       <ComplaintLine />
 
-      <FilterContainer>
-        <ButtonGroup>
-          <PublicPrivateButton
-            isSelected={isPublic}
-            onClick={() => setIsPublic(true)}
-          >
-            공개 민원
-          </PublicPrivateButton>
-          <PublicPrivateButton
-            isSelected={!isPublic}
-            onClick={() => setIsPublic(false)}
-          >
-            개인 민원
-          </PublicPrivateButton>
-        </ButtonGroup>
-
-        <StatusButtonGroup />
-      </FilterContainer>
+      <FilterBar isPublic={isPublic} setIsPublic={setIsPublic} />
 
       <ComplaintGrid>
         {mockData.map((item, index) => (

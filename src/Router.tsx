@@ -2,9 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/home/Home";
 import Detail from "./pages/detail/Detail";
-import ComplaintSearch from "./pages/complaint-search/ComplaintSearch";
 import View from "./pages/view/View";
 import MyPage from "./pages/my-page/MyPage";
+import Search from "./pages/search/Search";
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "complaint-search",
-        element: <ComplaintSearch />,
+        element: <Search />,
       },
       {
         path: "complaint-view",

@@ -79,7 +79,6 @@ const Home = () => {
         <QuickLink />
       </QuickLinkContainer>
 
-      <ComplaintsForm />
       <HomeContentList />
     </HomeContainer>
   );

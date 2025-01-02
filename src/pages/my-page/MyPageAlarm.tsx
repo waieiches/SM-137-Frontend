@@ -15,11 +15,13 @@ const Container = styled.div`
   padding: 1.5rem 3rem;
   display: flex;
   gap: 3rem;
-  overflow-y: auto;
+  overflow: hidden;
 `;
 const AlarmContentContainer = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  width: 100%;
 `;
 const Alarm = styled.div`
   display: flex;

@@ -8,16 +8,20 @@ import ScrapComplaints from "./ScrapComplaints";
 const Container = styled.div`
   display: flex;
   justify-content: start;
+  flex-direction: column;
+  align-items: center;
 `;
 const BackGround = styled.div`
-  width: 100%;
   background-color: var(--primary);
-  position: absolute;
-  left: 0;
-  height: 420px;
+  width: 100vw;
+  max-height: 420px;
   padding: 3rem;
   display: flex;
   justify-content: center;
+  @media (max-width: 768px) {
+    max-height: none;
+    height: auto;
+  }
 `;
 const BackgroundContents = styled.div`
   width: 100%;
@@ -26,13 +30,12 @@ const BackgroundContents = styled.div`
   grid-template-columns: 3.5fr 8fr;
   gap: 2rem;
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
   }
 `;
 const BackgroundOutside = styled.div`
   width: 100%;
-  margin-top: 440px;
   display: flex;
   flex-direction: column;
   gap: 5rem;

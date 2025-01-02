@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 interface InfoTextAreaProps {
-  height: string;
+  height?: string;
 }
 
 interface TextAreaProps extends InfoTextAreaProps {
@@ -39,39 +39,43 @@ const RequiredMark = styled.span`
 
 const StyledTextArea = styled.textarea<InfoTextAreaProps>`
   width: 85%;
-  height: ${(props) => props.height};
+  height: ${(props) => props.height || "119px"};
   padding: 5px 16px;
   border: 1px solid var(--gray3-border);
   border-radius: 4px;
   font-size: 14px;
   resize: none;
+
+  &::placeholder {
+    color: var(--gray4-placeholder-low);
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &:focus::placeholder {
+    opacity: 0;
+  }
 `;
 
-const TextArea = (props: TextAreaProps) => {
-  const { label, placeholder, height, isRequired, onChange } = props;
+const TextArea = ({
+  label = "labelText",
+  placeholder = "placeholder",
+  height = "119px",
+  isRequired = false,
+  onChange,
+}: TextAreaProps) => {
   return (
     <TextAreaContainer>
       <LabelContainer>
         {isRequired && <RequiredMark>*</RequiredMark>}
         <FieldLabel>{label}</FieldLabel>
       </LabelContainer>
-
       <StyledTextArea
         placeholder={placeholder}
         height={height}
-        required={isRequired}
         onChange={onChange}
       />
     </TextAreaContainer>
   );
-};
-
-TextArea.defaultProps = {
-  label: "labelText",
-  placeholder: "placeholder",
-  width: "508px",
-  height: "119px",
-  isRequired: false
 };
 
 export default TextArea;

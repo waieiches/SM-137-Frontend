@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import ContentGrid from "./ContentGrid";
 import StatusBar from "./StatusBar";
@@ -42,14 +43,13 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-const InputTitle = styled.span``
+const InputTitle = styled.span``;
 
 const InputField = styled.input`
   width: 100%;
   border: 1px solid #ccc;
   height: 300px;
   border-radius: 8px;
-  border: 1px solid #ddd;
   background-color: var(--white);
   margin-bottom: 1.5rem;
 `;
@@ -58,25 +58,39 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 1.5rem;
-`
+`;
 
 const AdminDetail = () => {
+  // 선택된 상태를 관리하는 state 추가
+  const [selectedStatus, setSelectedStatus] = useState("");
+
+  const handleStatusChange = (status: React.SetStateAction<string>) => {
+    setSelectedStatus(status);
+  };
+
   return (
     <>
       <Background>
         <Title>상세 조회</Title>
         <ContentGrid />
       </Background>
-       <StatusBarContainer><StatusBar/></StatusBarContainer>
+      {/* StatusBar에 상태 변경 함수를 props로 전달 */}
+      <StatusBarContainer>
+        <StatusBar onStatusChange={handleStatusChange} />
+      </StatusBarContainer>
       <HomeArea></HomeArea>
 
-      <Container>
-      <InputTitle>상세 민원 답변</InputTitle>
-      <InputField></InputField>
-      </Container>
+      {/* 선택된 상태에 따라 조건부 렌더링 */}
+      {selectedStatus === "rejected" || selectedStatus === "completed" ? (
+        <Container>
+          <InputTitle>상세 민원 답변</InputTitle>
+          <InputField />
+        </Container>
+      ) : null}
 
-      <ButtonContainer><Button content="다음" type={"_120x40_Primary"} /></ButtonContainer>
-
+      <ButtonContainer>
+        <Button content="다음" type={"_120x40_Primary"} />
+      </ButtonContainer>
     </>
   );
 };

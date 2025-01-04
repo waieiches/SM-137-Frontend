@@ -1,9 +1,14 @@
 import styled from "@emotion/styled";
 import StatusButtonGroup from "../../components/status-button/StatusButtonGroup";
+import { StatusType } from "../../types/Type";
+
+interface Props {
+  onStatusChange: (status: StatusType) => void;
+}
 
 const Title = styled.span`
   margin-right: 20px;
-`
+`;
 
 const Container = styled.div`
   gap: 1rem;
@@ -22,14 +27,13 @@ const ContentBox = styled.div`
   justify-content: flex-start;
 `;
 
-
-const StatusBar = () => {
+const StatusBar: React.FC<Props> = ({ onStatusChange }) => {
   return (
     <Container>
-        <ContentBox>
-            <Title>상태변경</Title>
-            <StatusButtonGroup/>
-        </ContentBox>
+      <ContentBox>
+        <Title>상태변경</Title>
+        <StatusButtonGroup onStatusChange={onStatusChange} />
+      </ContentBox>
     </Container>
   );
 };

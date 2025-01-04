@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { mockData } from "../mockData";
 import CategorySelect from "../components/category-select/CategorySelect";
 import SortBar from "../components/sort-bar/SortBar";
-import AdminContentList from "./view/AdminContentlist";
+import AdminContentList from "./view/AdminContentList";
 import FormComponent from "./view/AdminSearch";
 
 const Background = styled.div`
@@ -40,7 +40,7 @@ const CategoryContainer = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  margin: 0 0 10 0rem;
+  margin-bottom: 1.5rem;
   width: 100%
 `
 

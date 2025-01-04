@@ -6,26 +6,27 @@ const HeaderContainer = styled.div`
   justify-content: center;
   width: 100%;
   padding: 0;
-  margin: 0;
+  margin: 4rem;
 `;
 
 const UniversityText = styled.div`
   font-weight: 600;
   color: var(--light-primary);
-  font-size: 5rem;
+  font-size: 7rem;
   line-height: 1.2;
+  margin-bottom: 1rem;
 `;
 
 const SubTextContainer = styled.div`
   display: flex;
   align-items: baseline; 
-  gap: 0.5rem;
+  gap: 2rem;
 `;
 
 const SystemText = styled.div`
   font-weight: 600;
   color: var(--disabled-primary);
-  font-size: 5rem;
+  font-size: 6rem;
   line-height: 1.2;
 `;
 

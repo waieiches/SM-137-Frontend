@@ -10,6 +10,7 @@ const Title = styled.h2`
   text-align: center;
   color: var(--black);
   font-size: 1.5rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 `;
 const TextBox = styled.div`

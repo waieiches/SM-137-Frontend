@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import ContentGrid from "./ContentGrid";
 import StatusBar from "./StatusBar";
 import Button from "../../components/button/Button";
+import BackButton from "./BackButton";
 
 const Background = styled.div`
   width: 100%;
@@ -27,7 +28,6 @@ const HomeArea = styled.div`
 
 const Title = styled.h2`
   width: 100%;
-  padding: 1rem;
   text-align: center;
   color: var(--white);
 `;
@@ -60,6 +60,12 @@ const ButtonContainer = styled.div`
   margin-bottom: 1.5rem;
 `;
 
+const BackButtonStyled = styled(BackButton)`
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  `;
+
 const AdminDetail = () => {
   // 선택된 상태를 관리하는 state 추가
   const [selectedStatus, setSelectedStatus] = useState("");
@@ -72,6 +78,7 @@ const AdminDetail = () => {
     <>
       <Background>
         <Title>상세 조회</Title>
+        <BackButtonStyled />
         <ContentGrid />
       </Background>
       {/* StatusBar에 상태 변경 함수를 props로 전달 */}

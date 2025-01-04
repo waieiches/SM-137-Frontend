@@ -48,7 +48,7 @@ const InputTitle = styled.span``;
 const InputField = styled.input`
   width: 100%;
   border: 1px solid #ccc;
-  height: 300px;
+  height: 200px;
   border-radius: 8px;
   background-color: var(--white);
   margin-bottom: 1.5rem;

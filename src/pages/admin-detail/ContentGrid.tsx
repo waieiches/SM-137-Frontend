@@ -29,8 +29,8 @@ const BContentBox = styled(ContentBox)`
   border: 1px solid #ddd;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* 주 축(가로 방향) 시작 부분에 정렬 */
-  align-items: flex-start; /* 교차 축(세로 방향) 시작 부분에 정렬 */
+  justify-content: flex-start; 
+  align-items: flex-start; 
   padding: 30px;
 `;
 

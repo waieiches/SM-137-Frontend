@@ -4,11 +4,13 @@ import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
 import ThumbUpAltRoundedIcon from "@mui/icons-material/ThumbUpAltRounded";
 import BookmarkBorderRoundedIcon from "@mui/icons-material/BookmarkBorderRounded";
 import BookmarkRoundedIcon from "@mui/icons-material/BookmarkRounded";
+import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
+import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
 interface InteractionProps {
-  type: "thumbUp" | "scrap";
+  type: "thumbUp" | "scrap" | "likes";
   count: number;
 }
 const Container = styled.div`
@@ -61,6 +63,9 @@ const getIcon = (type: string) => {
   if (type === "scrap") {
     return BookmarkBorderRoundedIcon;
   }
+  if (type === "likes") {
+    return FavoriteBorderRoundedIcon;
+  }
 };
 const getClickIcon = (type: string) => {
   if (type === "thumbUp") {
@@ -69,6 +74,9 @@ const getClickIcon = (type: string) => {
   if (type === "scrap") {
     return BookmarkRoundedIcon;
   }
+  if (type === "likes") {
+    return FavoriteRoundedIcon;
+  }
 };
 const getFill = (type: string) => {
   if (type === "thumbUp") {
@@ -76,6 +84,9 @@ const getFill = (type: string) => {
   }
   if (type === "scrap") {
     return "var(--info-dark)";
+  }
+  if (type === "likes") {
+    return "var(--error-light)";
   }
 };
 

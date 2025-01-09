@@ -51,7 +51,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
 `;
 
-const ComplaintSearch = () => {
+const Search = () => {
   //검색어 임시
   const SEARCH_KEYWORD = "도서관 냉난방";
   return (
@@ -82,4 +82,4 @@ const ComplaintSearch = () => {
   );
 };
 
-export default ComplaintSearch;
+export default Search;

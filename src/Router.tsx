@@ -1,35 +1,28 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "./pages/Layout";
-import Home from "./pages/home/Home";
-import Detail from "./pages/detail/Detail";
-import View from "./pages/view/View";
-import AdminHome from "./pages/AdminHome"
+import AdminHome from "./pages/admin-home/AdminHome";
+import AdminLogin from "./pages/admin-login/AdminLogin";
+import AdminDetail from "./pages/admin-detail/AdminDetail";
+import ContentGrid from "./pages/admin-detail/ContentGrid";
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        path: "",
-        element: <Home />,
-      },
-      {
-        path: "complaint-detail",
-        element: <Detail />,
-        },
-      {
-        path: "complaint-view",
-        element: <View />,
-      },
-    ],
-  },
   {
     path: "admin",
     children: [
       {
         path: "home",
         element: <AdminHome />,
+      },
+      {
+        path: "login",
+        element: <AdminLogin />,
+      },
+      {
+        path: "detail",
+        element: <AdminDetail />,
+      },
+      {
+        path: "test",
+        element: <ContentGrid />,
       },
     ],
   },

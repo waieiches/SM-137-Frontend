@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
-import { mockData } from "../mockData";
-import CategorySelect from "../components/category-select/CategorySelect";
-import SortBar from "../components/sort-bar/SortBar";
-import AdminContentList from "./view/AdminContentList";
-import FormComponent from "./view/AdminSearch";
+import { mockData } from "../../mockData";
+import CategorySelect from "../../components/category-select/CategorySelect";
+import SortBar from "../../components/sort-bar/SortBar";
+import AdminContentList from "./../view/AdminContentList";
+import FormComponent from "./../view/AdminSearch";
 
 const Background = styled.div`
   width: 100%;

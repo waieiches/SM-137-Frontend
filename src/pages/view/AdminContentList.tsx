@@ -3,14 +3,13 @@ import styled from "@emotion/styled";
 import { DataType } from "../../types/Type";
 import StatusDisplay from "../../components/status-button/StatusDisplay";
 import CategoryTagGroup from "../../components/category-tag/CategoryTagGroup";
-import Pagination from "../Pagination";
+import Pagination from "../../components/pagination/Pagination";
 
 const Container = styled.div`
   max-width: 1114px;
   width: 100%;
   margin: 0 auto;
 `;
-
 
 const Table = styled.table`
   width: 100%;
@@ -51,7 +50,6 @@ const Cell = styled.td`
 
 const TitleCell = styled(Cell)`
   color: black;
-  font-weight: bold;
 `;
 
 interface ContentListProps {

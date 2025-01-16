@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import ContentGrid from "./ContentGrid";
 import StatusBar from "./StatusBar";
+import { StatusType } from "../../types/Type";
 import Button from "../../components/button/Button";
 import BackButton from "./BackButton";
+import AdminModalContents from "../../components/modal/contents/AdminModalContents";
+import Modal from "../../components/modal/Modal";
+import { useModal } from "../../hooks/useModal";
 
 const Background = styled.div`
   width: 100%;
@@ -67,10 +71,10 @@ const BackButtonStyled = styled(BackButton)`
   `;
 
 const AdminDetail = () => {
-  // 선택된 상태를 관리하는 state 추가
-  const [selectedStatus, setSelectedStatus] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState<StatusType>("inProgress");
+  const { isModalOpen, handleModalOpen, handleModalClose } = useModal();
 
-  const handleStatusChange = (status: React.SetStateAction<string>) => {
+  const handleStatusChange = (status: StatusType) => {
     setSelectedStatus(status);
   };
 
@@ -96,8 +100,14 @@ const AdminDetail = () => {
       ) : null}
 
       <ButtonContainer>
-        <Button content="다음" type={"_120x40_Primary"} />
+        <Button content="다음" type={"_120x40_Primary"} onClick={handleModalOpen} />
       </ButtonContainer>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+        contents={<AdminModalContents handleClose={handleModalClose} />}
+        />
     </>
   );
 };

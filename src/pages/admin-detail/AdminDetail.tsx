@@ -49,33 +49,52 @@ const Container = styled.div`
 
 const InputTitle = styled.span``;
 
-const InputField = styled.input`
+const InputField = styled.textarea`
   width: 100%;
   border: 1px solid #ccc;
   height: 200px;
   border-radius: 8px;
   background-color: var(--white);
-  margin-bottom: 1.5rem;
+  padding: 1rem; /* 내부 여백 추가 */
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 1.5rem;
+  line-height: 1.5;
+
 `;
 
 const BackButtonStyled = styled(BackButton)`
   position: absolute;
   left: 1rem;
   right: 1rem;
-  `;
+`;
 
 const AdminDetail = () => {
   const [selectedStatus, setSelectedStatus] = useState<StatusType>("inProgress");
+  const [inputValue, setInputValue] = useState(""); // InputField 값 상태
+  const [error, setError] = useState(""); // 에러 메시지 상태
   const { isModalOpen, handleModalOpen, handleModalClose } = useModal();
 
   const handleStatusChange = (status: StatusType) => {
     setSelectedStatus(status);
+  };
+
+  const handleNextClick = () => {
+    if (!inputValue.trim()) {
+      setError("내용을 입력해주세요."); 
+      return;
+    }
+
+    if (inputValue.length < 50) {
+      setError("내용은 최소 50자 이상이어야 합니다.");
+      return;
+    }
+
+    setError(""); 
+    handleModalOpen();
   };
 
   return (
@@ -85,29 +104,31 @@ const AdminDetail = () => {
         <BackButtonStyled />
         <ContentGrid />
       </Background>
-      {/* StatusBar에 상태 변경 함수를 props로 전달 */}
       <StatusBarContainer>
         <StatusBar onStatusChange={handleStatusChange} />
       </StatusBarContainer>
       <HomeArea></HomeArea>
 
-      {/* 선택된 상태에 따라 조건부 렌더링 */}
       {selectedStatus === "rejected" || selectedStatus === "completed" ? (
         <Container>
           <InputTitle>상세 민원 답변</InputTitle>
-          <InputField />
+          <InputField
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)} // 입력 값 업데이트
+          />
+          {error && <p style={{ color: "red", marginTop: "0.5rem" }}>{error}</p>} {/* 에러 메시지 */}
         </Container>
       ) : null}
 
       <ButtonContainer>
-        <Button content="다음" type={"_120x40_Primary"} onClick={handleModalOpen} />
+        <Button content="다음" type={"_120x40_Primary"} onClick={handleNextClick} />
       </ButtonContainer>
 
       <Modal
         isOpen={isModalOpen}
         onClose={handleModalClose}
         contents={<AdminModalContents handleClose={handleModalClose} />}
-        />
+      />
     </>
   );
 };

@@ -4,7 +4,6 @@ import { DataType } from "../../types/Type";
 import StatusDisplay from "../../components/status-button/StatusDisplay";
 import CategoryTagGroup from "../../components/category-tag/CategoryTagGroup";
 import Pagination from "../../components/pagination/Pagination";
-import { ViewContext } from "../../contexts/ViewContext";
 
 const Container = styled.div`
   max-width: 1114px;
@@ -57,7 +56,6 @@ interface ContentListProps {
   data: DataType[];
 }
 
-
 const AdminContentList: React.FC<ContentListProps> = ({ data }) => {
   const pageSize = 10;
   const [currentPage, setCurrentPage] = useState(1);
@@ -73,10 +71,6 @@ const AdminContentList: React.FC<ContentListProps> = ({ data }) => {
     setCurrentPage(page);
   };
 
-  const formatDate = (isoDate: string) => {
-    return new Date(isoDate).toISOString().split("T")[0];
-  };
-
   return (
     <Container>
       <Table>
@@ -84,6 +78,7 @@ const AdminContentList: React.FC<ContentListProps> = ({ data }) => {
           <HeaderRow>
             <HeaderCell>민원번호</HeaderCell>
             <HeaderCell>제목</HeaderCell>
+            <HeaderCell>개인/공개</HeaderCell>
             <HeaderCell>카테고리</HeaderCell>
             <HeaderCell>진행상태</HeaderCell>
             <HeaderCell>신청일</HeaderCell>
@@ -94,13 +89,14 @@ const AdminContentList: React.FC<ContentListProps> = ({ data }) => {
             <DataRow key={index}>
               <Cell>{`${(currentPage - 1) * pageSize + index + 1}`}</Cell>
               <TitleCell>{item.title}</TitleCell>
+              <Cell>공개</Cell>
               <Cell>
-                <CategoryTagGroup tagArray={[item.category]} />
+                <CategoryTagGroup tagArray={[item.category[0]]} />
               </Cell>
               <Cell>
                 <StatusDisplay type={item.status} />
               </Cell>
-              <Cell>{formatDate(item.date)}</Cell>
+              <Cell>{item.date}</Cell>
             </DataRow>
           ))}
         </tbody>

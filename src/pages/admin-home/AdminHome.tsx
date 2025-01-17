@@ -4,7 +4,6 @@ import CategorySelect from "../../components/category-select/CategorySelect";
 import SortBar from "../../components/sort-bar/SortBar";
 import AdminContentList from "./../view/AdminContentList";
 import FormComponent from "./../view/AdminSearch";
-import { ViewProvider } from "../../contexts/ViewContext"; 
 
 const Background = styled.div`
   width: 100%;

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import CheckIcon from "@mui/icons-material/Check";
 import { AdminContentContext } from "./AdminHome";
+import { StatusType } from "../../types/Type";
 
 const SearchContainer = styled.div`
   display: flex;
@@ -60,9 +61,16 @@ const SelectLabel = styled.label<{ active?: boolean }>`
   cursor: pointer;
 `;
 
+const statusMapping: Record<string, StatusType> = {
+  진행: "inProgress",
+  대기: "pending",
+  반려: "rejected",
+  완료: "completed",
+};
+
 const SearchComponent: React.FC = () => {
   const [isPrivate, setIsPrivate] = useState(true);
-  const [status, setStatus] = useState("진행");
+  const [status, setStatus] = useState<StatusType[]>([]);
 
   const [inputId, setInputId] = useState("");
   const [inputTitle, setInputTitle] = useState("");
@@ -77,17 +85,30 @@ const SearchComponent: React.FC = () => {
 
   const context = useContext(AdminContentContext);
 
-  // 민원 번호 필터링 적용
   useEffect(() => {
     const numberId = Number(inputId);
     context?.handleFilterOptions("id", numberId);
   }, [inputId]);
 
-  // 민원 제목 필터링 적용
   useEffect(() => {
     const titleKeywords = inputTitle.split(" ").filter((word) => word.trim());
     context?.handleFilterOptions("title", titleKeywords);
   }, [inputTitle]);
+
+  useEffect(() => {
+    context?.handleFilterOptions("status", status);
+  }, [status]);
+
+  const toggleStatus = (statusLabel: string) => {
+    const mappedStatus = statusMapping[statusLabel]; 
+    if (!mappedStatus) return; // 매핑되지 않는 값 무시
+
+    setStatus((prevStatus) =>
+      prevStatus.includes(mappedStatus)
+        ? prevStatus.filter((s) => s !== mappedStatus) 
+        : [...prevStatus, mappedStatus] 
+    );
+  };
 
   return (
     <>
@@ -126,28 +147,28 @@ const SearchComponent: React.FC = () => {
       <StatusContainer>
         <ItemTitle>진행상태</ItemTitle>
         <SelectLabel
-          active={status === "진행"}
-          onClick={() => setStatus("진행")}
+          active={status.includes("inProgress")}
+          onClick={() => toggleStatus("진행")}
         >
-          {status === "진행" && <CheckIcon />} 진행
+          {status.includes("inProgress") && <CheckIcon />} 진행
         </SelectLabel>
         <SelectLabel
-          active={status === "대기"}
-          onClick={() => setStatus("대기")}
+          active={status.includes("pending")}
+          onClick={() => toggleStatus("대기")}
         >
-          {status === "대기" && <CheckIcon />} 대기
+          {status.includes("pending") && <CheckIcon />} 대기
         </SelectLabel>
         <SelectLabel
-          active={status === "반려"}
-          onClick={() => setStatus("반려")}
+          active={status.includes("rejected")}
+          onClick={() => toggleStatus("반려")}
         >
-          {status === "반려" && <CheckIcon />} 반려
+          {status.includes("rejected") && <CheckIcon />} 반려
         </SelectLabel>
         <SelectLabel
-          active={status === "완료"}
-          onClick={() => setStatus("완료")}
+          active={status.includes("completed")}
+          onClick={() => toggleStatus("완료")}
         >
-          {status === "완료" && <CheckIcon />} 완료
+          {status.includes("completed") && <CheckIcon />} 완료
         </SelectLabel>
       </StatusContainer>
     </>

@@ -1,4 +1,3 @@
-import { data } from "react-router-dom";
 import apiClient from "./apiClient";
 
 export const getProcessedComplaints = async () => {
@@ -12,7 +11,7 @@ export const getProcessedComplaints = async () => {
   }
 };
 
-export const getComplaintDetail = async (complaintId)=> {
+export const getComplaintDetail = async (complaintId: any)=> {
   try {
     const response = await apiClient.get(`api/manager/${complaintId}`);
     console.log(response); // 백엔드에서 전달된 데이터 확인
@@ -23,7 +22,7 @@ export const getComplaintDetail = async (complaintId)=> {
   }
 };
 
-export const registerComplaintAnswer = async (complaintId, data) => {
+export const registerComplaintAnswer = async (complaintId: any, data: any) => {
   try {
     const response = await apiClient.post(`api/manager/${complaintId}`, data);
     console.log(response); // 백엔드에서 전달된 데이터 확인

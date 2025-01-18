@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 import DropDown from "../drop-down/DropDown";
 import SortStandard from "./sort-standard/SortStandard";
+import { useContext } from "react";
+import { SortType } from "../../types/Type";
+import { AdminContentContext } from "../../pages/admin-home/AdminHome";
 
 const Container = styled.div`
   max-width: 1114px;
@@ -13,23 +16,46 @@ const Container = styled.div`
 const SortOptionContainer = styled.div`
   display: flex;
   gap: 0.5rem;
+  align-items: center;
 `;
 const Divide = styled.pre`
   color: var(--gray4-placeholder-low);
 `;
 
 const SortBar = () => {
-  const OPTION = ["1개월", "3개월", "6개월"];
+  const parentContext = useContext(AdminContentContext);
+  if (!parentContext) {
+    throw new Error("sortbar에서 context 호출 중 오류 발생");
+  }
+
+  const handleClick = (type: SortType) => {
+    parentContext.handleSortOption(type);
+  };
+
+  const sortOptions = parentContext.sortOptions;
+
   return (
     <Container>
       <SortOptionContainer>
-        <SortStandard type="latest" />
+        <SortStandard
+          type="latest"
+          isClick={sortOptions.latest}
+          handleClick={handleClick}
+        />
         <Divide>|</Divide>
-        <SortStandard type="scrap" />
+        <SortStandard
+          type="scrap"
+          isClick={sortOptions.scrap}
+          handleClick={handleClick}
+        />
         <Divide>|</Divide>
-        <SortStandard type="likes" />
+        <SortStandard
+          type="likes"
+          isClick={sortOptions.likes}
+          handleClick={handleClick}
+        />
       </SortOptionContainer>
-      <DropDown options={OPTION} />
+      <DropDown />
     </Container>
   );
 };

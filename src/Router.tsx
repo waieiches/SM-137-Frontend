@@ -4,26 +4,24 @@ import AdminLogin from "./pages/admin-login/AdminLogin";
 import AdminDetail from "./pages/admin-detail/AdminDetail";
 import ContentGrid from "./pages/admin-detail/ContentGrid";
 
-export const router = createBrowserRouter([
-  {
-    path: "admin",
-    children: [
-      {
-        path: "home",
-        element: <AdminHome />,
-      },
-      {
-        path: "login",
-        element: <AdminLogin />,
-      },
-      {
-        path: "detail",
-        element: <AdminDetail />,
-      },
-      {
-        path: "test",
-        element: <ContentGrid />,
-      },
-    ],
-  },
-]);
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <AdminHome />,
+    },
+    {
+      path: "login",
+      element: <AdminLogin />,
+    },
+    {
+      path: "detail",
+      element: <AdminDetail />,
+    },
+    {
+      path: "test",
+      element: <ContentGrid />,
+    },
+  ],
+  { basename: "/SM-137-Frontend/" }
+);

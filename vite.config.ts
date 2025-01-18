@@ -5,10 +5,12 @@ import svgr from "vite-plugin-svgr";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), svgr()],
+  base: "/SM-137-Frontend/",
   server: {
     proxy: {
       "/api": {
-        target: "http://172.20.8.238:8080",
+        target:
+          "http://ec2-54-180-106-175.ap-northeast-2.compute.amazonaws.com:8080/",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },

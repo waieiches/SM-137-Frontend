@@ -1,14 +1,13 @@
 import styled from "@emotion/styled";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { SvgIcon, SvgIconProps } from "@mui/material";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
+import { AdminContentContext } from "../../pages/admin-home/AdminHome";
 
-interface DropDownProps {
-  options: string[];
-}
 interface OptionProps {
   isOpen: boolean;
 }
+
 const DropBox = styled.ul<OptionProps>`
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -58,19 +57,16 @@ const DropDownIcon = styled(SvgIcon)<SvgIconProps>`
   right: 0;
 `;
 
-const DropDown = ({ options }: DropDownProps) => {
+const DropDown = () => {
+  const OPTIONS = ["전체", "1개월", "3개월", "6개월"];
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState(options[0]);
+  const [data, setData] = useState(OPTIONS[0]);
+
+  const context = useContext(AdminContentContext);
 
   const handleOpenClose = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsOpen((prev) => !prev);
-  };
-
-  const handleClick = (option: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setData(option);
-    setIsOpen(false);
   };
 
   const dropDownRef = useRef<HTMLUListElement>(null);
@@ -87,12 +83,19 @@ const DropDown = ({ options }: DropDownProps) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const handleClick = (option: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setData(option);
+    setIsOpen(false);
+    context?.handleFilterOptions("period", option);
+  };
+
   return (
     <DropBox isOpen={isOpen} onClick={handleOpenClose} ref={dropDownRef}>
       {data}
       <OptionContainer isOpen={isOpen}>
         {isOpen &&
-          options.map((i, index) => (
+          OPTIONS.map((i, index) => (
             <Options key={index} onClick={(e) => handleClick(i, e)}>
               {i}
             </Options>

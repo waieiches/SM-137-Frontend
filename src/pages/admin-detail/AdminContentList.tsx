@@ -4,6 +4,7 @@ import { DataType } from "../../types/Type";
 import StatusDisplay from "../../components/status-button/StatusDisplay";
 import CategoryTagGroup from "../../components/category-tag/CategoryTagGroup";
 import Pagination from "../../components/pagination/Pagination";
+import { getFormatTime } from "../../utils/FormattingTime";
 
 const Container = styled.div`
   max-width: 1114px;
@@ -64,7 +65,10 @@ const AdminContentList: React.FC<ContentListProps> = ({ data }) => {
   const totalPages = Math.ceil(data.length / pageSize);
 
   // 현재 페이지에 해당하는 데이터 슬라이싱
-  const displayedData = data.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+  const displayedData = data.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
 
   // 페이지 변경 핸들러
   const handlePageChange = (page: number) => {
@@ -87,21 +91,25 @@ const AdminContentList: React.FC<ContentListProps> = ({ data }) => {
         <tbody>
           {displayedData.map((item, index) => (
             <DataRow key={index}>
-              <Cell>{`${(currentPage - 1) * pageSize + index + 1}`}</Cell>
+              <Cell>{item.id}</Cell>
               <TitleCell>{item.title}</TitleCell>
               <Cell>공개</Cell>
               <Cell>
-                <CategoryTagGroup tagArray={[item.category[0]]} />
+                <div>{item.category}</div>
               </Cell>
               <Cell>
                 <StatusDisplay type={item.status} />
               </Cell>
-              <Cell>{item.date}</Cell>
+              <Cell>{getFormatTime(new Date(item.date))}</Cell>
             </DataRow>
           ))}
         </tbody>
       </Table>
-      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </Container>
   );
 };

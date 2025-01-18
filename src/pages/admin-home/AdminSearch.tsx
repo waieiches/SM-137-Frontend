@@ -65,16 +65,29 @@ const SearchComponent: React.FC = () => {
   const [status, setStatus] = useState("진행");
 
   const [inputId, setInputId] = useState("");
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [inputTitle, setInputTitle] = useState("");
+
+ const handleChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputId(e.target.value);
+  };
+
+  const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputTitle(e.target.value);
   };
 
   const context = useContext(AdminContentContext);
 
+  // 민원 번호 필터링 적용
   useEffect(() => {
     const numberId = Number(inputId);
     context?.handleFilterOptions("id", numberId);
   }, [inputId]);
+
+  // 민원 제목 필터링 적용
+  useEffect(() => {
+    const titleKeywords = inputTitle.split(" ").filter((word) => word.trim());
+    context?.handleFilterOptions("title", titleKeywords);
+  }, [inputTitle]);
 
   return (
     <>
@@ -82,7 +95,7 @@ const SearchComponent: React.FC = () => {
         <SearchBox>
           <SearchItem>
             <ItemTitle>민원번호</ItemTitle>
-            <ItemInput onChange={handleChange} />
+            <ItemInput onChange={handleChangeId} />
           </SearchItem>
           <SearchItem>
             <ItemTitle>개인/공개</ItemTitle>
@@ -101,7 +114,7 @@ const SearchComponent: React.FC = () => {
         <SearchBox>
           <SearchItem>
             <ItemTitle>제목</ItemTitle>
-            <WideItemInput />
+            <WideItemInput onChange={handleChangeTitle} />
           </SearchItem>
           <SearchItem>
             <ItemTitle>신청일</ItemTitle>

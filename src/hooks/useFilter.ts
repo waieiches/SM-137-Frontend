@@ -8,6 +8,7 @@ export interface FiltersProps {
   status: StatusType[] | null;
   hashtag: string[] | null;
   id: number | null;
+  title: string[] | null;
 }
 
 export const useFilter = (originData: DataType[]) => {
@@ -19,6 +20,7 @@ export const useFilter = (originData: DataType[]) => {
     status: null,
     hashtag: null,
     id: null,
+    title: null,
   });
 
   const handleFilterOptions = <K extends keyof FiltersProps>(
@@ -47,6 +49,9 @@ export const useFilter = (originData: DataType[]) => {
     }
     if (filters.id) {
       result = handleAdminNumber(result, filters.id);
+    }
+    if (filters.title) {
+      result = handleAdminTitle(result, filters.title);
     }
     setFilteredData(result);
   };
@@ -107,5 +112,34 @@ export const useFilter = (originData: DataType[]) => {
     return result;
   };
 
+  const handleAdminTitle = (originData: DataType[], titleKeywords: string[]) => {
+    let result = originData;
+  
+    // titleKeywords와 originData가 모두 유효한지 확인
+    if (!Array.isArray(titleKeywords) || titleKeywords.length === 0) {
+      return result; // 키워드가 없으면 원본 데이터 반환
+    }
+  
+    result = originData.filter((data) => {
+      // 데이터가 유효한지 확인
+      if (!data || typeof data.title !== "string") {
+        return false; // 제목이 없거나 문자열이 아니면 제외
+      }
+  
+      // 게시글의 제목을 공백 기준으로 분리
+      const titleWords = data.title.split(" ");
+  
+      // 입력받은 키워드 배열과 비교하여 하나라도 포함되면 필터링
+      return titleKeywords.some((keyword) =>
+        titleWords.some((word) => word.includes(keyword))
+      );
+    });
+  
+    return result; // 필터링된 데이터 반환
+  };
+  
+
   return { filters, filteredData, handleFilter, handleFilterOptions };
 };
+
+

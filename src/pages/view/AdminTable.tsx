@@ -20,7 +20,7 @@ const AdminContentList = ({ data }: ContentListProps) => {
   //complaintId를 넣으면 해당 게시글에 해당하는 상세 조회로 이동
   const navigate = useNavigate();
   const handleNavigate = (complaintId: number) => {
-    navigate(`/admin/home/${complaintId}`);
+    navigate(`/admin/home?id=${complaintId}`);
   };
 
   return (

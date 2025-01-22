@@ -1,4 +1,8 @@
-export type StatusType = "inProgress" | "pending" | "rejected" | "completed";
+export type StatusTypeExample =
+  | "inProgress"
+  | "pending"
+  | "rejected"
+  | "completed";
 
 export interface DataType {
   title: string;
@@ -14,3 +18,15 @@ export interface CommentType {
   time: string;
   likes: number;
 }
+
+//백엔드 연동
+export interface ContentType {
+  complaintId: number;
+  category: string;
+  complaintStatus: StatusType;
+  complaintTitle: string;
+  createdAt: Date | null;
+  likeCount: number;
+}
+
+export type StatusType = "WAITING" | "IN_PROGRESS" | "RETURN" | "DONE";

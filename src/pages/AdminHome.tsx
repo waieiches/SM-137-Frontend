@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import CategorySelect from "../components/category-select/CategorySelect";
 import SortBar from "../components/sort-bar/SortBar";
 import AdminContentList from "./view/AdminTable";
-import { mockData } from "../mockData";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getProcessedComplaints } from "../services/managerServices";
+import Loading from "../components/loading/Loading";
 
 const Background = styled.div`
   width: 100%;
@@ -41,11 +41,15 @@ const CategoryContainer = styled.div`
 `;
 
 const AdminHome = () => {
+  const [contentList, setContentList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     getProcessedComplaints()
-      .then((res) => console.log(res))
+      .then((res) => setContentList(res.data))
       .catch((error) => console.log(error));
+    setIsLoading(false);
   }, []);
+
   return (
     <HomeArea>
       <Background>
@@ -55,7 +59,7 @@ const AdminHome = () => {
         </CategoryContainer>
       </Background>
       <SortBar></SortBar>
-      <AdminContentList data={mockData} />
+      {isLoading ? <Loading /> : <AdminContentList data={contentList} />}
     </HomeArea>
   );
 };

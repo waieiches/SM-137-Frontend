@@ -1,18 +1,20 @@
-import React from "react";
 import styled from "@emotion/styled";
-import { DataType } from "../../types/Type";
+// import { DataType } from "../../types/Type";
 import StatusDisplay from "../../components/status-button/StatusDisplay";
-import CategoryTagGroup from "../../components/category-tag/CategoryTagGroup";
+import { ContentType } from "../../types/Type";
 
 interface ContentListProps {
-  data: DataType[];
+  data: ContentType[];
 }
 
-const AdminContentList: React.FC<ContentListProps> = ({ data }) => {
+const AdminContentList = ({ data }: ContentListProps) => {
   const pageSize = 10;
   const currentPage = 1;
 
-  const displayedData = data.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+  const displayedData = data.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
 
   return (
     <Container>
@@ -30,16 +32,16 @@ const AdminContentList: React.FC<ContentListProps> = ({ data }) => {
         <tbody>
           {displayedData.map((item, index) => (
             <DataRow key={index}>
-              <Cell>{`09${index + 1}`}</Cell>
-              <TitleCell>{item.title}</TitleCell>
+              <Cell>{item.complaintId}</Cell>
+              <TitleCell>{item.complaintTitle}</TitleCell>
               <Cell>공개</Cell>
               <Cell>
-                <CategoryTagGroup tagArray={[item.category[0]]} />
+                <div>{item.category}</div>
               </Cell>
               <Cell>
-                <StatusDisplay type={item.status} />
+                <StatusDisplay type={item.complaintStatus} />
               </Cell>
-              <Cell>{item.date}</Cell>
+              {/* <Cell>{item.date}</Cell> */}
             </DataRow>
           ))}
         </tbody>

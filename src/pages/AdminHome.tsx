@@ -3,6 +3,8 @@ import CategorySelect from "../components/category-select/CategorySelect";
 import SortBar from "../components/sort-bar/SortBar";
 import AdminContentList from "./view/AdminTable";
 import { mockData } from "../mockData";
+import { useEffect } from "react";
+import { getProcessedComplaints } from "../services/managerServices";
 
 const Background = styled.div`
   width: 100%;
@@ -39,6 +41,11 @@ const CategoryContainer = styled.div`
 `;
 
 const AdminHome = () => {
+  useEffect(() => {
+    getProcessedComplaints()
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+  }, []);
   return (
     <HomeArea>
       <Background>

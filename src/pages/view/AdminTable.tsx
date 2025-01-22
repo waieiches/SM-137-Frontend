@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 // import { DataType } from "../../types/Type";
 import StatusDisplay from "../../components/status-button/StatusDisplay";
 import { ContentType } from "../../types/Type";
+import { useNavigate } from "react-router-dom";
 
 interface ContentListProps {
   data: ContentType[];
@@ -15,6 +16,12 @@ const AdminContentList = ({ data }: ContentListProps) => {
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );
+
+  //complaintId를 넣으면 해당 게시글에 해당하는 상세 조회로 이동
+  const navigate = useNavigate();
+  const handleNavigate = (complaintId: number) => {
+    navigate(`/admin/home/${complaintId}`);
+  };
 
   return (
     <Container>
@@ -31,7 +38,10 @@ const AdminContentList = ({ data }: ContentListProps) => {
         </thead>
         <tbody>
           {displayedData.map((item, index) => (
-            <DataRow key={index}>
+            <DataRow
+              key={index}
+              onClick={() => handleNavigate(item.complaintId)}
+            >
               <Cell>{item.complaintId}</Cell>
               <TitleCell>{item.complaintTitle}</TitleCell>
               <Cell>공개</Cell>
@@ -86,6 +96,7 @@ const HeaderCell = styled.th`
 
 const DataRow = styled.tr`
   border-bottom: 1px solid var(--gray3-border); /* 데이터 행 구분선 */
+  cursor: pointer;
 `;
 
 const Cell = styled.td`

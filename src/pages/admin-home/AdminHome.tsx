@@ -66,6 +66,12 @@ export const AdminContentContext = createContext<
 >(undefined);
 
 const AdminHome = () => {
+  useEffect(() => {
+    getProcessedComplaints()
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+  }, []);
+  
   const [originData] = useState(mockData);
 
   const { filteredData, handleFilter, handleFilterOptions, filters } =

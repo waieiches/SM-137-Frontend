@@ -15,7 +15,7 @@ const ButtonGroupContainer = styled.div`
 `;
 
 const StatusButtonGroup: React.FC<Props> = ({ onStatusChange }) => {
-  const [selectedType, setSelectedType] = useState<StatusType>("inProgress");
+  const [selectedType, setSelectedType] = useState<StatusType>("IN_PROGRESS");
 
   const handleClick = (type: StatusType) => {
     setSelectedType(type);
@@ -25,24 +25,24 @@ const StatusButtonGroup: React.FC<Props> = ({ onStatusChange }) => {
   return (
     <ButtonGroupContainer>
       <StatusButton
-        type="inProgress"
-        isSelected={selectedType === "inProgress"}
-        onClick={() => handleClick("inProgress")}
+        type="IN_PROGRESS"
+        isSelected={selectedType === "IN_PROGRESS"}
+        onClick={() => handleClick("IN_PROGRESS")}
       />
       <StatusButton
-        type="pending"
-        isSelected={selectedType === "pending"}
-        onClick={() => handleClick("pending")}
+        type="WAITING"
+        isSelected={selectedType === "WAITING"}
+        onClick={() => handleClick("WAITING")}
       />
       <StatusButton
-        type="rejected"
-        isSelected={selectedType === "rejected"}
-        onClick={() => handleClick("rejected")}
+        type="RETURN"
+        isSelected={selectedType === "RETURN"}
+        onClick={() => handleClick("RETURN")}
       />
       <StatusButton
-        type="completed"
-        isSelected={selectedType === "completed"}
-        onClick={() => handleClick("completed")}
+        type="DONE"
+        isSelected={selectedType === "DONE"}
+        onClick={() => handleClick("DONE")}
       />
     </ButtonGroupContainer>
   );

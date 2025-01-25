@@ -62,10 +62,10 @@ const SelectLabel = styled.label<{ active?: boolean }>`
 `;
 
 const statusMapping: Record<string, StatusType> = {
-  진행: "inProgress",
-  대기: "pending",
-  반려: "rejected",
-  완료: "completed",
+  진행: "IN_PROGRESS",
+  대기: "WAITING",
+  반려: "RETURN",
+  완료: "DONE",
 };
 
 const SearchComponent: React.FC = () => {
@@ -147,28 +147,28 @@ const SearchComponent: React.FC = () => {
       <StatusContainer>
         <ItemTitle>진행상태</ItemTitle>
         <SelectLabel
-          active={status.includes("inProgress")}
+          active={status.includes("IN_PROGRESS")}
           onClick={() => toggleStatus("진행")}
         >
-          {status.includes("inProgress") && <CheckIcon />} 진행
+          {status.includes("IN_PROGRESS") && <CheckIcon />} 진행
         </SelectLabel>
         <SelectLabel
-          active={status.includes("pending")}
+          active={status.includes("WAITING")}
           onClick={() => toggleStatus("대기")}
         >
-          {status.includes("pending") && <CheckIcon />} 대기
+          {status.includes("WAITING") && <CheckIcon />} 대기
         </SelectLabel>
         <SelectLabel
-          active={status.includes("rejected")}
+          active={status.includes("RETURN")}
           onClick={() => toggleStatus("반려")}
         >
-          {status.includes("rejected") && <CheckIcon />} 반려
+          {status.includes("RETURN") && <CheckIcon />} 반려
         </SelectLabel>
         <SelectLabel
-          active={status.includes("completed")}
+          active={status.includes("DONE")}
           onClick={() => toggleStatus("완료")}
         >
-          {status.includes("completed") && <CheckIcon />} 완료
+          {status.includes("DONE") && <CheckIcon />} 완료
         </SelectLabel>
       </StatusContainer>
     </>

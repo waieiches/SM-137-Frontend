@@ -83,7 +83,7 @@ const ButtonText = styled.pre<{ color: string }>`
 
 // 단일 버튼 컴포넌트
 const StatusButton = ({
-  type = "WAITING",
+  type = "IN_PROGRESS",
   isSelected = false,
   onClick,
 }: StatusButtonProps) => {

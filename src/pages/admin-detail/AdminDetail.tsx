@@ -55,7 +55,7 @@ const InputField = styled.textarea`
   height: 200px;
   border-radius: 8px;
   background-color: var(--white);
-  padding: 1rem; /* 내부 여백 추가 */
+  padding: 1rem;
 `;
 
 const ButtonContainer = styled.div`
@@ -73,7 +73,7 @@ const BackButtonStyled = styled(BackButton)`
 `;
 
 const AdminDetail = () => {
-  const [selectedStatus, setSelectedStatus] = useState<StatusType>("inProgress");
+  const [selectedStatus, setSelectedStatus] = useState<StatusType>("IN_PROGRESS");
   const [inputValue, setInputValue] = useState(""); // InputField 값 상태
   const [error, setError] = useState(""); // 에러 메시지 상태
   const { isModalOpen, handleModalOpen, handleModalClose } = useModal();
@@ -109,7 +109,7 @@ const AdminDetail = () => {
       </StatusBarContainer>
       <HomeArea></HomeArea>
 
-      {selectedStatus === "rejected" || selectedStatus === "completed" ? (
+      {selectedStatus === "RETURN" || selectedStatus === "DONE" ? (
         <Container>
           <InputTitle>상세 민원 답변</InputTitle>
           <InputField

@@ -5,6 +5,7 @@ import StatusDisplay from "../../components/status-button/StatusDisplay";
 import Pagination from "../../components/pagination/Pagination";
 import { getFormatTime } from "../../utils/FormattingTime";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   max-width: 1114px;
@@ -39,6 +40,7 @@ const HeaderCell = styled.th`
 
 const DataRow = styled.tr`
   border-bottom: 1px solid var(--gray3-border);
+  cursor: pointer;
 `;
 
 const Cell = styled.td`
@@ -75,6 +77,12 @@ const AdminContentList = ({ data }: ContentListProps) => {
     setCurrentPage(page);
   };
 
+    //complaintId를 넣으면 해당 게시글에 해당하는 상세 조회로 이동
+    const navigate = useNavigate();
+    const handleNavigate = (complaintId: number) => {
+      navigate(`/admin/home/${complaintId}`);
+    };
+  
   return (
     <Container>
       <Table>
@@ -90,7 +98,10 @@ const AdminContentList = ({ data }: ContentListProps) => {
         </thead>
         <tbody>
           {displayedData.map((item, index) => (
-            <DataRow key={index}>
+            <DataRow
+              key={index}
+              onClick={() => handleNavigate(item.complaintId)}
+            >
               <Cell>{item.complaintId}</Cell>
               <TitleCell>{item.complaintTitle}</TitleCell>
               <Cell>공개</Cell>

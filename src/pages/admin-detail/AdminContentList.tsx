@@ -1,10 +1,10 @@
-import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { DataType } from "../../types/Type";
+//import DataType from "../../types/Type";
+import { ContentType } from "../../types/Type";
 import StatusDisplay from "../../components/status-button/StatusDisplay";
-import CategoryTagGroup from "../../components/category-tag/CategoryTagGroup";
 import Pagination from "../../components/pagination/Pagination";
 import { getFormatTime } from "../../utils/FormattingTime";
+import { useState } from "react";
 
 const Container = styled.div`
   max-width: 1114px;
@@ -54,10 +54,10 @@ const TitleCell = styled(Cell)`
 `;
 
 interface ContentListProps {
-  data: DataType[];
+  data: ContentType[];
 }
 
-const AdminContentList: React.FC<ContentListProps> = ({ data }) => {
+const AdminContentList = ({ data }: ContentListProps) => {
   const pageSize = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -91,16 +91,17 @@ const AdminContentList: React.FC<ContentListProps> = ({ data }) => {
         <tbody>
           {displayedData.map((item, index) => (
             <DataRow key={index}>
-              <Cell>{item.id}</Cell>
-              <TitleCell>{item.title}</TitleCell>
+              <Cell>{item.complaintId}</Cell>
+              <TitleCell>{item.complaintTitle}</TitleCell>
               <Cell>공개</Cell>
               <Cell>
                 <div>{item.category}</div>
               </Cell>
               <Cell>
-                <StatusDisplay type={item.status} />
+              <StatusDisplay type={item.complaintStatus} />
               </Cell>
-              <Cell>{getFormatTime(new Date(item.date))}</Cell>
+              <Cell>  {item.date ? new Date(item.date).toLocaleDateString() : "N/A"}
+              </Cell>
             </DataRow>
           ))}
         </tbody>

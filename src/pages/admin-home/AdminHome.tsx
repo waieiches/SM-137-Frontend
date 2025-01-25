@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { mockData } from "../../mockData";
 import CategorySelect from "../../components/category-select/CategorySelect";
 import SortBar from "../../components/sort-bar/SortBar";
 import AdminContentList from "../admin-detail/AdminContentList";
@@ -9,6 +8,7 @@ import { DataType, SortType } from "../../types/Type";
 import { FiltersProps, useFilter } from "../../hooks/useFilter";
 import { SortOptionsProps, useSort } from "../../hooks/useSort";
 import { getProcessedComplaints } from "../../services/managerServices";
+import Loading from "../../components/loading/Loading";
 
 interface AdminContenContextProps {
   originData: DataType[];
@@ -66,16 +66,19 @@ export const AdminContentContext = createContext<
 >(undefined);
 
 const AdminHome = () => {
+  const [contentList, setContentList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     getProcessedComplaints()
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
+      .then((res) => setContentList(res.data))
+      .catch((error) => console.error(error));
+    setIsLoading(false);
   }, []);
-  
-  const [originData] = useState(mockData);
 
   const { filteredData, handleFilter, handleFilterOptions, filters } =
-    useFilter(originData);
+    useFilter(contentList);
+
   const { handleSort, sortOptions, handleSortOption, sortData } =
     useSort(filteredData);
 
@@ -96,7 +99,7 @@ const AdminHome = () => {
   return (
     <AdminContentContext.Provider
       value={{
-        originData,
+        originData: contentList,
         handleFilter,
         filters,
         handleFilterOptions,
@@ -116,7 +119,7 @@ const AdminHome = () => {
 
         <SortBar />
         <ContentContainer>
-          <AdminContentList data={sortData} />
+        {isLoading ? <Loading /> : <AdminContentList data={contentList} />}        
         </ContentContainer>
       </HomeArea>
     </AdminContentContext.Provider>

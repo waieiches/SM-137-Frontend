@@ -1,14 +1,19 @@
-import { createBrowserRouter, data } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import AdminHome from "./pages/admin-home/AdminHome";
 import AdminLogin from "./pages/admin-login/AdminLogin";
 import AdminDetail from "./pages/admin-detail/AdminDetail";
 import ContentGrid from "./pages/admin-detail/ContentGrid";
+import PrivateRoute from "./pages/PrivateRoute";
 
 export const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <AdminHome />,
+      element: (
+      <PrivateRoute>
+        <AdminHome />,
+      </PrivateRoute>
+      )
     },
     {
       path: "login",
@@ -16,11 +21,14 @@ export const router = createBrowserRouter(
     },
     {
       path: "detail",
-      element: <AdminDetail />,
+      element: 
+          <AdminDetail />
     },
     {
       path: "test",
-      element: <ContentGrid />,
+      element:(         
+        <ContentGrid />
+    ),
     },
   ],
   { basename: "/SM-137-Frontend/" }

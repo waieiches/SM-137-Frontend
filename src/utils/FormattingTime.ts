@@ -2,13 +2,18 @@ const DATE_INDEX = 0;
 const ONE_HOUR = 3600000;
 const ONE_DAY = 86400000;
 
-export const getFormatTime = (date: Date) => {
+export const getFormatTime = (date: Date | undefined | null) => {
   const now = new Date();
-  const formatTime = formattingTime(date, now);
-  return formatTime;
+  if (!date || isNaN(date.getTime())) {
+    return "Invalid Date";
+  }
+  return formattingTime(date, now);
 };
 
 const calculateGap = (date: Date, now: Date) => {
+  if (!date || isNaN(date.getTime()) || !now || isNaN(now.getTime())) {
+  }
+
   const time = date.getTime();
   const nowTime = now.getTime();
   const millisecondGap = nowTime - time;

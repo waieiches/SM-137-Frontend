@@ -1,24 +1,26 @@
+import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import CategorySelect from "../../components/category-select/CategorySelect";
 import SortBar from "../../components/sort-bar/SortBar";
-import AdminContentList from "../admin-detail/AdminContentList";
+import AdminContentList from "./AdminContentList";
 import FormComponent from "./AdminSearch";
-import { createContext, useEffect, useState } from "react";
-import { DataType, SortType } from "../../types/Type";
+import { createContext } from "react";
+import { ContentType, SortType } from "../../types/Type";
 import { FiltersProps, useFilter } from "../../hooks/useFilter";
 import { SortOptionsProps, useSort } from "../../hooks/useSort";
 import { getProcessedComplaints } from "../../services/managerServices";
 import Loading from "../../components/loading/Loading";
+import { sampleData } from "../../mockData";
 
 interface AdminContenContextProps {
-  originData: DataType[];
+  originData: ContentType[];
   filters: FiltersProps;
   handleFilterOptions: <K extends keyof FiltersProps>(
     option: K,
     value: FiltersProps[K]
   ) => void;
   handleFilter: () => void;
-  handleSort: (inputData: DataType[]) => void;
+  handleSort: (inputData: ContentType[]) => void;
   sortOptions: SortOptionsProps;
   handleSortOption: (type: SortType) => void;
 }
@@ -61,20 +63,14 @@ const ContentContainer = styled.div`
   margin-bottom: 1.5rem;
   width: 100%;
 `;
+
 export const AdminContentContext = createContext<
   AdminContenContextProps | undefined
 >(undefined);
 
 const AdminHome = () => {
-  const [contentList, setContentList] = useState([]);
+  const [contentList, setContentList] = useState<ContentType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    getProcessedComplaints()
-      .then((res) => setContentList(res.data))
-      .catch((error) => console.error(error));
-    setIsLoading(false);
-  }, []);
 
   const { filteredData, handleFilter, handleFilterOptions, filters } =
     useFilter(contentList);
@@ -83,18 +79,28 @@ const AdminHome = () => {
     useSort(filteredData);
 
   useEffect(() => {
-    handleFilter();
-  }, [filters]);
-
-  useEffect(() => {
-    handleSort(filteredData);
-  }, [sortOptions, filteredData]);
-
-  useEffect(() => {
     getProcessedComplaints()
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
+      .then((res) => {
+        setContentList(res.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsLoading(false);
+      });
   }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      handleFilter();
+    }
+  }, [filters, isLoading]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      handleSort(filteredData);
+    }
+  }, [sortOptions, filteredData, isLoading]);
 
   return (
     <AdminContentContext.Provider
@@ -119,7 +125,7 @@ const AdminHome = () => {
 
         <SortBar />
         <ContentContainer>
-        {isLoading ? <Loading /> : <AdminContentList data={contentList} />}        
+          {isLoading ? <Loading /> : <AdminContentList data={sortData} />}
         </ContentContainer>
       </HomeArea>
     </AdminContentContext.Provider>

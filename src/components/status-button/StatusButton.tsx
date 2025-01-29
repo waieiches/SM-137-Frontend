@@ -58,6 +58,11 @@ export const buttonStyles = {
     color: "var(--succeess)",
     text: "완료",
   },
+  default: {
+    Icon: CheckIcon,
+    color: "var(--succeess)",
+    text: "완료",
+  },
 };
 
 interface ButtonContainerProps {
@@ -83,11 +88,13 @@ const ButtonText = styled.pre<{ color: string }>`
 
 // 단일 버튼 컴포넌트
 const StatusButton = ({
-  type = "IN_PROGRESS",
+  type = "WAITING",
   isSelected = false,
   onClick,
 }: StatusButtonProps) => {
-  const { color, Icon, text } = buttonStyles[type];
+
+  
+  const { color, Icon, text } = buttonStyles[type] || buttonStyles.default;
 
   return (
     <ButtonContainer

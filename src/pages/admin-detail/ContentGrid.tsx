@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Title } from "../../styles/ContentStyle";
+import { ContentType } from "../../types/Type";
 
 const Container = styled.div`
   display: grid;
@@ -41,12 +42,21 @@ const Text = styled.div`
   -webkit-box-orient: vertical;
   justify-content: center;
 `;
-const ContentGrid = () => {
+
+interface ContentProps {
+  data: ContentType;
+}
+
+const ContentGrid = ({ data }: ContentProps) => {
+  if (!data) {
+    return <text>데이터가 없습니다</text>;
+  }
+
   return (
     <Container>
       <ContentBox>
         <Title>민원 정보</Title>
-        <Text>민원번호 카테고리 개인/공개</Text>
+        민원번호 {data.complaintId} | 카테고리 {data.category}
       </ContentBox>
 
       <ContentBox>
@@ -56,7 +66,8 @@ const ContentGrid = () => {
 
       <BContentBox>
         <Title>민원 내용</Title>
-        <Text>현황 및 문제점 / 개선 방향 / 기대 효과</Text>
+        <Text>{data.complaintTitle}</Text>
+        <Text>{data.contentProb}</Text>
       </BContentBox>
     </Container>
   );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CategoryValue, DataType, StatusType } from "../types/Type";
+import { CategoryValue, ContentType, StatusType } from "../types/Type";
 import { matchingMonth } from "../utils/MatchingOption";
 
 export interface FiltersProps {
@@ -11,8 +11,8 @@ export interface FiltersProps {
   title: string[] | null;
 }
 
-export const useFilter = (originData: DataType[]) => {
-  const [filteredData, setFilteredData] = useState<DataType[]>(originData);
+export const useFilter = (originData: ContentType[]) => {
+  const [filteredData, setFilteredData] = useState<ContentType[]>(originData);
   const [filters, setFilters] = useState<FiltersProps>({
     //필터 옵션 저장
     period: null,
@@ -34,11 +34,12 @@ export const useFilter = (originData: DataType[]) => {
   };
 
   const handleFilter = () => {
-    let result: DataType[] = originData;
+    let result: ContentType[] = originData;
     if (filters.period) {
       result = handlePeriod(result, filters.period);
     }
     if (filters.category) {
+      console.log("작동");
       result = handleCategory(result, filters.category);
     }
     if (filters.status) {
@@ -63,7 +64,7 @@ export const useFilter = (originData: DataType[]) => {
     return lastDate;
   };
 
-  const handlePeriod = (originData: DataType[], dateOption: string) => {
+  const handlePeriod = (originData: ContentType[], dateOption: string) => {
     if (dateOption === "전체") {
       return originData;
     }
@@ -76,70 +77,71 @@ export const useFilter = (originData: DataType[]) => {
   };
 
   const handleCategory = (
-    originData: DataType[],
+    originData: ContentType[],
     subCategory: CategoryValue
   ) => {
     //subCategory를 선택했을 때만 필터링
     let result = originData;
-
     if (subCategory) {
+      console.log(subCategory);
       result = originData.filter((i) => i.category === subCategory);
     }
     return result;
   };
 
-  const handleStatus = (originData: DataType[], status: StatusType[]) => {
+  const handleStatus = (originData: ContentType[], status: StatusType[]) => {
     let result = originData;
     const noStatusOption = status.length === 0;
     //option이 선택된 경우에만 필터링
     if (!noStatusOption) {
-      result = originData.filter((i) => status.includes(i.status));
+      result = originData.filter((i) => status.includes(i.complaintStatus));
     }
     return result;
   };
 
-  const handleHashtag = (originData: DataType[], hashtag: string[]) => {
+  const handleHashtag = (originData: ContentType[], hashtag: string[]) => {
     let result = originData;
     for (let tag of hashtag) {
-      result = originData.filter((i) => i.hashtag.includes(tag));
+      //백엔드 key값에 따라 변경 필요요
+      result = originData.filter((i) => i.category.includes(tag));
     }
     return result;
   };
 
-  const handleAdminNumber = (originData: DataType[], number: number) => {
+  const handleAdminNumber = (originData: ContentType[], number: number) => {
     let result = originData;
-    result = originData.filter((i) => i.id === number);
+    result = originData.filter((i) => i.complaintId === number);
     return result;
   };
 
-  const handleAdminTitle = (originData: DataType[], titleKeywords: string[]) => {
+  const handleAdminTitle = (
+    originData: ContentType[],
+    titleKeywords: string[]
+  ) => {
     let result = originData;
-  
+
     // titleKeywords와 originData가 모두 유효한지 확인
     if (!Array.isArray(titleKeywords) || titleKeywords.length === 0) {
       return result; // 키워드가 없으면 원본 데이터 반환
     }
-  
+
     result = originData.filter((data) => {
       // 데이터가 유효한지 확인
-      if (!data || typeof data.title !== "string") {
+      if (!data || typeof data.complaintTitle !== "string") {
         return false; // 제목이 없거나 문자열이 아니면 제외
       }
-  
+
       // 게시글의 제목을 공백 기준으로 분리
-      const titleWords = data.title.split(" ");
-  
+      const titleWords = data.complaintTitle.split(" ");
+
       // 입력받은 키워드 배열과 비교하여 하나라도 포함되면 필터링
       return titleKeywords.some((keyword) =>
         titleWords.some((word) => word.includes(keyword))
       );
     });
-  
+
     return result; // 필터링된 데이터 반환
   };
-  
 
   return { filters, filteredData, handleFilter, handleFilterOptions };
 };
-
-

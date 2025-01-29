@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 1000px;
@@ -31,9 +32,14 @@ const ButtonContainer = styled.div`
 `;
 
 const BackButton = () => {
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate("/"); 
+  };
 
   return (
-    <Container>
+    <Container onClick={handleBackClick}>
     <IconContainer>
       <ArrowBackRoundedIcon sx={{ color: 'white' }} />
       <ButtonContainer>

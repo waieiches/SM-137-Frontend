@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-//import DataType from "../../types/Type";
 import { ContentType } from "../../types/Type";
 import StatusDisplay from "../../components/status-button/StatusDisplay";
 import Pagination from "../../components/pagination/Pagination";
@@ -72,7 +71,6 @@ const AdminContentList = ({ data }: ContentListProps) => {
     currentPage * pageSize
   );
 
-  // 페이지 변경 핸들러
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
@@ -80,7 +78,7 @@ const AdminContentList = ({ data }: ContentListProps) => {
     //complaintId를 넣으면 해당 게시글에 해당하는 상세 조회로 이동
     const navigate = useNavigate();
     const handleNavigate = (complaintId: number) => {
-      navigate(`/admin/home?id=${complaintId}`);
+      navigate(`/detail?id=${complaintId}`);
     };
   
   return (
@@ -111,7 +109,8 @@ const AdminContentList = ({ data }: ContentListProps) => {
               <Cell>
               <StatusDisplay type={item.complaintStatus} />
               </Cell>
-              <Cell>  {item.date ? new Date(item.date).toLocaleDateString() : "N/A"}
+              <Cell>  
+                {getFormatTime(item.date)}
               </Cell>
             </DataRow>
           ))}

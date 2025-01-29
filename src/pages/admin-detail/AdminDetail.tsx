@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
+import { useSearchParams } from "react-router-dom";
 import ContentGrid from "./ContentGrid";
 import StatusBar from "./StatusBar";
-import { StatusType } from "../../types/Type";
+import { ContentType, StatusType } from "../../types/Type";
 import Button from "../../components/button/Button";
 import BackButton from "./BackButton";
 import AdminModalContents from "../../components/modal/contents/AdminModalContents";
 import Modal from "../../components/modal/Modal";
 import { useModal } from "../../hooks/useModal";
+import { sampleData } from "../../mockData";
 
 const Background = styled.div`
   width: 100%;
@@ -17,17 +19,6 @@ const Background = styled.div`
   align-items: center;
   justify-content: center;
   padding: 3rem 0;
-`;
-
-const HomeArea = styled.div`
-  position: absolute;
-  left: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
 `;
 
 const Title = styled.h2`
@@ -75,8 +66,31 @@ const BackButtonStyled = styled(BackButton)`
 const AdminDetail = () => {
   const [selectedStatus, setSelectedStatus] = useState<StatusType>("IN_PROGRESS");
   const [inputValue, setInputValue] = useState(""); // InputField 값 상태
-  const [error, setError] = useState(""); // 에러 메시지 상태
+  const [error, setError] = useState(""); 
+  const [data, setData] = useState<ContentType | null>(null);
+  const [loading, setLoading] = useState(true);
   const { isModalOpen, handleModalOpen, handleModalClose } = useModal();
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get("id");
+
+  useEffect(() => {
+    if (id) {
+      fetch(`/api/complaints/${id}`)
+        .then((response) => response.json())
+        .then((res: { data: ContentType }) => {
+          setData(res.data); // API로 받은 단일 객체 설정
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("데이터 로드 실패:", error);
+          const fallbackData = sampleData.find((item) => item.complaintId === Number(id));
+          setData(fallbackData || null);
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
+    }
+  }, [id]);
 
   const handleStatusChange = (status: StatusType) => {
     setSelectedStatus(status);
@@ -97,17 +111,24 @@ const AdminDetail = () => {
     handleModalOpen();
   };
 
+  if (loading) {
+    return <div>로딩 중</div>;
+  }
+
+  if (!data) {
+    return <div>데이터를 불러올 수 없습니다</div>;
+  }
+
   return (
     <>
       <Background>
         <Title>상세 조회</Title>
         <BackButtonStyled />
-        <ContentGrid />
+        <ContentGrid data={data} />
       </Background>
       <StatusBarContainer>
         <StatusBar onStatusChange={handleStatusChange} />
       </StatusBarContainer>
-      <HomeArea></HomeArea>
 
       {selectedStatus === "RETURN" || selectedStatus === "DONE" ? (
         <Container>

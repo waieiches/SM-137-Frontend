@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, data } from "react-router-dom";
 import AdminHome from "./pages/admin-home/AdminHome";
 import AdminLogin from "./pages/admin-login/AdminLogin";
 import AdminDetail from "./pages/admin-detail/AdminDetail";

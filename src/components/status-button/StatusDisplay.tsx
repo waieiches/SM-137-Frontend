@@ -16,13 +16,20 @@ const DisplayText = styled.pre<{ color: string }>`
 `;
 
 const StatusDisplay = ({ type }: StatusDisplayProps) => {
-  const { color, Icon, text } = buttonStyles[type];
+  const buttonStyle = buttonStyles[type as keyof typeof buttonStyles] || buttonStyles.default;
+
+  if (!buttonStyle) {
+    return null; 
+  }
+
+  const { color, Icon, text } = buttonStyle;
 
   return (
     <DisplayContainer>
-      <Icon />
+      {Icon && <Icon />}
       <DisplayText color={color}>{text}</DisplayText>
     </DisplayContainer>
   );
 };
+
 export default StatusDisplay;

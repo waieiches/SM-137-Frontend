@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { useSearchParams } from "react-router-dom";
 import ContentGrid from "./ContentGrid";
 import StatusBar from "./StatusBar";
-import { ContentType, StatusType } from "../../types/Type";
+import { ContentDetailProps, StatusType } from "../../types/Type";
 import Button from "../../components/button/Button";
 import BackButton from "./BackButton";
 import AdminModalContents from "../../components/modal/contents/AdminModalContents";
@@ -67,7 +67,7 @@ const AdminDetail = () => {
     useState<StatusType>("IN_PROGRESS");
   const [inputValue, setInputValue] = useState(""); // InputField 값 상태
   const [error, setError] = useState("");
-  const [data, setData] = useState<ContentType | null>(null);
+  const [data, setData] = useState<ContentDetailProps | null>(null);
   const [loading, setLoading] = useState(true);
   const { isModalOpen, handleModalOpen, handleModalClose } = useModal();
   const [searchParams] = useSearchParams();

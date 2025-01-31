@@ -83,3 +83,20 @@ export interface MyPageProps {
   major: string;
   email: string;
 }
+
+export interface ContentDetailProps {
+  complaintId: number;
+  tag: string;
+  category: string;
+  complaintStatus: StatusType;
+  complaintTitle: string;
+  contentProb: string;
+  likeCount: number;
+  scrapCount: number;
+  date: Date;
+  user: {
+    name: string;
+    number: string;
+    depaartment: string;
+  };
+}

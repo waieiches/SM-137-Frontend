@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Title } from "../../styles/ContentStyle";
-import { ContentType } from "../../types/Type";
+import { ContentDetailProps } from "../../types/Type";
 
 const Container = styled.div`
   display: grid;
@@ -30,8 +30,8 @@ const BContentBox = styled(ContentBox)`
   border: 1px solid #ddd;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; 
-  align-items: flex-start; 
+  justify-content: flex-start;
+  align-items: flex-start;
   padding: 30px;
 `;
 
@@ -44,7 +44,7 @@ const Text = styled.div`
 `;
 
 interface ContentProps {
-  data: ContentType;
+  data: ContentDetailProps;
 }
 
 const ContentGrid = ({ data }: ContentProps) => {
@@ -56,12 +56,15 @@ const ContentGrid = ({ data }: ContentProps) => {
     <Container>
       <ContentBox>
         <Title>민원 정보</Title>
-        <Text>민원번호 | {data.complaintId} 카테고리 | {data.category}</Text>
+        <Text>민원번호 | {data.complaintId}</Text>{" "}
+        <Text>카테고리 | {data.category}</Text>
       </ContentBox>
 
       <ContentBox>
         <Title>민원인 정보</Title>
-        <Text>학과 학번 이름</Text>
+        <Text>학과 : {data.user.depaartment}</Text>
+        <Text> 학번 : {data.user.number}</Text>
+        <Text> 이름 : {data.user.name}</Text>
       </ContentBox>
 
       <BContentBox>

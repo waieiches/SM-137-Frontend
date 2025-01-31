@@ -71,7 +71,7 @@ const ContentBox = ({ type = "small", data }: ContenteBoxProps) => {
         <StatusDisplay type={data.status} />
         <InteractionGroup likes={data.likes} bookmarks={data.bookmarks} />
       </StatusContainer>
-      <CategoryTagGroup tagArray={data.category} />
+      <CategoryTagGroup tagArray={Array.isArray(data.category) ? data.category : [data.category]} />
       <Title>{data.title}</Title>
       <Article line={ARTICLE_LINE}>{data.content}</Article>
     </Container>

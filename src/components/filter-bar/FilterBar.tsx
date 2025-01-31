@@ -91,7 +91,9 @@ const FilterBar = () => {
 
       {/* 오른쪽 상태 버튼 그룹 */}
       <StatusButtonGroupContainer>
-        <StatusButtonGroup />
+        <StatusButtonGroup onStatusChange={function (): void {
+          throw new Error("Function not implemented.");
+        } } />
       </StatusButtonGroupContainer>
     </Container>
   );

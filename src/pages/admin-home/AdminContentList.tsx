@@ -88,7 +88,6 @@ const AdminContentList = ({ data }: ContentListProps) => {
           <HeaderRow>
             <HeaderCell>민원번호</HeaderCell>
             <HeaderCell>제목</HeaderCell>
-            <HeaderCell>개인/공개</HeaderCell>
             <HeaderCell>카테고리</HeaderCell>
             <HeaderCell>진행상태</HeaderCell>
             <HeaderCell>신청일</HeaderCell>
@@ -102,7 +101,6 @@ const AdminContentList = ({ data }: ContentListProps) => {
             >
               <Cell>{item.complaintId}</Cell>
               <TitleCell>{item.complaintTitle}</TitleCell>
-              <Cell>공개</Cell>
               <Cell>
                 <div>{item.category}</div>
               </Cell>

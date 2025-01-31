@@ -24,5 +24,4 @@ export const router = createBrowserRouter(
           <AdminDetail />
     },
   ],
-  { basename: "/SM-137-Frontend/" }
 );

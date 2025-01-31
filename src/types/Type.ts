@@ -94,9 +94,11 @@ export interface ContentDetailProps {
   likeCount: number;
   scrapCount: number;
   date: Date;
-  user: {
-    name: string;
-    number: string;
-    depaartment: string;
-  };
+  user: [
+    {
+      name: string;
+      number: string;
+      depaartment: string;
+    },
+  ];
 }

@@ -2,6 +2,10 @@ import styled from "@emotion/styled";
 import { Title } from "../../styles/ContentStyle";
 import { ContentDetailProps } from "../../types/Type";
 
+interface ContentProps {
+  data: ContentDetailProps;
+}
+
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -35,7 +39,13 @@ const BContentBox = styled(ContentBox)`
   padding: 30px;
 `;
 
+const TextContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
 const Text = styled.div`
+  display: flex;
   color: var(--gray5-lowText);
   overflow: hidden;
   display: -webkit-box;
@@ -43,9 +53,9 @@ const Text = styled.div`
   justify-content: center;
 `;
 
-interface ContentProps {
-  data: ContentDetailProps;
-}
+const Data = styled(Text)`
+  color: var(--gray6-header);
+`;
 
 const ContentGrid = ({ data }: ContentProps) => {
   if (!data) {
@@ -56,15 +66,29 @@ const ContentGrid = ({ data }: ContentProps) => {
     <Container>
       <ContentBox>
         <Title>민원 정보</Title>
-        <Text>민원번호 | {data.complaintId}</Text>{" "}
-        <Text>카테고리 | {data.category}</Text>
+        <TextContainer>
+          <Text>
+            민원번호 | <Data>{data.complaintId}</Data>
+          </Text>
+          <Text>
+            카테고리 | <Data>{data.category}</Data>
+          </Text>
+        </TextContainer>
       </ContentBox>
 
       <ContentBox>
         <Title>민원인 정보</Title>
-        <Text>학과 : {data.user.depaartment}</Text>
-        <Text> 학번 : {data.user.number}</Text>
-        <Text> 이름 : {data.user.name}</Text>
+        <TextContainer>
+          <Text>
+            학과 : <Data>{data.user[0].depaartment}</Data>
+          </Text>
+          <Text>
+            학번 : <Data>{data.user[0].number}</Data>
+          </Text>
+          <Text>
+            이름 : <Data>{data.user[0].name}</Data>
+          </Text>
+        </TextContainer>
       </ContentBox>
 
       <BContentBox>

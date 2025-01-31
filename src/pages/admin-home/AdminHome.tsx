@@ -10,7 +10,6 @@ import { FiltersProps, useFilter } from "../../hooks/useFilter";
 import { SortOptionsProps, useSort } from "../../hooks/useSort";
 import { getProcessedComplaints } from "../../services/managerServices";
 import Loading from "../../components/loading/Loading";
-import { sampleData } from "../../mockData";
 
 interface AdminContenContextProps {
   originData: ContentType[];

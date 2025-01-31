@@ -1,11 +1,18 @@
+<<<<<<< HEAD
 import { categoryName } from "../utils/SubCategoryContent";
 
+=======
+>>>>>>> d05d38b4a17dfdf0679ccea6af385315fbc1447a
 export type StatusTypeExample =
   | "inProgress"
   | "pending"
   | "rejected"
+<<<<<<< HEAD
   | "completed"
   | undefined;
+=======
+  | "completed";
+>>>>>>> d05d38b4a17dfdf0679ccea6af385315fbc1447a
 
 export interface DataType {
   id: number;
@@ -26,6 +33,7 @@ export interface CommentType {
   likes: number;
 }
 
+<<<<<<< HEAD
 export interface MyPageProps {
   state: string;
   name: string;
@@ -81,3 +89,16 @@ export interface MyPageProps {
   major: string;
   email: string;
 }
+=======
+//백엔드 연동
+export interface ContentType {
+  complaintId: number;
+  category: string;
+  complaintStatus: StatusType;
+  complaintTitle: string;
+  createdAt: Date | null;
+  likeCount: number;
+}
+
+export type StatusType = "WAITING" | "IN_PROGRESS" | "RETURN" | "DONE";
+>>>>>>> d05d38b4a17dfdf0679ccea6af385315fbc1447a

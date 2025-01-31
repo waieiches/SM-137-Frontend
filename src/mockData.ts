@@ -11,7 +11,7 @@ export const sampleData: ContentType[] = [
     complaintId: 1,
     tag: "환경",
     category: "환경오염",
-    complaintStatus: "WAITING", // StatusType에 따라 적절히 수정
+    complaintStatus: "WAITING",
     complaintTitle: "공원 쓰레기 문제",
     contentProb: "공원에 쓰레기가 너무 많아 미관을 해치고 있습니다.",
     likeCount: 23,

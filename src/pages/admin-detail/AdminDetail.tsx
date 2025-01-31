@@ -9,7 +9,7 @@ import BackButton from "./BackButton";
 import AdminModalContents from "../../components/modal/contents/AdminModalContents";
 import Modal from "../../components/modal/Modal";
 import { useModal } from "../../hooks/useModal";
-import { sampleData } from "../../mockData";
+import { getComplaintDetail } from "../../services/managerServices";
 
 const Background = styled.div`
   width: 100%;
@@ -54,7 +54,6 @@ const ButtonContainer = styled.div`
   justify-content: center;
   margin-bottom: 1.5rem;
   line-height: 1.5;
-
 `;
 
 const BackButtonStyled = styled(BackButton)`
@@ -64,9 +63,10 @@ const BackButtonStyled = styled(BackButton)`
 `;
 
 const AdminDetail = () => {
-  const [selectedStatus, setSelectedStatus] = useState<StatusType>("IN_PROGRESS");
+  const [selectedStatus, setSelectedStatus] =
+    useState<StatusType>("IN_PROGRESS");
   const [inputValue, setInputValue] = useState(""); // InputField 값 상태
-  const [error, setError] = useState(""); 
+  const [error, setError] = useState("");
   const [data, setData] = useState<ContentType | null>(null);
   const [loading, setLoading] = useState(true);
   const { isModalOpen, handleModalOpen, handleModalClose } = useModal();
@@ -75,21 +75,11 @@ const AdminDetail = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`/api/complaints/${id}`)
-        .then((response) => response.json())
-        .then((res: { data: ContentType }) => {
-          setData(res.data); // API로 받은 단일 객체 설정
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error("데이터 로드 실패:", error);
-          const fallbackData = sampleData.find((item) => item.complaintId === Number(id));
-          setData(fallbackData || null);
-          setLoading(false);
-        });
-    } else {
-      setLoading(false);
+      getComplaintDetail(id)
+        .then((res) => setData(res.data))
+        .catch((error) => console.error(error));
     }
+    setLoading(false);
   }, [id]);
 
   const handleStatusChange = (status: StatusType) => {
@@ -98,7 +88,7 @@ const AdminDetail = () => {
 
   const handleNextClick = () => {
     if (!inputValue.trim()) {
-      setError("내용을 입력해주세요."); 
+      setError("내용을 입력해주세요.");
       return;
     }
 
@@ -107,7 +97,7 @@ const AdminDetail = () => {
       return;
     }
 
-    setError(""); 
+    setError("");
     handleModalOpen();
   };
 
@@ -137,12 +127,19 @@ const AdminDetail = () => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)} // 입력 값 업데이트
           />
-          {error && <p style={{ color: "red", marginTop: "0.5rem" }}>{error}</p>} {/* 에러 메시지 */}
+          {error && (
+            <p style={{ color: "red", marginTop: "0.5rem" }}>{error}</p>
+          )}{" "}
+          {/* 에러 메시지 */}
         </Container>
       ) : null}
 
       <ButtonContainer>
-        <Button content="다음" type={"_120x40_Primary"} onClick={handleNextClick} />
+        <Button
+          content="다음"
+          type={"_120x40_Primary"}
+          onClick={handleNextClick}
+        />
       </ButtonContainer>
 
       <Modal

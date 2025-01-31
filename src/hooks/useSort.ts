@@ -31,10 +31,7 @@ export const useSort = (filteredData: ContentType[]) => {
     }));
   };
 
-  console.log(sortOptions);
-
   const handleSort = (inputData: ContentType[]) => {
-    console.log("정렬 작동");
     if (sortOptions.scrap) {
       setSortData([...inputData].sort((a, b) => b.scrapCount - a.scrapCount));
     } else if (sortOptions.likes) {

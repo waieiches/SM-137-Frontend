@@ -71,6 +71,8 @@ const AdminHome = () => {
   const [contentList, setContentList] = useState<ContentType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  console.log("log: AdminHome 렌더링됨. 현재 isLoading 상태:", isLoading);
+
   const { filteredData, handleFilter, handleFilterOptions, filters } =
     useFilter(contentList);
 
@@ -78,25 +80,38 @@ const AdminHome = () => {
     useSort(filteredData);
 
   useEffect(() => {
+    console.log("log: useEffect (API 호출) 실행됨");
+
     getProcessedComplaints()
       .then((res) => {
+        console.log("log: API 응답 수신 완료. 데이터:", res.data);
         setContentList(res.data);
         setIsLoading(false);
+        console.log("log: isLoading 상태 변경됨 → false");
       })
       .catch((error) => {
-        console.error(error);
+        console.error("log: API 요청 실패:", error);
         setIsLoading(false);
       });
   }, []);
 
   useEffect(() => {
+    console.log("log: useEffect (필터 적용) 실행됨. isLoading:", isLoading);
+    console.log("log: 현재 filters 상태:", filters);
+
     if (!isLoading) {
+      console.log("log: handleFilter 실행됨");
       handleFilter();
     }
   }, [filters, isLoading]);
 
   useEffect(() => {
+    console.log("log: useEffect (정렬 적용) 실행됨. isLoading:", isLoading);
+    console.log("log: 현재 sortOptions 상태:", sortOptions);
+    console.log("log: 현재 filteredData 상태:", filteredData);
+
     if (!isLoading) {
+      console.log("log: handleSort 호출 직전. filteredData =", filteredData);
       handleSort(filteredData);
     }
   }, [sortOptions, filteredData, isLoading]);

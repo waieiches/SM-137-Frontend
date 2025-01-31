@@ -83,18 +83,17 @@ const AdminHome = () => {
     console.log("API 호출");
 
     getProcessedComplaints()
-    .then((res) => {
-      console.log("log: API 응답 데이터:", res.data);
-      if (!Array.isArray(res.data)) {
-        console.error("log: API 응답이 배열이 아닙니다:", res.data);
-      }
-      setContentList(res.data || []);
-    })
-    .catch((error) => {
-      console.error("log: API 호출 에러:", error);
-      setContentList([]);
-    });
-}, []);
+      .then((res) => {
+        console.log("API 응답 수신 완료. 데이터:", res.data);
+        setContentList(res.data);
+        setIsLoading(false);
+        console.log("isLoading 상태 변경 → false");
+      })
+      .catch((error) => {
+        console.error("API 요청 실패:", error);
+        setIsLoading(false);
+      });
+  }, []);
 
   useEffect(() => {
     console.log("useEffect (필터 적용) 실행. isLoading:", isLoading);

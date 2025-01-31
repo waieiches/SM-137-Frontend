@@ -1,7 +1,11 @@
 import { useState } from "react";
-import StatusButton from "./StatusButton";
 import styled from "@emotion/styled";
+import StatusButton from "./StatusButton";
 import { StatusType } from "../../types/Type";
+
+interface Props {
+  onStatusChange: (status: StatusType) => void;
+}
 
 const ButtonGroupContainer = styled.div`
   display: flex;
@@ -10,34 +14,35 @@ const ButtonGroupContainer = styled.div`
   height: 29px;
 `;
 
-const StatusButtonGroup = () => {
-  const [selectedType, setSelectedType] = useState<StatusType>("inProgress"); // 초기 상태 설정
+const StatusButtonGroup: React.FC<Props> = ({ onStatusChange }) => {
+  const [selectedType, setSelectedType] = useState<StatusType>("IN_PROGRESS");
 
   const handleClick = (type: StatusType) => {
     setSelectedType(type);
+    onStatusChange(type); 
   };
 
   return (
     <ButtonGroupContainer>
       <StatusButton
-        type="inProgress"
-        isSelected={selectedType === "inProgress"}
-        onClick={() => handleClick("inProgress")}
+        type="IN_PROGRESS"
+        isSelected={selectedType === "IN_PROGRESS"}
+        onClick={() => handleClick("IN_PROGRESS")}
       />
       <StatusButton
-        type="pending"
-        isSelected={selectedType === "pending"}
-        onClick={() => handleClick("pending")}
+        type="WAITING"
+        isSelected={selectedType === "WAITING"}
+        onClick={() => handleClick("WAITING")}
       />
       <StatusButton
-        type="rejected"
-        isSelected={selectedType === "rejected"}
-        onClick={() => handleClick("rejected")}
+        type="RETURN"
+        isSelected={selectedType === "RETURN"}
+        onClick={() => handleClick("RETURN")}
       />
       <StatusButton
-        type="completed"
-        isSelected={selectedType === "completed"}
-        onClick={() => handleClick("completed")}
+        type="DONE"
+        isSelected={selectedType === "DONE"}
+        onClick={() => handleClick("DONE")}
       />
     </ButtonGroupContainer>
   );

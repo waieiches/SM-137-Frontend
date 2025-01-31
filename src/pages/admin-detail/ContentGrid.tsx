@@ -56,7 +56,7 @@ const ContentGrid = ({ data }: ContentProps) => {
     <Container>
       <ContentBox>
         <Title>민원 정보</Title>
-        민원번호 {data.complaintId} | 카테고리 {data.category}
+        <Text>민원번호 | {data.complaintId} 카테고리 | {data.category}</Text>
       </ContentBox>
 
       <ContentBox>

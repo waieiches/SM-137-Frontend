@@ -31,20 +31,25 @@ const Input = styled.input`
   border-radius: 4px;
   background-color: var(--white);
   `
-const ButtonContainer = styled.div`
-  width: 100%;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-`
+const FieldWrapper = styled.div`
+display: flex;
+align-items: flex-start; 
+gap: 20px; 
+`;
+
 const FieldContainer = styled.div`
-  height: 5rem;
-  gap: 10px;
-`
+display: flex;
+flex-direction: column;
+`;
+
+const ButtonContainer = styled.div`
+display: flex;
+align-items: center; 
+`;
 
 const FieldBox = styled.div`
   display: flex;  
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 `
 
 const Message = styled.p<{ success?: boolean }>`
@@ -61,7 +66,7 @@ const Login: React.FC = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("/SM-137-Frontend/credentials.json");
+      const response = await fetch("/credentials.json");
       if (!response.ok) throw new Error("Failed to load credentials");
 
       const credentials = await response.json();
@@ -81,35 +86,38 @@ const Login: React.FC = () => {
   return (
     <Container>
       <Title>관리자 로그인</Title>
-      <FieldContainer>
-        <FieldBox>
-          <TextBox>
-            <Text>아이디</Text>
-          </TextBox>
-          <Input
-            placeholder="아이디 입력"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </FieldBox>
-        <FieldBox>
-          <TextBox>
-            <Text>비밀번호</Text>
-          </TextBox>
-          <Input
-            placeholder="비밀번호 입력"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </FieldBox>
-      </FieldContainer>
-      <ButtonContainer>
-        <Button content="다음" type={"_100x123_Primary"} onClick={handleLogin} />
-      </ButtonContainer>
+      <FieldWrapper>
+        <FieldContainer>
+          <FieldBox>
+            <TextBox>
+              <Text>아이디</Text>
+            </TextBox>
+            <Input
+              placeholder="아이디 입력"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </FieldBox>
+          <FieldBox>
+            <TextBox>
+              <Text>비밀번호</Text>
+            </TextBox>
+            <Input
+              placeholder="비밀번호 입력"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </FieldBox>
+        </FieldContainer>
+        <ButtonContainer>
+          <Button content="다음" type={"_100x123_Primary"} onClick={handleLogin} />
+        </ButtonContainer>
+      </FieldWrapper>
       {message && <Message success={message.success}>{message.text}</Message>}
     </Container>
   );
+
 };
 
 export default Login;

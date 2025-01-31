@@ -1,8 +1,4 @@
 // import apiClient from "./apiClient";
-<<<<<<< HEAD
-=======
-
->>>>>>> d05d38b4a17dfdf0679ccea6af385315fbc1447a
 // export const complaintWrite = async (data) => {
 //   try {
 //     const response = await apiClient.post(
@@ -16,10 +12,6 @@
 //     throw error;
 //   }
 // };
-<<<<<<< HEAD
-=======
-
->>>>>>> d05d38b4a17dfdf0679ccea6af385315fbc1447a
 // export const complaintModify = async (complaintId, data) => {
 //   try {
 //     const response = await apiClient.put(
@@ -33,10 +25,6 @@
 //     throw error;
 //   }
 // };
-<<<<<<< HEAD
-=======
-
->>>>>>> d05d38b4a17dfdf0679ccea6af385315fbc1447a
 // export const complaintLike = async (complaintId, data) => {
 //   try {
 //     const response = await apiClient.post(
@@ -96,10 +84,6 @@
 //     throw error;
 //   }
 // };
-<<<<<<< HEAD
-=======
-
->>>>>>> d05d38b4a17dfdf0679ccea6af385315fbc1447a
 // export const complaintDetail = async (complaintId) => {
 //   try {
 //     const response = await apiClient.get(`complaint/detail`, {
@@ -112,10 +96,6 @@
 //     throw error;
 //   }
 // };
-<<<<<<< HEAD
-=======
-
->>>>>>> d05d38b4a17dfdf0679ccea6af385315fbc1447a
 // //keyword 부분 상의 필요
 // export const complaintSearch = async (data) => {
 //   try {
@@ -136,8 +116,4 @@
 //     console.error("전체 조회 중 에러 발생 :", error);
 //     throw error;
 //   }
-<<<<<<< HEAD
 // };
-=======
-// };
->>>>>>> d05d38b4a17dfdf0679ccea6af385315fbc1447a

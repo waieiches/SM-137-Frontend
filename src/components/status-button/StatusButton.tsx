@@ -54,14 +54,11 @@ export const buttonStyles = {
     text: "반려",
   },
   DONE: {
-<<<<<<< HEAD
     Icon: CheckIcon,
     color: "var(--succeess)",
     text: "완료",
   },
   default: {
-=======
->>>>>>> d05d38b4a17dfdf0679ccea6af385315fbc1447a
     Icon: CheckIcon,
     color: "var(--succeess)",
     text: "완료",

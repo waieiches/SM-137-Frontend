@@ -104,12 +104,12 @@ const handleStatusChange = async (complaintStatus: StatusType) => {
 
   setSelectedStatus(complaintStatus);
   try {
-    const requestData = { complaintStatus: status };
+    const requestData = { complaintStatus: complaintStatus };
 
     console.log("API 요청 데이터:", JSON.stringify(requestData));
 
     await registerComplaintAnswer(id, requestData);
-    console.log("상태가 성공적으로 저장되었습니다:", status);
+    console.log("상태가 성공적으로 저장되었습니다:", complaintStatus);
   } catch (error) {
     console.error("상태 저장 중 에러 발생:", error);
     alert("상태 저장에 실패했습니다. 다시 시도해주세요.");

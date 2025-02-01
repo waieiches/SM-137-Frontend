@@ -45,7 +45,8 @@ const BContentBox = styled(ContentBox)`
 
 
 const Text = styled.div`
-  display: flex;
+  display: inline-flex;
+  align-items: center;
   color: var(--gray5-lowText);
   overflow: hidden;
   display: -webkit-box;
@@ -62,7 +63,7 @@ const TextContainer = styled.div`
 
 const Data = styled(Text)`
   color: var(--gray6-header);
-  font-weight: bold;
+  font-weight: 400;
 `;
 
 const SubTitle = styled.span`
@@ -90,7 +91,7 @@ const InfoIcon = styled(SvgIcon)<SvgIconProps>`
 
 const Highlighted = styled.span`
   color: var(--primary);
-  font-weight: bold;
+  font-weight: 400;
 `;
 
 const ContentGrid = ({ data }: ContentProps) => {

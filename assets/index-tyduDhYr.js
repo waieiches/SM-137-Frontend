@@ -602,7 +602,7 @@ align-items: center;
   height: 20px;
   fill: var(--disabled-primary);
 `,_L=M.span`
-  color: var(--primary);
+  color: var(--light-primary);
   font-weight: 400;
 `,NL=({data:e})=>e?T.jsxs(ML,{children:[T.jsxs(ud,{children:[T.jsx(jc,{children:"민원 정보"}),T.jsxs(ty,{children:[T.jsxs(fi,{children:["민원번호 ",T.jsx(_L,{children:e.complaintId})]}),T.jsxs(fi,{children:["카테고리 ",T.jsx(va,{children:e.category})]})]})]}),T.jsxs(ud,{children:[T.jsx(jc,{children:"민원인 정보"}),T.jsxs(ty,{children:[T.jsxs(fi,{children:["학과 ",T.jsx(va,{children:e.user[0].name})," "]}),T.jsxs(fi,{children:["학번 ",T.jsx(va,{children:e.user[0].email})," "]}),T.jsxs(fi,{children:["이름 ",T.jsx(va,{children:e.user[0].number})]})]})]}),T.jsxs(jL,{children:[T.jsx(jc,{children:"민원 내용"}),T.jsxs(_c,{children:[T.jsx(Fc,{component:Ha}),"현황 및 문제점"]}),T.jsx(Nc,{children:e.complaintProb}),T.jsxs(_c,{children:[T.jsx(Fc,{component:Ha}),"개선방향"]}),T.jsx(Nc,{children:e.complaintDir}),e.complaintExpect&&T.jsxs(T.Fragment,{children:[T.jsxs(_c,{children:[T.jsx(Fc,{component:Ha}),"기대효과"]}),T.jsx(Nc,{children:e.complaintExpect})]}),e.attachmentUrls&&T.jsx(DL,{attachmentUrls:e.attachmentUrls})]})]}):T.jsx("text",{children:"데이터가 없습니다"}),FL=M.div`
   display: flex;

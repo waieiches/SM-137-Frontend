@@ -104,8 +104,12 @@ const handleStatusChange = async (complaintStatus: StatusType) => {
 
   setSelectedStatus(complaintStatus);
   try {
-    await registerComplaintAnswer(id, { complaintStatus }); // 상태 저장 API 호출
-    console.log("상태가 성공적으로 저장되었습니다:", complaintStatus);
+    const requestData = { complaintStatus: status };
+
+    console.log("API 요청 데이터:", JSON.stringify(requestData));
+
+    await registerComplaintAnswer(id, requestData);
+    console.log("상태가 성공적으로 저장되었습니다:", status);
   } catch (error) {
     console.error("상태 저장 중 에러 발생:", error);
     alert("상태 저장에 실패했습니다. 다시 시도해주세요.");
@@ -125,26 +129,30 @@ const handleNextClick = async () => {
     return;
   }
 
-  if (inputValue.length < 50) {
-    setError("내용은 최소 50자 이상이어야 합니다.");
+  if (inputValue.length < 30) {
+    setError("내용은 최소 30자 이상이어야 합니다.");
     return;
   }
 
   setError("");
   handleModalOpen();
 
-    try {
-      await registerComplaintAnswer(id, {
-        complaintStatus: selectedStatus,
-        answer: inputValue,
-      });
-      alert("답변이 성공적으로 등록되었습니다!");
-      window.location.href = "/";
-    } catch (error) {
-      console.error("답변 등록 중 에러 발생:", error);
-      alert("답변 등록에 실패했습니다. 다시 시도해주세요.");
-    }
-  };
+  try {
+    const requestData = {
+      complaintStatus: selectedStatus,
+      ...(selectedStatus === "DONE" || selectedStatus === "RETURN" ? { answer: inputValue } : {}),
+    };
+
+    console.log("API 요청 데이터:", JSON.stringify(requestData));
+
+    await registerComplaintAnswer(id, requestData);
+    alert("답변이 성공적으로 등록되었습니다!");
+    window.location.href = "/";
+  } catch (error) {
+    console.error("답변 등록 중 에러 발생:", error);
+    alert("답변 등록에 실패했습니다. 다시 시도해주세요.");
+  }
+};
 
   if (loading) {
     return <div>로딩 중</div>;

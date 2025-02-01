@@ -59,7 +59,8 @@ const TextContainer = styled.div`
 
 const Data = styled.div`
   color: var(--gray6-header);
-  font-weight: 450;
+  font-weight: 600;
+  margin-left: 0.5rem;
 `;
 
 const SubTitle = styled.span`
@@ -87,7 +88,8 @@ const InfoIcon = styled(SvgIcon)<SvgIconProps>`
 
 const Highlighted = styled.div`
   color: var(--light-primary);
-  font-weight: 450;
+  font-weight: 600;
+  margin-left: 0.5rem;
 `;
 
 const ContentGrid = ({ data }: ContentProps) => {

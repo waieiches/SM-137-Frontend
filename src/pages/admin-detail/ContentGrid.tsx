@@ -136,21 +136,21 @@ const ContentGrid = ({ data }: ContentProps) => {
           <InfoIcon component={InfoRoundedIcon} />
           현황 및 문제점
         </SubTitle>
-        <Article>{data.contentProb}</Article>
+        <Article>{data.complaintProb}</Article>
 
         <SubTitle>
           <InfoIcon component={InfoRoundedIcon} />
           개선방향
         </SubTitle>
-        <Article>{data.contentDir}</Article>
+        <Article>{data.complaintDir}</Article>
 
-        {data.contentExpect && (
+        {data.complaintExpect && (
           <>
             <SubTitle>
               <InfoIcon component={InfoRoundedIcon} />
               기대효과
             </SubTitle>
-            <Article>{data.contentExpect}</Article>
+            <Article>{data.complaintExpect}</Article>
           </>
         )}
 

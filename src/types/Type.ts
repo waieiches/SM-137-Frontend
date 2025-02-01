@@ -90,9 +90,9 @@ export interface ContentDetailProps {
   category: string;
   complaintStatus: StatusType;
   complaintTitle: string;
-  contentProb: string;
-  contentDir: string;
-  contentExpect: string;
+  complaintProb: string;
+  complaintDir: string;
+  complaintExpect: string;
   answer: string | null;
   likeCount: number;
   scrapCount: number;

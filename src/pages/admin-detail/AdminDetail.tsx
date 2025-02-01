@@ -79,9 +79,9 @@ const AdminDetail = () => {
         console.log("log: API 응답 데이터:", res.data);
         setData(res.data);
         
-        if (res.data.status) {
-          setSelectedStatus(res.data.status); // 상태 초기값 설정
-          console.log("log: selectedStatus 설정:", res.data.status);
+        if (res.data.complaintStatus) {
+          setSelectedStatus(res.data.complaintStatus); // 상태 초기값 설정
+          console.log("log: selectedStatus 설정:", res.data.complaintStatus);
         } else {
           console.warn("log: API 응답에 status가 없습니다. 기본값 설정.");
           setSelectedStatus("IN_PROGRESS");

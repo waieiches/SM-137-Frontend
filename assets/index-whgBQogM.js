@@ -538,7 +538,7 @@ align-items: center;
   gap: 12px;
   width: 296px;
   height: 29px;
-`,EL=({onStatusChange:e,currentStatus:t})=>{const[n,r]=C.useState("IN_PROGRESS");C.useEffect(()=>{t&&(r(t),console.log("log: StatusButtonGroup의 기본 상태 설정:",t))},[t]);const i=o=>{r(o),e(o)};return E.jsxs(TL,{children:[E.jsx(ya,{type:"IN_PROGRESS",isSelected:n==="IN_PROGRESS",onClick:()=>i("IN_PROGRESS")}),E.jsx(ya,{type:"WAITING",isSelected:n==="WAITING",onClick:()=>i("WAITING")}),E.jsx(ya,{type:"RETURN",isSelected:n==="RETURN",onClick:()=>i("RETURN")}),E.jsx(ya,{type:"DONE",isSelected:n==="DONE",onClick:()=>i("DONE")})]})},kL=M.span`
+`,EL=({onStatusChange:e,currentStatus:t})=>{const[n,r]=C.useState(null);C.useEffect(()=>{t&&(r(t),console.log("log: StatusButtonGroup의 기본 상태 설정:",t))},[t]);const i=o=>{r(o),e(o)};return E.jsxs(TL,{children:[E.jsx(ya,{type:"IN_PROGRESS",isSelected:n==="IN_PROGRESS",onClick:()=>i("IN_PROGRESS")}),E.jsx(ya,{type:"WAITING",isSelected:n==="WAITING",onClick:()=>i("WAITING")}),E.jsx(ya,{type:"RETURN",isSelected:n==="RETURN",onClick:()=>i("RETURN")}),E.jsx(ya,{type:"DONE",isSelected:n==="DONE",onClick:()=>i("DONE")})]})},kL=M.span`
   margin-right: 20px;
 `,PL=M.div`
   gap: 1rem;

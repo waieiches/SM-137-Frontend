@@ -48,10 +48,6 @@ const Text = styled.div`
   display: inline-flex;
   align-items: center;
   color: var(--gray5-lowText);
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  justify-content: center;
 `;
 
 const TextContainer = styled.div`

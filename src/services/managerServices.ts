@@ -24,7 +24,7 @@ export const getComplaintDetail = async (complaintId: any) => {
 
 export const registerComplaintAnswer = async (complaintId: string, data: any) => {
   try {
-    const token = localStorage.getItem("token"); // 예: 인증 토큰 가져오기
+    const token = localStorage.getItem("token");
     const response = await apiClient.post(
       `api/manager/${complaintId}`,
       data,

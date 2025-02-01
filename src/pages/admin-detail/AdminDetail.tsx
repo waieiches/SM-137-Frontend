@@ -95,17 +95,17 @@ const AdminDetail = () => {
   }
 }, [id]);
 
-const handleStatusChange = async (status: StatusType) => {
+const handleStatusChange = async (complaintStatus: StatusType) => {
   if (!id) {
     console.error("ID가 존재하지 않습니다. 상태를 저장할 수 없습니다.");
     alert("ID가 존재하지 않습니다. 다시 시도해주세요.");
     return;
   }
 
-  setSelectedStatus(status);
+  setSelectedStatus(complaintStatus);
   try {
-    await registerComplaintAnswer(id, { status }); // 상태 저장 API 호출
-    console.log("상태가 성공적으로 저장되었습니다:", status);
+    await registerComplaintAnswer(id, { complaintStatus }); // 상태 저장 API 호출
+    console.log("상태가 성공적으로 저장되었습니다:", complaintStatus);
   } catch (error) {
     console.error("상태 저장 중 에러 발생:", error);
     alert("상태 저장에 실패했습니다. 다시 시도해주세요.");
@@ -132,10 +132,10 @@ const handleNextClick = async () => {
 
   setError("");
   handleModalOpen();
-  
+
     try {
       await registerComplaintAnswer(id, {
-        status: selectedStatus,
+        complaintStatus: selectedStatus,
         answer: inputValue,
       });
       alert("답변이 성공적으로 등록되었습니다!");

@@ -94,6 +94,7 @@ export interface ContentDetailProps {
   likeCount: number;
   scrapCount: number;
   date: Date;
+  attachmentUrls?: string[];
   user: [
     {
       name: string;

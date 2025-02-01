@@ -61,7 +61,7 @@ const TextContainer = styled.div`
   flex-wrap: nowrap;
 `;
 
-const Data = styled(Text)`
+const Data = styled.span`
   color: var(--gray6-header);
   font-weight: 400;
 `;

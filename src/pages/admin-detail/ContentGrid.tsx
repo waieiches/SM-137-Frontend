@@ -68,9 +68,9 @@ const SubTitle = styled.span`
 `;
 
 const Article = styled.div`
-  white-space: pre-wrap;
+  white-space: pre-line;
   word-wrap: break-word;
-  overflow: hidden;
+  overflow: visible;
   color: var(--gray5-lowText);
 `;
 

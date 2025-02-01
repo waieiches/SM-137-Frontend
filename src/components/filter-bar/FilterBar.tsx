@@ -93,7 +93,7 @@ const FilterBar = () => {
       <StatusButtonGroupContainer>
         <StatusButtonGroup onStatusChange={function (): void {
           throw new Error("Function not implemented.");
-        } } />
+        } } currentStatus={null} />
       </StatusButtonGroupContainer>
     </Container>
   );

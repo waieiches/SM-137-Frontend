@@ -96,6 +96,12 @@ const AdminDetail = () => {
 }, [id]);
 
 const handleStatusChange = async (status: StatusType) => {
+  if (!id) {
+    console.error("ID가 존재하지 않습니다. 상태를 저장할 수 없습니다.");
+    alert("ID가 존재하지 않습니다. 다시 시도해주세요.");
+    return;
+  }
+
   setSelectedStatus(status);
   try {
     await registerComplaintAnswer(id, { status }); // 상태 저장 API 호출
@@ -106,32 +112,39 @@ const handleStatusChange = async (status: StatusType) => {
   }
 };
 
-  const handleNextClick = async () => {
-    if (!inputValue.trim()) {
-      setError("내용을 입력해주세요.");
-      return;
-    }
 
-    if (inputValue.length < 50) {
-      setError("내용은 최소 50자 이상이어야 합니다.");
-      return;
-    }
-
-    setError("");
-    handleModalOpen();
-
-  try {
-    await registerComplaintAnswer(id, {
-      status: selectedStatus,
-      answer: inputValue,
-    });
-    alert("답변이 성공적으로 등록되었습니다!");
-    window.location.href = "/"; 
-  } catch (error) {
-    console.error("답변 등록 중 에러 발생:", error);
-    alert("답변 등록에 실패했습니다. 다시 시도해주세요.");
+const handleNextClick = async () => {
+  if (!id) {
+    console.error("ID가 존재하지 않습니다. 답변을 등록할 수 없습니다.");
+    alert("ID가 존재하지 않습니다. 다시 시도해주세요.");
+    return;
   }
-};
+
+  if (!inputValue.trim()) {
+    setError("내용을 입력해주세요.");
+    return;
+  }
+
+  if (inputValue.length < 50) {
+    setError("내용은 최소 50자 이상이어야 합니다.");
+    return;
+  }
+
+  setError("");
+  handleModalOpen();
+  
+    try {
+      await registerComplaintAnswer(id, {
+        status: selectedStatus,
+        answer: inputValue,
+      });
+      alert("답변이 성공적으로 등록되었습니다!");
+      window.location.href = "/";
+    } catch (error) {
+      console.error("답변 등록 중 에러 발생:", error);
+      alert("답변 등록에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
 
   if (loading) {
     return <div>로딩 중</div>;

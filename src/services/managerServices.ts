@@ -22,10 +22,19 @@ export const getComplaintDetail = async (complaintId: any) => {
   }
 };
 
-export const registerComplaintAnswer = async (complaintId: any, data: any) => {
+export const registerComplaintAnswer = async (complaintId: string, data: any) => {
   try {
-    const response = await apiClient.post(`api/manager/${complaintId}`, data);
-    console.log(response);
+    const token = localStorage.getItem("token"); // 예: 인증 토큰 가져오기
+    const response = await apiClient.post(
+      `api/manager/${complaintId}`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // 토큰 추가
+        },
+      }
+    );
+    console.log("답변 등록 성공:", response.data);
     return response.data;
   } catch (error) {
     console.error("민원 답변 등록 중 에러 발생:", error);

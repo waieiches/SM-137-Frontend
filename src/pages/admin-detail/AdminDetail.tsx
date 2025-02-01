@@ -9,7 +9,7 @@ import BackButton from "./BackButton";
 import AdminModalContents from "../../components/modal/contents/AdminModalContents";
 import Modal from "../../components/modal/Modal";
 import { useModal } from "../../hooks/useModal";
-import { getComplaintDetail } from "../../services/managerServices";
+import { getComplaintDetail, registerComplaintAnswer } from "../../services/managerServices";
 
 const Background = styled.div`
   width: 100%;
@@ -95,11 +95,18 @@ const AdminDetail = () => {
   }
 }, [id]);
 
-  const handleStatusChange = (status: StatusType) => {
-    setSelectedStatus(status);
-  };
+const handleStatusChange = async (status: StatusType) => {
+  setSelectedStatus(status);
+  try {
+    await registerComplaintAnswer(id, { status }); // 상태 저장 API 호출
+    console.log("상태가 성공적으로 저장되었습니다:", status);
+  } catch (error) {
+    console.error("상태 저장 중 에러 발생:", error);
+    alert("상태 저장에 실패했습니다. 다시 시도해주세요.");
+  }
+};
 
-  const handleNextClick = () => {
+  const handleNextClick = async () => {
     if (!inputValue.trim()) {
       setError("내용을 입력해주세요.");
       return;
@@ -112,7 +119,19 @@ const AdminDetail = () => {
 
     setError("");
     handleModalOpen();
-  };
+
+  try {
+    await registerComplaintAnswer(id, {
+      status: selectedStatus,
+      answer: inputValue,
+    });
+    alert("답변이 성공적으로 등록되었습니다!");
+    window.location.href = "/"; 
+  } catch (error) {
+    console.error("답변 등록 중 에러 발생:", error);
+    alert("답변 등록에 실패했습니다. 다시 시도해주세요.");
+  }
+};
 
   if (loading) {
     return <div>로딩 중</div>;
@@ -138,12 +157,11 @@ const AdminDetail = () => {
           <InputTitle>상세 민원 답변</InputTitle>
           <InputField
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)} // 입력 값 업데이트
+            onChange={(e) => setInputValue(e.target.value)} 
           />
           {error && (
             <p style={{ color: "red", marginTop: "0.5rem" }}>{error}</p>
           )}{" "}
-          {/* 에러 메시지 */}
         </Container>
       ) : null}
 

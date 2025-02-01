@@ -59,7 +59,7 @@ const TextContainer = styled.div`
 
 const Data = styled.div`
   color: var(--gray6-header);
-  font-weight: 600;
+  font-weight: 500;
   margin-left: 0.5rem;
 `;
 
@@ -88,7 +88,7 @@ const InfoIcon = styled(SvgIcon)<SvgIconProps>`
 
 const Highlighted = styled.div`
   color: var(--light-primary);
-  font-weight: 600;
+  font-weight: 500;
   margin-left: 0.5rem;
 `;
 

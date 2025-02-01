@@ -64,7 +64,7 @@ const BackButtonStyled = styled(BackButton)`
 
 const AdminDetail = () => {
   const [selectedStatus, setSelectedStatus] =
-    useState<StatusType>("IN_PROGRESS");
+    useState<StatusType | null>(null);
   const [inputValue, setInputValue] = useState(""); // InputField 값 상태
   const [error, setError] = useState("");
   const [data, setData] = useState<ContentDetailProps | null>(null);
@@ -76,11 +76,25 @@ const AdminDetail = () => {
   useEffect(() => {
     if (id) {
       getComplaintDetail(id)
-        .then((res) => setData(res.data))
-        .catch((error) => console.error(error));
-    }
-    setLoading(false);
-  }, [id]);
+      .then((res) => {
+        console.log("log: API 응답 데이터:", res.data);
+        setData(res.data);
+        
+        if (res.data.status) {
+          setSelectedStatus(res.data.status); // 상태 초기값 설정
+          console.log("log: selectedStatus 설정:", res.data.status);
+        } else {
+          console.warn("log: API 응답에 status가 없습니다. 기본값 설정.");
+          setSelectedStatus("IN_PROGRESS");
+        }
+      })
+      .catch((error) => {
+        console.error("log: API 호출 에러:", error);
+        setSelectedStatus("IN_PROGRESS"); // 에러 발생 시 기본값 설정
+      })
+      .finally(() => setLoading(false));
+  }
+}, [id]);
 
   const handleStatusChange = (status: StatusType) => {
     setSelectedStatus(status);
@@ -117,7 +131,7 @@ const AdminDetail = () => {
         <ContentGrid data={data} />
       </Background>
       <StatusBarContainer>
-        <StatusBar onStatusChange={handleStatusChange} />
+        <StatusBar onStatusChange={handleStatusChange} currentStatus={selectedStatus} />
       </StatusBarContainer>
 
       {selectedStatus === "RETURN" || selectedStatus === "DONE" ? (

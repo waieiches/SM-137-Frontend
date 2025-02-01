@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import StatusButton from "./StatusButton";
 import { StatusType } from "../../types/Type";
 
 interface Props {
+  currentStatus: StatusType | null;
   onStatusChange: (status: StatusType) => void;
 }
 
@@ -14,9 +15,16 @@ const ButtonGroupContainer = styled.div`
   height: 29px;
 `;
 
-const StatusButtonGroup: React.FC<Props> = ({ onStatusChange }) => {
+const StatusButtonGroup: React.FC<Props> = ({ onStatusChange, currentStatus }) => {
   const [selectedType, setSelectedType] = useState<StatusType>("IN_PROGRESS");
 
+  useEffect(() => {
+    if (currentStatus) {
+      setSelectedType(currentStatus);
+      console.log("log: StatusButtonGroup의 기본 상태 설정:", currentStatus);
+    }
+  }, [currentStatus]);
+  
   const handleClick = (type: StatusType) => {
     setSelectedType(type);
     onStatusChange(type); 

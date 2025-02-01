@@ -3,6 +3,7 @@ import StatusButtonGroup from "../../components/status-button/StatusButtonGroup"
 import { StatusType } from "../../types/Type";
 
 interface Props {
+  currentStatus: StatusType | null;
   onStatusChange: (status: StatusType) => void;
 }
 
@@ -27,12 +28,12 @@ const ContentBox = styled.div`
   justify-content: flex-start;
 `;
 
-const StatusBar: React.FC<Props> = ({ onStatusChange }) => {
+const StatusBar: React.FC<Props> = ({ onStatusChange, currentStatus }) => {
   return (
     <Container>
       <ContentBox>
         <Title>상태변경</Title>
-        <StatusButtonGroup onStatusChange={onStatusChange} />
+        <StatusButtonGroup onStatusChange={onStatusChange} currentStatus={currentStatus} />
       </ContentBox>
     </Container>
   );

@@ -436,11 +436,11 @@ align-items: center;
   justify-content: center;
   width: 100%;
   padding: 0;
-  margin: 4rem;
+  margin: 3.5rem;
 `,hL=M.div`
   font-weight: 600;
   color: var(--light-primary);
-  font-size: 7rem;
+  font-size: 6rem;
   line-height: 1.2;
   margin-bottom: 1rem;
 `,pL=M.div`
@@ -450,12 +450,12 @@ align-items: center;
 `,mL=M.div`
   font-weight: 600;
   color: var(--disabled-primary);
-  font-size: 6rem;
+  font-size: 5rem;
   line-height: 1.2;
 `,gL=M.div`
   font-weight: 600;
   color: var(--disabled-primary);
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 1.2;
 `,yL=()=>T.jsxs(dL,{children:[T.jsx(hL,{children:"숙명여자대학교"}),T.jsxs(pL,{children:[T.jsx(mL,{children:"민원 시스템"}),T.jsx(gL,{children:"관리자용"})]})]}),vL=M.img`
   width: 700px;
@@ -540,10 +540,13 @@ align-items: center;
   align-items: center;
   gap: 0.3rem;
 `,Nc=M.div`
-  white-space: pre-line;
-  word-wrap: break-word;
-  overflow: visible;
-  color: var(--gray5-lowText);
+  display: block !important;
+  visibility: visible !important;
+  color: var(--gray5-lowText) !important;
+  font-size: 16px !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow: visible !important;
 `,Fc=M(hr)`
   width: 20px;
   height: 20px;

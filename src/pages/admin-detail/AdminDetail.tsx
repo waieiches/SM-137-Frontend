@@ -157,7 +157,7 @@ const AdminDetail = () => {
 
       <Modal
         isOpen={isModalOpen}
-        onClose={handleModalClose}
+        handleClose={handleModalClose}
         contents={<AdminModalContents handleClose={handleModalClose} />}
       />
     </>

@@ -7,7 +7,6 @@ const ModalWrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +29,6 @@ const ModalContent = styled.div`
   padding: 3rem 6rem;
   border-radius: 8px;
   max-width: 562px;
-  max-height: 348px;
   text-align: center;
   animation: ${UpAnimation} 0.5s ease-out;
   display: flex;
@@ -51,16 +49,16 @@ const ModalBackdrop = styled.div`
 
 interface ModalProps {
   isOpen: boolean;
-  onClose: () => void;
+  handleClose: () => void;
   contents: React.ReactNode;
 }
 
-const Modal = ({ isOpen, onClose, contents }: ModalProps) => {
+const Modal = ({ isOpen, handleClose, contents }: ModalProps) => {
   if (!isOpen) return null;
 
   return (
     <ModalWrapper>
-      <ModalBackdrop onClick={onClose} />
+      <ModalBackdrop onClick={handleClose} />
       <ModalContent>{contents}</ModalContent>
     </ModalWrapper>
   );

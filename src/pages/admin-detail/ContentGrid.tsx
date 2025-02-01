@@ -3,6 +3,7 @@ import { Title } from "../../styles/ContentStyle";
 import { ContentDetailProps } from "../../types/Type";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import { SvgIcon, SvgIconProps } from "@mui/material";
+import ContentImage from "./ContentImage";
 
 interface ContentProps {
   data: ContentDetailProps;
@@ -83,19 +84,6 @@ const InfoIcon = styled(SvgIcon)<SvgIconProps>`
   fill: var(--disabled-primary);
 `;
 
-const AttachmentsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 10px;
-`;
-
-const AttachmentItem = styled.a`
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-`;
-
 const ContentGrid = ({ data }: ContentProps) => {
   if (!data) {
     return <text>데이터가 없습니다</text>;
@@ -154,17 +142,9 @@ const ContentGrid = ({ data }: ContentProps) => {
           </>
         )}
 
-        {/* ✅ 첨부파일 목록 추가 */}
-        {data.attachmentUrls && (
-          <AttachmentsContainer>
-            <Title>첨부파일</Title>
-            {data.attachmentUrls.map((url, index) => (
-              <AttachmentItem key={index} href={url} target="_blank" rel="noopener noreferrer">
-                첨부파일 {index + 1}
-              </AttachmentItem>
-            ))}
-          </AttachmentsContainer>
-        )}
+      {data.attachmentUrls && (
+        <ContentImage attachmentUrls={data.attachmentUrls} />
+      )}
       </BContentBox>
     </Container>
   );

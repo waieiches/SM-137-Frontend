@@ -90,7 +90,7 @@ const InfoIcon = styled(SvgIcon)<SvgIconProps>`
 `;
 
 const Highlighted = styled.span`
-  color: var(--primary);
+  color: var(--light-primary);
   font-weight: 400;
 `;
 

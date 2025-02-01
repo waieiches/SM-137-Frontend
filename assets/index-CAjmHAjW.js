@@ -540,9 +540,9 @@ align-items: center;
   align-items: center;
   gap: 0.3rem;
 `,Nc=M.div`
-  white-space: pre-wrap;
+  white-space: pre-line;
   word-wrap: break-word;
-  overflow: hidden;
+  overflow: visible;
   color: var(--gray5-lowText);
 `,Fc=M(hr)`
   width: 20px;

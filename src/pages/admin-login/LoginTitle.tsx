@@ -6,13 +6,13 @@ const HeaderContainer = styled.div`
   justify-content: center;
   width: 100%;
   padding: 0;
-  margin: 4rem;
+  margin: 3.5rem;
 `;
 
 const UniversityText = styled.div`
   font-weight: 600;
   color: var(--light-primary);
-  font-size: 7rem;
+  font-size: 6rem;
   line-height: 1.2;
   margin-bottom: 1rem;
 `;
@@ -26,14 +26,14 @@ const SubTextContainer = styled.div`
 const SystemText = styled.div`
   font-weight: 600;
   color: var(--disabled-primary);
-  font-size: 6rem;
+  font-size: 5rem;
   line-height: 1.2;
 `;
 
 const AdminText = styled.div`
   font-weight: 600;
   color: var(--disabled-primary);
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 1.2;
 `;
 

@@ -68,10 +68,13 @@ const SubTitle = styled.span`
 `;
 
 const Article = styled.div`
-  white-space: pre-line;
-  word-wrap: break-word;
-  overflow: visible;
-  color: var(--gray5-lowText);
+  display: block !important;
+  visibility: visible !important;
+  color: var(--gray5-lowText) !important;
+  font-size: 16px !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow: visible !important;
 `;
 
 const InfoIcon = styled(SvgIcon)<SvgIconProps>`

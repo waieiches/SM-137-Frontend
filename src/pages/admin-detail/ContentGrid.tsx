@@ -57,12 +57,12 @@ const TextContainer = styled.div`
   display: flex;
   gap: 1rem;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 `;
 
 const Data = styled(Text)`
   color: var(--gray6-header);
-  font-weight: 200;
+  font-weight: bold;
 `;
 
 const SubTitle = styled.span`
@@ -88,6 +88,11 @@ const InfoIcon = styled(SvgIcon)<SvgIconProps>`
   fill: var(--disabled-primary);
 `;
 
+const Highlighted = styled.span`
+  color: var(--primary);
+  font-weight: bold;
+`;
+
 const ContentGrid = ({ data }: ContentProps) => {
   if (!data) {
     return <text>데이터가 없습니다</text>;
@@ -98,23 +103,18 @@ const ContentGrid = ({ data }: ContentProps) => {
       <ContentBox>
         <Title>민원 정보</Title>
         <TextContainer>
-          <Text>
-            민원번호 <Data>{data.complaintId}</Data>
-            카테고리 <Data>{data.category}</Data>
-          </Text>
+          <Text>민원번호 <Highlighted>{data.complaintId}</Highlighted></Text>
+          <Text>카테고리 <Data>{data.category}</Data></Text>
         </TextContainer>
       </ContentBox>
 
       <ContentBox>
-        <Title>민원인 정보</Title>
+      <Title>민원인 정보</Title>
         <TextContainer>
-          <Text>
-            학과 <Data>{data.user[0].name}</Data>
-            학번 <Data>{data.user[0].email}</Data>
-            이름 <Data>{data.user[0].number}</Data>
-          </Text>
-  </TextContainer>
-
+          <Text>학과 <Data>{data.user[0].name}</Data> </Text>
+          <Text>학번 <Data>{data.user[0].email}</Data> </Text>
+          <Text>이름 <Data>{data.user[0].number}</Data></Text>
+        </TextContainer>
       </ContentBox>
 
       <BContentBox>

@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { Title } from "../../styles/ContentStyle";
 import { ContentDetailProps } from "../../types/Type";
+import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
+import { SvgIcon, SvgIconProps } from "@mui/material";
 
 interface ContentProps {
   data: ContentDetailProps;
@@ -29,7 +31,7 @@ const ContentBox = styled.div`
 
 const BContentBox = styled(ContentBox)`
   grid-column: span 2;
-  height: 400px;
+  height: auto;
   border-radius: 8px;
   border: 1px solid #ddd;
   display: flex;
@@ -37,6 +39,7 @@ const BContentBox = styled(ContentBox)`
   justify-content: flex-start;
   align-items: flex-start;
   padding: 30px;
+  gap: 1rem;
 `;
 
 const TextContainer = styled.div`
@@ -55,6 +58,26 @@ const Text = styled.div`
 
 const Data = styled(Text)`
   color: var(--gray6-header);
+`;
+
+const SubTitle = styled.span`
+  color: var(--disabled-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+`;
+
+const Article = styled.div`
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  color: var(--gray5-lowText);
+`;
+
+const InfoIcon = styled(SvgIcon)<SvgIconProps>`
+  width: 20px;
+  height: 20px;
+  fill: var(--disabled-primary);
 `;
 
 const AttachmentsContainer = styled.div`
@@ -106,15 +129,39 @@ const ContentGrid = ({ data }: ContentProps) => {
 
       <BContentBox>
         <Title>민원 내용</Title>
-        <Text>{data.complaintTitle}</Text>
-        <Text>{data.contentProb}</Text>
-        <AttachmentsContainer>
-        {data.attachmentUrls?.map((url, index) => (
-          <AttachmentItem key={index} href={url} target="_blank" rel="noopener noreferrer">
-          첨부파일 {index + 1}
-          </AttachmentItem>
-        ))}
-        </AttachmentsContainer>
+        <SubTitle>
+          <InfoIcon component={InfoRoundedIcon} />
+          현황 및 문제점
+        </SubTitle>
+        <Article>{data.contentProb}</Article>
+
+        <SubTitle>
+          <InfoIcon component={InfoRoundedIcon} />
+          개선방향
+        </SubTitle>
+        <Article>{data.contentDir}</Article>
+
+        {data.contentExpect && (
+          <>
+            <SubTitle>
+              <InfoIcon component={InfoRoundedIcon} />
+              기대효과
+            </SubTitle>
+            <Article>{data.contentExpect}</Article>
+          </>
+        )}
+
+        {/* ✅ 첨부파일 목록 추가 */}
+        {data.attachmentUrls && (
+          <AttachmentsContainer>
+            <Title>첨부파일</Title>
+            {data.attachmentUrls.map((url, index) => (
+              <AttachmentItem key={index} href={url} target="_blank" rel="noopener noreferrer">
+                첨부파일 {index + 1}
+              </AttachmentItem>
+            ))}
+          </AttachmentsContainer>
+        )}
       </BContentBox>
     </Container>
   );

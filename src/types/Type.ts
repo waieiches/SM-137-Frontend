@@ -91,10 +91,15 @@ export interface ContentDetailProps {
   complaintStatus: StatusType;
   complaintTitle: string;
   contentProb: string;
+  contentDir: string;
+  contentExpect: string;
+  answer: string | null;
   likeCount: number;
   scrapCount: number;
-  date: Date;
-  attachmentUrls?: string[];
+  createdAt: string;
+  liked: boolean;
+  scrapped: boolean;
+  attachmentUrls: string[];
   user: [
     {
       name: string;

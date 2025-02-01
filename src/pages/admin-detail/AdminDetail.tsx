@@ -63,8 +63,7 @@ const BackButtonStyled = styled(BackButton)`
 `;
 
 const AdminDetail = () => {
-  const [selectedStatus, setSelectedStatus] =
-    useState<StatusType | null>(null);
+  const [selectedStatus, setSelectedStatus] = useState<StatusType | null>(null);
   const [inputValue, setInputValue] = useState(""); // InputField 값 상태
   const [error, setError] = useState("");
   const [data, setData] = useState<ContentDetailProps | null>(null);

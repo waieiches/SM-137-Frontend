@@ -16,7 +16,7 @@ const ButtonGroupContainer = styled.div`
 `;
 
 const StatusButtonGroup: React.FC<Props> = ({ onStatusChange, currentStatus }) => {
-  const [selectedType, setSelectedType] = useState<StatusType>("IN_PROGRESS");
+  const [selectedType, setSelectedType] = useState<StatusType | null>(null);
 
   useEffect(() => {
     if (currentStatus) {

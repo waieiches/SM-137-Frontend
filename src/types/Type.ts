@@ -105,6 +105,7 @@ export interface ContentDetailProps {
       name: string;
       number: string;
       depaartment: string;
+      email:string;
     },
   ];
 }

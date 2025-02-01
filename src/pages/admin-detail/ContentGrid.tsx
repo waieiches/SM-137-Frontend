@@ -43,10 +43,6 @@ const BContentBox = styled(ContentBox)`
   gap: 1rem;
 `;
 
-const TextContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
 
 const Text = styled.div`
   display: flex;
@@ -57,8 +53,16 @@ const Text = styled.div`
   justify-content: center;
 `;
 
+const TextContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
 const Data = styled(Text)`
   color: var(--gray6-header);
+  font-weight: 200;
 `;
 
 const SubTitle = styled.span`
@@ -95,10 +99,8 @@ const ContentGrid = ({ data }: ContentProps) => {
         <Title>민원 정보</Title>
         <TextContainer>
           <Text>
-            민원번호 | <Data>{data.complaintId}</Data>
-          </Text>
-          <Text>
-            카테고리 | <Data>{data.category}</Data>
+            민원번호 <Data>{data.complaintId}</Data>
+            카테고리 <Data>{data.category}</Data>
           </Text>
         </TextContainer>
       </ContentBox>
@@ -107,15 +109,12 @@ const ContentGrid = ({ data }: ContentProps) => {
         <Title>민원인 정보</Title>
         <TextContainer>
           <Text>
-            학과 : <Data>{data.user[0].depaartment}</Data>
+            학과 <Data>{data.user[0].name}</Data>
+            학번 <Data>{data.user[0].email}</Data>
+            이름 <Data>{data.user[0].number}</Data>
           </Text>
-          <Text>
-            학번 : <Data>{data.user[0].number}</Data>
-          </Text>
-          <Text>
-            이름 : <Data>{data.user[0].name}</Data>
-          </Text>
-        </TextContainer>
+  </TextContainer>
+
       </ContentBox>
 
       <BContentBox>
